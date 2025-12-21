@@ -1,35 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import ServiceDetailView from './ServiceDetailView';
 
 const SearchSection = () => {
   const [query, setQuery] = useState('');
+  const [allServices, setAllServices] = useState([]);
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [hasSearched, setHasSearched] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('services'); // 'services' or 'faq'
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
-    setLoading(true);
-    setHasSearched(true);
-    setActiveTab('services'); // Reset to services tab on new search
+  const fetchServices = async () => {
     try {
       // Use relative path - handled by Vite proxy in dev and Netlify redirects in prod
       const API_URL = '';
-      const response = await fetch(`${API_URL}/api/services?search=${encodeURIComponent(query)}`);
+      const response = await fetch(`${API_URL}/api/services`);
       if (!response.ok) throw new Error('Network response was not ok');
       const data = await response.json();
-      console.log("Received data:", data); // Debug log
+      setAllServices(data);
       setResults(data);
     } catch (error) {
       console.error('Error fetching services:', error);
+      setAllServices([]);
       setResults([]);
     } finally {
       setLoading(false);
     }
+  };
+
+  // Live filtering
+  useEffect(() => {
+    if (!query.trim()) {
+      setResults(allServices);
+    } else {
+      const lowerQuery = query.toLowerCase();
+      // Using startsWith to match Admin Portal behavior
+      const filtered = allServices.filter(service =>
+        service.title && service.title.toLowerCase().startsWith(lowerQuery)
+      );
+      setResults(filtered);
+    }
+  }, [query, allServices]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // Search is handled by useEffect as user types
   };
 
   return (
@@ -57,6 +75,7 @@ const SearchSection = () => {
               />
               <Search style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#999' }} />
             </div>
+            {/* Kept button for UX, but it doesn't trigger separate search anymore */}
             <button
               type="submit"
               className="btn"
@@ -69,16 +88,14 @@ const SearchSection = () => {
 
         <div className="results-container">
           {loading ? (
-            <div style={{ textAlign: 'center', color: '#666' }}>Searching...</div>
+            <div style={{ textAlign: 'center', color: '#666' }}>Loading services...</div>
           ) : (
             <>
-              {hasSearched && results.length === 0 && (
+              {results.length === 0 ? (
                 <div style={{ textAlign: 'center', color: '#666' }}>No services found matching "{query}".</div>
-              )}
-
-              {hasSearched && results.length > 0 && (
+              ) : (
                 <>
-                  {/* Tab Buttons */}
+                  {/* Tab Buttons - Only show if we have results */}
                   <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '30px' }}>
                     <button
                       onClick={() => setActiveTab('services')}
