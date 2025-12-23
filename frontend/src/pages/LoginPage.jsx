@@ -141,8 +141,6 @@ const LoginPage = () => {
                     >
                         Sign In
                     </button>
-
-
                 </form>
             </div>
         </div>

@@ -15,17 +15,30 @@ const SearchSection = () => {
 
   const fetchServices = async () => {
     try {
-      // Use relative path - handled by Vite proxy in dev and Netlify redirects in prod
-      const API_URL = '';
-      const response = await fetch(`${API_URL}/api/services`);
-      if (!response.ok) throw new Error('Network response was not ok');
+      // Fetch from generated JSON file containing services from PDFs
+      const response = await fetch('/services.json');
+      if (!response.ok) throw new Error('Failed to fetch services.json');
       const data = await response.json();
       setAllServices(data);
       setResults(data);
     } catch (error) {
-      console.error('Error fetching services:', error);
-      setAllServices([]);
-      setResults([]);
+      console.error('Error fetching services from JSON:', error);
+      // Fallback to API
+      try {
+        const response = await fetch('/api/services');
+        if (response.ok) {
+            const data = await response.json();
+            setAllServices(data);
+            setResults(data);
+        } else {
+            setAllServices([]);
+            setResults([]);
+        }
+      } catch (apiError) {
+         console.error('Error fetching from API:', apiError);
+         setAllServices([]);
+         setResults([]);
+      }
     } finally {
       setLoading(false);
     }
