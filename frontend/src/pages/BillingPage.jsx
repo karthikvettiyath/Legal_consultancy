@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Printer, Download } from 'lucide-react';
 import InvoiceForm from '../components/billing/InvoiceForm';
 import InvoicePreview from '../components/billing/InvoicePreview';
@@ -53,6 +54,14 @@ function BillingPage() {
         setData(newData);
     };
 
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('adminUser');
+        navigate('/', { replace: true });
+    };
+
     const handlePrint = () => {
         window.print();
     };
@@ -65,12 +74,20 @@ function BillingPage() {
                     <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
                         <span className="bg-blue-600 text-white p-1 rounded">CUC</span> Billing
                     </h1>
-                    <button
-                        onClick={handlePrint}
-                        className="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 text-sm font-medium"
-                    >
-                        <Printer size={18} /> Print / PDF
-                    </button>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={handlePrint}
+                            className="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 text-sm font-medium"
+                        >
+                            <Printer size={18} /> Print
+                        </button>
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 text-sm font-medium"
+                        >
+                            Logout
+                        </button>
+                    </div>
                 </div>
 
                 <div className="flex-grow overflow-y-auto p-6 bg-slate-50">

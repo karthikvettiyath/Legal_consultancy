@@ -15,6 +15,16 @@ const LandingPage = () => {
                 <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-6 tracking-tight">
                     Cochin United Consultancy
                 </h1>
+
+                <button
+                    onClick={() => {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('adminUser');
+                        window.location.href = '/';
+                    }}
+                    className="absolute top-6 right-6 text-slate-400 hover:text-white px-4 py-2 rounded-lg border border-slate-700 hover:border-slate-500 transition text-sm font-medium z-50">
+                    Logout
+                </button>
                 <p className="text-slate-400 text-lg md:text-xl mb-16 max-w-2xl mx-auto">
                     Your Comprehensive Solution for Legal Expertise and Financial Management
                 </p>

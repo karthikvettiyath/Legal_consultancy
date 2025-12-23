@@ -32,7 +32,7 @@ const AdminPage = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('adminUser');
-        navigate('/login');
+        navigate('/', { replace: true });
     };
 
     const fetchServices = async () => {
