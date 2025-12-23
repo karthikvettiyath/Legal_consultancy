@@ -32,32 +32,62 @@ const ServiceDetailView = ({ details, activeTab }) => {
       {/* Cards Section - Only show if activeTab is 'services' */}
       {activeTab === 'services' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-          {cards.map((card, index) => (
-            <div key={index} style={{ 
-              background: '#fff', 
-              padding: '25px', 
-              borderRadius: '12px', 
-              boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
-              borderTop: '4px solid #3498db'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px', color: '#2c3e50' }}>
-                {card.icon === 'FileText' && <FileText size={24} color="#3498db" />}
-                {card.icon === 'ListOrdered' && <ListOrdered size={24} color="#3498db" />}
-                {card.icon === 'Clock' && <Clock size={24} color="#3498db" />}
-                <h3 style={{ marginLeft: '10px', fontSize: '1.2rem', fontWeight: '600' }}>{card.title}</h3>
-              </div>
-              
-              {card.items ? (
-                <ul style={{ paddingLeft: '20px', color: '#555', lineHeight: '1.6' }}>
-                  {card.items.map((item, i) => (
-                    <li key={i} style={{ marginBottom: '8px' }}>{item}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p style={{ color: '#555', lineHeight: '1.6' }}>{card.content}</p>
-              )}
-            </div>
-          ))}
+          {cards
+            .filter(card => {
+              const title = card.title.toLowerCase();
+              return (title.includes('document') || title.includes('process steps') || title.includes('process duration')) && !title.includes('download');
+            })
+            .sort((a, b) => {
+               const getOrder = (t) => {
+                   const lower = t.toLowerCase();
+                   if (lower.includes('document')) return 1;
+                   if (lower.includes('process steps')) return 2;
+                   if (lower.includes('process duration')) return 3;
+                   return 4;
+               };
+               return getOrder(a.title) - getOrder(b.title);
+            })
+            .map((card, index) => {
+              let displayTitle = card.title;
+              let IconComponent = FileText;
+
+              const lowerTitle = card.title.toLowerCase();
+              if (lowerTitle.includes('document')) {
+                displayTitle = 'Documents Needed';
+                IconComponent = FileText;
+              } else if (lowerTitle.includes('process steps')) {
+                displayTitle = 'Process Steps';
+                IconComponent = ListOrdered;
+              } else if (lowerTitle.includes('process duration')) {
+                displayTitle = 'Process Duration';
+                IconComponent = Clock;
+              }
+
+              return (
+                <div key={index} style={{ 
+                  background: '#fff', 
+                  padding: '25px', 
+                  borderRadius: '12px', 
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+                  borderTop: '4px solid #3498db'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px', color: '#2c3e50' }}>
+                    <IconComponent size={24} color="#3498db" />
+                    <h3 style={{ marginLeft: '10px', fontSize: '1.2rem', fontWeight: '600' }}>{displayTitle}</h3>
+                  </div>
+                  
+                  {card.items ? (
+                    <ul style={{ paddingLeft: '20px', color: '#555', lineHeight: '1.6' }}>
+                      {card.items.map((item, i) => (
+                        <li key={i} style={{ marginBottom: '8px' }}>{item}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p style={{ color: '#555', lineHeight: '1.6' }}>{card.content}</p>
+                  )}
+                </div>
+              );
+            })}
         </div>
       )}
 

@@ -20,7 +20,7 @@ const SearchSection = () => {
       if (!response.ok) throw new Error('Failed to fetch services.json');
       const data = await response.json();
       setAllServices(data);
-      setResults(data);
+      // setResults(data); // Don't show all initially
     } catch (error) {
       console.error('Error fetching services from JSON:', error);
       // Fallback to API
@@ -29,7 +29,7 @@ const SearchSection = () => {
         if (response.ok) {
             const data = await response.json();
             setAllServices(data);
-            setResults(data);
+            // setResults(data); // Don't show all initially
         } else {
             setAllServices([]);
             setResults([]);
@@ -47,7 +47,7 @@ const SearchSection = () => {
   // Live filtering
   useEffect(() => {
     if (!query.trim()) {
-      setResults(allServices);
+      setResults([]); // Clear results if query is empty
     } else {
       const lowerQuery = query.toLowerCase();
       // Using startsWith to match Admin Portal behavior
