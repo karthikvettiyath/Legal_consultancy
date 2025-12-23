@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { Lock, User } from 'lucide-react';
 
 const LoginPage = () => {
@@ -7,6 +7,7 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
 
     const API_URL = ''; // Relative for proxy/netlify
 
@@ -26,7 +27,8 @@ const LoginPage = () => {
             if (response.ok) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('adminUser', data.username);
-                navigate('/legal/admin');
+                const from = location.state?.from?.pathname || '/';
+                navigate(from, { replace: true });
             } else {
                 setError(data.error || 'Login failed');
             }

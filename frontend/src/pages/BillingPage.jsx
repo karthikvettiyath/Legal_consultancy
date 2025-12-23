@@ -7,7 +7,7 @@ import { numberToWords } from '../utils/numberToWords';
 function BillingPage() {
     const [data, setData] = useState({
         type: 'INVOICE', // 'INVOICE' or 'QUOTATION'
-        clientName: 'CLUSTER MEDICAL CENTRE',
+        clientName: '',
         date: new Date().toLocaleDateString('en-GB'), // DD/MM/YYYY format
         invoiceNo: '4139',
         items: [],
