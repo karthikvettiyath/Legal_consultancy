@@ -17,7 +17,7 @@ const Navbar = () => {
             <li><Link to="/legal" style={{ color: '#fff', textDecoration: 'none' }}>Home</Link></li>
             <li><Link to="/legal/admin" style={{ color: '#fff', opacity: 0.7, textDecoration: 'none' }}>Admin Portal</Link></li>
             {/* Optional: Link back to Main Portal */}
-            <li><Link to="/" style={{ color: '#cbd5e1', fontSize: '0.9rem', textDecoration: 'none', border: '1px solid #475569', padding: '4px 8px', borderRadius: '4px' }}>Apps</Link></li>
+            <li><Link to="/home" style={{ color: '#cbd5e1', fontSize: '0.9rem', textDecoration: 'none', border: '1px solid #475569', padding: '4px 8px', borderRadius: '4px' }}>Apps</Link></li>
           </ul>
         </nav>
       </div>

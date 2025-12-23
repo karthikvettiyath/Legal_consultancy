@@ -179,12 +179,16 @@ function authenticateToken(req, res, next) {
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
 
-  // Simple check against ENV
+  // Check Admin
   if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-    // Generate Token
-    // Expires in 1 hour
-    const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: '8h' });
-    return res.json({ token, username });
+    const token = jwt.sign({ username, role: 'admin' }, JWT_SECRET, { expiresIn: '8h' });
+    return res.json({ token, username, role: 'admin' });
+  }
+
+  // Check Standard User
+  if (username === 'user' && password === 'user123') {
+    const token = jwt.sign({ username, role: 'user' }, JWT_SECRET, { expiresIn: '8h' });
+    return res.json({ token, username, role: 'user' });
   }
 
   return res.status(401).json({ error: "Invalid credentials" });

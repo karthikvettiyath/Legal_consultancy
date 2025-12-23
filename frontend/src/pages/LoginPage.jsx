@@ -27,7 +27,7 @@ const LoginPage = () => {
             if (response.ok) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('adminUser', data.username);
-                const from = location.state?.from?.pathname || '/';
+                const from = location.state?.from?.pathname || '/home';
                 navigate(from, { replace: true });
             } else {
                 setError(data.error || 'Login failed');
@@ -142,9 +142,7 @@ const LoginPage = () => {
                         Sign In
                     </button>
 
-                    <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                        <Link to="/legal" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.9rem' }}>← Back to Legal Home</Link>
-                    </div>
+
                 </form>
             </div>
         </div>

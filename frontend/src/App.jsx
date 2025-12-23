@@ -26,37 +26,23 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Main Landing Page - Public */}
-        <Route path="/" element={<LandingPage />} />
+        {/* Root is now Login Page */}
+        <Route path="/" element={<LoginPage />} />
 
-        {/* Global Login Page */}
-        <Route path="/login" element={<LoginPage />} />
+        {/* Dashboard/Home with options (Protected or Public?) 
+            User said "landing login page which redirects to the current home page".
+            This implies the "Home Page" is the one with options. 
+            I will put it at /home.
+        */}
+        <Route path="/home" element={<LandingPage />} />
 
-        {/* Billing App - Protected */}
-        <Route
-          path="/billing"
-          element={
-            <ProtectedRoute>
-              <BillingPage />
-            </ProtectedRoute>
-          }
-        />
+        {/* Billing App - UNPROTECTED as requested */}
+        <Route path="/billing" element={<BillingPage />} />
 
-        {/* Legal App - Protected (Root and sub-routes) */}
-        <Route
-          path="/legal"
-          element={
-            <ProtectedRoute>
-              <LegalLayout />
-            </ProtectedRoute>
-          }
-        >
+        {/* Legal App - UNPROTECTED as requested */}
+        <Route path="/legal" element={<LegalLayout />}>
           <Route index element={<HomePage />} />
           <Route path="admin" element={<AdminPage />} />
-          {/* Note: login path here is legacy or could redirect to /login.
-                 Since we protect the parent, you can't reach /legal/login without being logged in (loop).
-                 So we remove /legal/login and use global /login.
-             */}
         </Route>
       </Routes>
     </Router>
