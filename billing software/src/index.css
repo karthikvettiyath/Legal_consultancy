@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-gray-900 bg-gray-50;
+  }
+}
+
+@layer utilities {
+  .print-exact {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+}

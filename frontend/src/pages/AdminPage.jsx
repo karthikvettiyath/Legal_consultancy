@@ -23,7 +23,7 @@ const AdminPage = () => {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            navigate('/login');
+            navigate('/legal/login');
             return;
         }
         fetchServices();
@@ -32,7 +32,7 @@ const AdminPage = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('adminUser');
-        navigate('/login');
+        navigate('/legal/login');
     };
 
     const fetchServices = async () => {
@@ -118,7 +118,7 @@ const AdminPage = () => {
 
         const token = localStorage.getItem('token');
         if (!token) {
-            navigate('/login');
+            navigate('/legal/login');
             return;
         }
 
@@ -132,7 +132,7 @@ const AdminPage = () => {
 
             if (response.status === 401 || response.status === 403) {
                 localStorage.removeItem('token');
-                navigate('/login');
+                navigate('/legal/login');
                 return;
             }
 
@@ -199,7 +199,7 @@ const AdminPage = () => {
     const handleSave = async (id) => {
         const token = localStorage.getItem('token');
         if (!token) {
-            navigate('/login');
+            navigate('/legal/login');
             return;
         }
 
@@ -231,7 +231,7 @@ const AdminPage = () => {
 
             if (response.status === 401 || response.status === 403) {
                 localStorage.removeItem('token');
-                navigate('/login');
+                navigate('/legal/login');
                 return;
             }
 
