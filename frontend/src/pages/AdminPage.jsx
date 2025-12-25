@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Edit2, Save, X, Trash2, Plus, Search, FileText, List, HelpCircle, LogOut, AlertTriangle } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const AdminPage = () => {
     const [services, setServices] = useState([]);
@@ -10,6 +11,7 @@ const AdminPage = () => {
 
     // Auth state
     const navigate = useNavigate();
+    const { logout } = useAuth(); // Use context
 
     // Editing state
     const [editingId, setEditingId] = useState(null); // 'new' for creating
@@ -21,17 +23,13 @@ const AdminPage = () => {
     const API_URL = '';
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            navigate('/login');
-            return;
-        }
+        // ProtectedRoute handles the redirect if not logged in.
+        // We just fetch data here.
         fetchServices();
-    }, [navigate]);
+    }, []);
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('adminUser');
+    const handleLogoutClick = () => {
+        logout();
         navigate('/', { replace: true });
     };
 
@@ -131,8 +129,8 @@ const AdminPage = () => {
             });
 
             if (response.status === 401 || response.status === 403) {
-                localStorage.removeItem('token');
-                navigate('/login');
+                logout();
+                navigate('/');
                 return;
             }
 
@@ -230,8 +228,8 @@ const AdminPage = () => {
             });
 
             if (response.status === 401 || response.status === 403) {
-                localStorage.removeItem('token');
-                navigate('/login');
+                logout();
+                navigate('/');
                 return;
             }
 
@@ -274,7 +272,7 @@ const AdminPage = () => {
                             <Plus size={16} /> Add Service
                         </button>
                         <button
-                            onClick={handleLogout}
+                            onClick={handleLogoutClick}
                             title="Logout"
                             style={{
                                 background: '#ef4444',

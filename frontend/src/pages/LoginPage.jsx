@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { Lock, User } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -8,6 +9,7 @@ const LoginPage = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const { login } = useAuth();
 
     const API_URL = ''; // Relative for proxy/netlify
 
@@ -25,8 +27,7 @@ const LoginPage = () => {
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('adminUser', data.username);
+                login(data.token, data.username, data.role);
                 const from = location.state?.from?.pathname || '/home';
                 navigate(from, { replace: true });
             } else {

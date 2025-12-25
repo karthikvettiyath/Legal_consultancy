@@ -179,6 +179,12 @@ function authenticateToken(req, res, next) {
 app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
 
+  // Check Admin
+  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    const token = jwt.sign({ username, role: 'admin' }, JWT_SECRET, { expiresIn: '8h' });
+    return res.json({ token, username, role: 'admin' });
+  }
+
   // Check Standard User
   if (username === 'user' && password === 'user123') {
     const token = jwt.sign({ username, role: 'user' }, JWT_SECRET, { expiresIn: '8h' });

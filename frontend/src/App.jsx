@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import LandingPage from './pages/LandingPage';
 import BillingPage from './pages/BillingPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
 
 // Layout for Legal App
 const LegalLayout = () => {
@@ -25,26 +26,28 @@ const LegalLayout = () => {
 function App() {
   return (
     <Router>
-      <Routes>
-        {/* Root is now Login Page */}
-        <Route path="/" element={<LoginPage />} />
+      <AuthProvider>
+        <Routes>
+          {/* Root is now Login Page */}
+          <Route path="/" element={<LoginPage />} />
 
-        {/* Dashboard/Home with options (Protected or Public?) 
-            User said "landing login page which redirects to the current home page".
-            This implies the "Home Page" is the one with options. 
-            I will put it at /home.
-        */}
-        <Route path="/home" element={<LandingPage />} />
+          {/* Dashboard/Home with options */}
+          <Route path="/home" element={<LandingPage />} />
 
-        {/* Billing App - UNPROTECTED as requested */}
-        <Route path="/billing" element={<BillingPage />} />
+          {/* Billing App - UNPROTECTED as requested */}
+          <Route path="/billing" element={<BillingPage />} />
 
-        {/* Legal App - UNPROTECTED as requested */}
-        <Route path="/legal" element={<LegalLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="admin" element={<AdminPage />} />
-        </Route>
-      </Routes>
+          {/* Legal App */}
+          <Route path="/legal" element={<LegalLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="admin" element={
+              <ProtectedRoute>
+                <AdminPage />
+              </ProtectedRoute>
+            } />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 }
