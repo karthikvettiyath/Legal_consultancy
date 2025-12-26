@@ -41,8 +41,20 @@ const AdminPage = () => {
             setServices(data);
             setFilteredServices(data);
         } catch (error) {
-            console.error('Error:', error);
-            setMessage({ text: 'Failed to load services', type: 'error' });
+            console.error('API Error, trying fallback:', error);
+            try {
+                const res = await fetch('/services.json');
+                if (res.ok) {
+                    const data = await res.json();
+                    setServices(data);
+                    setFilteredServices(data);
+                    setMessage({ text: 'Database is offline. Showing cached services (Read-Only).', type: 'error' });
+                } else {
+                    setMessage({ text: 'Failed to load services', type: 'error' });
+                }
+            } catch (jsonErr) {
+                setMessage({ text: 'Failed to load services', type: 'error' });
+            }
         } finally {
             setLoading(false);
         }
