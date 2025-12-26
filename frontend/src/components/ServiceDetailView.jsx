@@ -3,25 +3,25 @@ import { FileText, ListOrdered, Clock, ChevronDown, ChevronUp, Search } from 'lu
 
 const ServiceDetailView = ({ details, activeTab }) => {
   const [faqSearch, setFaqSearch] = useState('');
-  
+
   if (!details) return null;
-  
+
   // Handle if details is a string (double-encoded JSON)
   let parsedDetails = details;
   if (typeof details === 'string') {
-      try {
-          parsedDetails = JSON.parse(details);
-      } catch (e) {
-          console.error("Failed to parse details:", e);
-          return null;
-      }
+    try {
+      parsedDetails = JSON.parse(details);
+    } catch (e) {
+      console.error("Failed to parse details:", e);
+      return null;
+    }
   }
 
   const { cards, faqs } = parsedDetails;
 
   // Filter FAQs
-  const filteredFaqs = faqs ? faqs.filter(faq => 
-    faq.q.toLowerCase().includes(faqSearch.toLowerCase()) || 
+  const filteredFaqs = faqs ? faqs.filter(faq =>
+    faq.q.toLowerCase().includes(faqSearch.toLowerCase()) ||
     faq.a.toLowerCase().includes(faqSearch.toLowerCase())
   ) : [];
 
@@ -33,19 +33,16 @@ const ServiceDetailView = ({ details, activeTab }) => {
       {activeTab === 'services' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '40px' }}>
           {cards
-            .filter(card => {
-              const title = card.title.toLowerCase();
-              return (title.includes('document') || title.includes('process steps') || title.includes('process duration')) && !title.includes('download');
-            })
+            .filter(card => !card.title.toLowerCase().includes('download'))
             .sort((a, b) => {
-               const getOrder = (t) => {
-                   const lower = t.toLowerCase();
-                   if (lower.includes('document')) return 1;
-                   if (lower.includes('process steps')) return 2;
-                   if (lower.includes('process duration')) return 3;
-                   return 4;
-               };
-               return getOrder(a.title) - getOrder(b.title);
+              const getOrder = (t) => {
+                const lower = t.toLowerCase();
+                if (lower.includes('document')) return 1;
+                if (lower.includes('process steps')) return 2;
+                if (lower.includes('process duration')) return 3;
+                return 4;
+              };
+              return getOrder(a.title) - getOrder(b.title);
             })
             .map((card, index) => {
               let displayTitle = card.title;
@@ -64,10 +61,10 @@ const ServiceDetailView = ({ details, activeTab }) => {
               }
 
               return (
-                <div key={index} style={{ 
-                  background: '#fff', 
-                  padding: '25px', 
-                  borderRadius: '12px', 
+                <div key={index} style={{
+                  background: '#fff',
+                  padding: '25px',
+                  borderRadius: '12px',
                   boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
                   borderTop: '4px solid #3498db'
                 }}>
@@ -75,7 +72,7 @@ const ServiceDetailView = ({ details, activeTab }) => {
                     <IconComponent size={24} color="#3498db" />
                     <h3 style={{ marginLeft: '10px', fontSize: '1.2rem', fontWeight: '600' }}>{displayTitle}</h3>
                   </div>
-                  
+
                   {card.items ? (
                     <ul style={{ paddingLeft: '20px', color: '#555', lineHeight: '1.6' }}>
                       {card.items.map((item, i) => (
@@ -94,26 +91,26 @@ const ServiceDetailView = ({ details, activeTab }) => {
       {/* FAQs Section - Only show if activeTab is 'faq' */}
       {activeTab === 'faq' && faqs && faqs.length > 0 && (
         <div style={{ background: '#fff', padding: '30px', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
-          
+
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px', flexWrap: 'wrap', gap: '15px' }}>
             <h3 style={{ fontSize: '1.8rem', color: '#2c3e50', margin: 0 }}>Frequently Asked Questions</h3>
-            
+
             <div style={{ position: 'relative', width: '100%', maxWidth: '300px' }}>
-               <input 
-                 type="text" 
-                 placeholder="Search questions..." 
-                 value={faqSearch}
-                 onChange={(e) => setFaqSearch(e.target.value)}
-                 style={{
-                   width: '100%',
-                   padding: '10px 15px',
-                   paddingRight: '35px',
-                   borderRadius: '20px',
-                   border: '1px solid #ddd',
-                   outline: 'none'
-                 }}
-               />
-               <Search size={18} color="#999" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)' }} />
+              <input
+                type="text"
+                placeholder="Search questions..."
+                value={faqSearch}
+                onChange={(e) => setFaqSearch(e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '10px 15px',
+                  paddingRight: '35px',
+                  borderRadius: '20px',
+                  border: '1px solid #ddd',
+                  outline: 'none'
+                }}
+              />
+              <Search size={18} color="#999" style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)' }} />
             </div>
           </div>
 
@@ -137,16 +134,16 @@ const FAQItem = ({ question, answer }) => {
 
   return (
     <div style={{ borderBottom: '1px solid #eee' }}>
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        style={{ 
-          width: '100%', 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center', 
-          padding: '15px 0', 
-          background: 'none', 
-          border: 'none', 
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '15px 0',
+          background: 'none',
+          border: 'none',
           cursor: 'pointer',
           textAlign: 'left'
         }}

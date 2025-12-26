@@ -66,6 +66,22 @@ export default function InvoiceForm({ data, onChange }) {
             </div>
 
             <div className="p-6 space-y-6">
+                {/* Category Selector */}
+                <div>
+                    <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                        Category
+                    </label>
+                    <select
+                        name="category"
+                        value={data.category || 'Consultancy'}
+                        onChange={handleChange}
+                        className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
+                    >
+                        <option value="Consultancy">Consultancy</option>
+                        <option value="Legal">Legal</option>
+                    </select>
+                </div>
+
                 {/* Document Type Selector */}
                 <div>
                     <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">

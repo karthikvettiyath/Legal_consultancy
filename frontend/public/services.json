@@ -2567,5 +2567,52 @@
         }
       ]
     }
+  },
+  {
+    "id": 56,
+    "name": "Name Change",
+    "title": "Name Change Assistance",
+    "description": "Comprehensive support for legally changing your name, including affidavit preparation and gazette publication.",
+    "details": {
+      "cards": [
+        {
+          "title": "Document Checklist",
+          "items": [
+            "Affidavit on Stamp Paper (min value)",
+            "Original Newspaper Advertisements (2 papers)",
+            "Prescribed Performa for Gazette Publication",
+            "Two Passport Size Photographs",
+            "Photo ID Proof (PAN/Aadhaar/Passport)",
+            "Request Letter"
+          ],
+          "icon": "FileText"
+        },
+        {
+          "title": "Process Steps",
+          "items": [
+            "1. Affidavit Preparation",
+            "2. Newspaper Publication (One English, One Local Language)",
+            "3. Gazette Notification Application",
+            "4. Publication in Official Gazette"
+          ],
+          "icon": "ListOrdered"
+        },
+        {
+          "title": "Process Duration",
+          "content": "Typically takes 2-4 weeks after Gazette application submission.",
+          "icon": "Clock"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the Gazette publication mandatory?",
+          "a": "Yes, for government purposes and passports, Gazette notification is often required."
+        },
+        {
+          "q": "Can I change my name for any reason?",
+          "a": "Generally yes, provided it's not for fraudulent purposes or to hide identity from law enforcement."
+        }
+      ]
+    }
   }
 ]

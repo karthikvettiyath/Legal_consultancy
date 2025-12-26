@@ -15,29 +15,27 @@ const SearchSection = () => {
 
   const fetchServices = async () => {
     try {
-      // Fetch from generated JSON file containing services from PDFs
-      const response = await fetch('/services.json');
-      if (!response.ok) throw new Error('Failed to fetch services.json');
+      // Prioritize API (Live DB)
+      const response = await fetch('/api/services');
+      if (!response.ok) throw new Error('Failed to fetch from API');
       const data = await response.json();
       setAllServices(data);
-      // setResults(data); // Don't show all initially
-    } catch (error) {
-      console.error('Error fetching services from JSON:', error);
-      // Fallback to API
+    } catch (apiError) {
+      console.error('Error fetching from API, falling back to JSON:', apiError);
+      // Fallback to static JSON
       try {
-        const response = await fetch('/api/services');
+        const response = await fetch('/services.json');
         if (response.ok) {
-            const data = await response.json();
-            setAllServices(data);
-            // setResults(data); // Don't show all initially
+          const data = await response.json();
+          setAllServices(data);
         } else {
-            setAllServices([]);
-            setResults([]);
+          setAllServices([]);
+          setResults([]);
         }
-      } catch (apiError) {
-         console.error('Error fetching from API:', apiError);
-         setAllServices([]);
-         setResults([]);
+      } catch (jsonError) {
+        console.error('Error fetching services from JSON:', jsonError);
+        setAllServices([]);
+        setResults([]);
       }
     } finally {
       setLoading(false);
@@ -47,7 +45,7 @@ const SearchSection = () => {
   // Live filtering
   useEffect(() => {
     if (!query.trim()) {
-      setResults([]); // Clear results if query is empty
+      setResults(allServices); // Show all services by default
     } else {
       const lowerQuery = query.toLowerCase();
       // Using startsWith to match Admin Portal behavior
