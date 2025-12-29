@@ -1,9 +1,18 @@
-const fs = require('fs');
 const path = require('path');
-const pdfLibrary = require('pdf-parse');
+// Try specific path
+let pdfLibrary;
+try {
+    pdfLibrary = require('../node_modules/pdf-parse/dist/pdf-parse/cjs/index.cjs');
+} catch (e) {
+    console.log('Main require failed, trying package name');
+    pdfLibrary = require('pdf-parse');
+}
 
 console.log('Type of pdfLibrary:', typeof pdfLibrary);
-console.log('Keys:', Object.keys(pdfLibrary));
+if (typeof pdfLibrary === 'object') {
+    console.log('Keys:', Object.keys(pdfLibrary));
+    if (pdfLibrary.default) console.log('Has default export');
+}
 
 const directoryPath = path.join(__dirname, '../../');
 

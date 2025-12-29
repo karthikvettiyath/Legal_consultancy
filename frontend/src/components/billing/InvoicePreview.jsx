@@ -15,7 +15,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                 {/* Company Info */}
                 <div className="text-right">
                     <h1 className="text-2xl font-bold font-serif mb-2 tracking-wide">
-                        {data.category === 'Legal' ? 'COCHIN UNITED LEGAL' : 'COCHIN UNITED CONSULTANCY'}
+                        {data.category === 'Legal' ? 'COCHIN UNITED LEGAL LLP' : 'COCHIN UNITED CONSULTANCY'}
                     </h1>
                     <div className="text-sm font-medium leading-tight text-gray-800">
                         <p>C BLOCK 4TH FLOOR,MATHER SQUARE</p>

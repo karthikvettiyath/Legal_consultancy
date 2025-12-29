@@ -8,26 +8,153 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Proof of Identity (POI)",
+          "content": "Documents containing Name and Photo",
           "items": [
-            "POI (Proof of Identity) documents",
-            "containing Name and Photo",
-            "1. \tPassport",
+            "1. Passport",
             "2. PAN Card",
             "3. Ration/ PDS Photo Card",
             "4. Voter ID",
             "5. Driving License",
-            "6. Government Photo ID Cards/ Service photo identity card",
-            "issued by PSU",
-            "7. \tNREGS Job Card",
+            "6. Government Photo ID Cards/ Service photo identity card issued by PSU",
+            "7. NREGS Job Card",
             "8. Photo ID issued by Recognized Educational Institution",
             "9. Arms License",
             "10. Photo Bank ATM Card",
             "11. Photo Credit Card",
-            "12. Pensioner Photo Card"
+            "12. Pensioner Photo Card",
+            "13. Freedom Fighter Photo Card",
+            "14. Kissan Photo Passbook",
+            "15. CGHS/ ECHS Photo Card",
+            "16. Address Card having Name and Photo issued by Department of Posts",
+            "17. Certificate of Identity having photo issued by Gazetted Officer or Tehsildar on UIDAI standard certificate format for enrolment/ update",
+            "18. Disability ID Card/ handicapped medical certificate issued by the respective State/ UT Governments/ Administrations",
+            "19. Bhamashah Card/Jan-Aadhaar card issued by Govt. of Rajasthan",
+            "20. Certificate from Superintendent/ Warden/ Matron/ Head of Institution of recognized shelter homes or orphanages etc. on UIDAI standard certificate format for enrolment/ update",
+            "21. Certificate of Identity having photo issued by MP or MLA or MLC or Municipal Councilor on UIDAI standard certificate format for enrolment/ update",
+            "22. Certificate of Identity having photo issued by Village Panchayat Head or Mukhiya or its equivalent authority (for rural areas) on UIDAI standard certificate format for enrolment/ update",
+            "23. Gazette notification for name change",
+            "24. Marriage certificate with photograph",
+            "25. RSBY Card",
+            "26. SSLC book having candidates photograph",
+            "27. ST/ SC/ OBC certificate with photograph",
+            "28. School Leaving Certificate (SLC)/ School Transfer Certificate (TC), containing name and photograph",
+            "29. Extract of School Records issued by Head of School containing name and photograph",
+            "30. Bank Pass Book having name and photograph",
+            "31. Certificate of Identity containing name and photo issued by Recognized Educational Institution signed by Head of Institute on UIDAI standard certificate format for enrolment/ update.",
+            "32. Certificate of identity containing Name, DOB and Photograph issued by Employees’ Provident Fund Organisation (EPFO) on UIDAI standard certificate format for enrolment/ update"
           ],
-          "icon": "List"
+          "icon": "User"
+        },
+        {
+          "title": "Proof of Address (POA)",
+          "content": "Documents containing Name and Address",
+          "items": [
+            "1. Passport",
+            "2. Bank Statement/ Passbook",
+            "3. Post Office Account Statement/ Passbook",
+            "4. Ration Card",
+            "5. Voter ID",
+            "6. Driving License",
+            "7. Government Photo ID cards/ service photo identity card issued by PSU",
+            "8. Electricity Bill (not older than 3 months)",
+            "9. Water Bill (not older than 3 months)",
+            "10. Telephone Landline Bill (not older than 3 months)",
+            "11. Property Tax Receipt (not older than 1 year)",
+            "12. Credit Card Statement (not older than 3 months)",
+            "13. Insurance Policy",
+            "14. Signed Letter having Photo from Bank on letterhead",
+            "15. Signed Letter having Photo issued by registered Company on letterhead",
+            "16. Signed Letter having Photo issued by Recognized Educational Institution on letterhead or Photo ID having address issued by Recognized Educational Institution",
+            "17. NREGS Job Card",
+            "18. Arms License",
+            "19. Pensioner Card",
+            "20. Freedom Fighter Card",
+            "21. Kissan Passbook",
+            "22. CGHS/ ECHS Card",
+            "23. Certificate of Address having photo issued by MP or MLA or MLC or Gazetted Officer or Tehsildar on UIDAI standard certificate format for enrolment/ update",
+            "24. Certificate of Address issued by Village Panchayat head or its equivalent authority (for rural areas) on UIDAI standard certificate format for enrolment/ update",
+            "25. Income Tax Assessment Order",
+            "26. Vehicle Registration Certificate",
+            "27. Registered Sale/ Lease/ Rent Agreement",
+            "28. Address Card having Photo issued by Department of Posts",
+            "29. Caste and Domicile Certificate having Photo issued by State Govt",
+            "30. Disability ID Card/ handicapped medical certificate issued by the respective State/ UT Governments/ Administrations",
+            "31. Gas Connection Bill (not older than 3 months)",
+            "32. Passport of Spouse",
+            "33. Passport of Parents (in case of Minor)",
+            "34. Allotment letter of accommodation issued by Central/ State Govt. (not more than 3 years old)",
+            "35. Marriage Certificate issued by the Government, containing address",
+            "36. Bhamashah Card/Jan-Aadhaar card issued by Govt. of Rajasthan",
+            "37. Certificate from Superintendent/ Warden/ Matron/ Head of Institution of recognized shelter homes or orphanages etc. on UIDAI standard certificate format for enrolment/ update",
+            "38. Certificate of Address having photo issued by Municipal Councillor on UIDAI standard certificate format for enrolment/ update",
+            "39. Identity Card issued by recognized educational institutions",
+            "40. SSLC book having photograph",
+            "41. School Identity card",
+            "42. School Leaving Certificate (SLC)/ School Transfer Certificate (TC), containing Name and Address",
+            "43. Extract of School Records containing Name, Address and Photograph issued by Head of School",
+            "44. Certificate of Identity containing Name, Address and Photo issued by Recognized Educational Institution signed by Head of Institute on UIDAI standard certificate format for enrolment/ update",
+            "45. Certificate of identity containing Name, DOB and Photograph issued by Employees’ Provident Fund Organisation (EPFO) on UIDAI standard certificate format for enrolment/ update"
+          ],
+          "icon": "MapPin"
+        },
+        {
+          "title": "Proof of Relationship (POR)",
+          "content": "Documents containing Name of applicant and Name of HoF",
+          "items": [
+            "1. PDS Card",
+            "2. MNREGA Job Card",
+            "3. CGHS/ State Government/ ECHS/ ESIC Medical card",
+            "4. Pension Card",
+            "5. Army Canteen Card",
+            "6. Passport",
+            "7. Birth Certificate issued by Registrar of Birth, Municipal Corporation and other notified local government bodies like Taluk, Tehsil etc.",
+            "8. Any other Central/ State government issued family entitlement document",
+            "9. Marriage Certificate issued by the government",
+            "10. Address card having name and photo issued by Department of Posts",
+            "11. Bhamashah Card/Jan-Aadhaar card issued by Govt. of Rajasthan",
+            "12. Discharge card/ slip issued by Government hospitals for birth of a child",
+            "13. Certificate of Identity having photo issued by MP or MLA or MLC or Municipal Councilor or Gazetted Officer on UIDAI standard certificate format for enrolment/ update",
+            "14. Certificate of Identity having photo and relationship with HoF issued by Village Panchayat Head or Mukhiya or its equivalent authority (for rural areas) on UIDAI standard certificate format for enrolment/ update"
+          ],
+          "icon": "Users"
+        },
+        {
+          "title": "Date of Birth (DOB)",
+          "content": "Documents containing Name and DOB",
+          "items": [
+            "1. Birth Certificate",
+            "2. SSLC Book/ Certificate",
+            "3. Passport",
+            "4. Certificate of Date of Birth issued by Group A Gazetted Officer on UIDAI standard certificate format for enrolment/ update",
+            "5. A certificate (on UIDAI standard certificate format for enrolment/ update) or ID Card having photo and Date of Birth (DOB) duly signed and issued by a Government authority",
+            "6. Photo ID card having Date of Birth, issued by Recognized Educational Institution",
+            "7. PAN Card",
+            "8. Marksheet issued by any Government Board or University",
+            "9. Government Photo ID Card/ Photo Identity Card issued by PSU containing DOB",
+            "10. Central/ State Pension Payment Order",
+            "11. Central Government Health Service Scheme Photo Card or Ex-Servicemen Contributory Health Scheme Photo card",
+            "12. School Leaving Certificate (SLC)/ School Transfer Certificate (TC), containing Name and Date of Birth",
+            "13. Extract of School Records issued by Head of School containing Name, Date of Birth and Photograph",
+            "14. Certificate of Identity containing Name, DOB and Photo issued by Recognized Educational Institution signed by Head of Institute on UIDAI standard certificate format for enrolment/ update",
+            "15. Certificate of identity containing Name, DOB and Photograph issued by Employees’ Provident Fund Organisation (EPFO) on UIDAI standard certificate format for enrolment/ update"
+          ],
+          "icon": "Calendar"
+        },
+        {
+          "title": "Important Instructions",
+          "content": "Guidelines for filling the form",
+          "items": [
+            "Certificate must be printed on Plain paper.",
+            "Form must be submitted within 3 months of date of issue.",
+            "No overwriting in the form.",
+            "Certifier details must be filled in properly.",
+            "Use BLOCK LETTERS only.",
+            "Resident signature or thumb impression is mandatory.",
+            "Latest colored photograph of 3.5cm X 4.5 cm should be pasted.",
+            "Certifier cross sign & cross stamp must be available on the resident photograph."
+          ],
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -69,14 +196,28 @@
             "6. Contact Number",
             "7. Email ID",
             "8. Digital Signature Certificate",
-            "NB: All documents Should be self attested",
             "Other Details of Applicant",
             " Educational Qualification",
             " Occupation Type",
             " Board Resolution of Board for proposal of the name of person for application of allotment of",
-            "Director Identification Number."
+            "Director Identification Number.",
+            " Consent letter of Director",
+            "Fee for filing DIN Application Form DIR -3 – Rs. 500/-",
+            "Details Required for Certification",
+            " CIN Of Company",
+            " DIN of Director of the company",
+            " DSC of Director"
           ],
           "icon": "List"
+        },
+        {
+          "title": "Important Notes",
+          "content": "",
+          "items": [
+            "NB: All documents Should be self attested",
+            "Note: DIN application form should be attested by the Director/ Designanted Partner of the Company"
+          ],
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -109,11 +250,9 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "Check List for Registered Office Change within the limits of same city",
             " NOC if the property is owned by other entity or person",
             " Rent agreement or lease deed, if the same is hired or leased",
-            " Utility bill not older than 2 months (Electricity bill)",
-            "-- 1 of 1 --"
+            " Utility bill not older than 2 months (Electricity bill)"
           ],
           "icon": "List"
         },
@@ -148,7 +287,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "CLINIC CHECK LIST",
             "APPLICANT DETAILS",
             "1. NAME",
             "2. AGE",
@@ -162,7 +300,27 @@
             "10. PIN CODE",
             "11. LOCAL BODY",
             "12. LOCAL BODY WARD",
-            "13. DISTRICT"
+            "13. DISTRICT",
+            "14. STATUS OF APPLICANT- OWNER/PARTNER/DIRECTOR",
+            "FIRM/ SHOP DETAILS",
+            "1. ESTABLISHMENT NAME",
+            "2. TYPE OF OPERATION",
+            "3. SERVICE TYPE",
+            "4. BUILDING NUMBER",
+            "5. BULDING NAME",
+            "6. MONTHY RENT",
+            "7. ZONAL NAME",
+            "8. NEAR ROAD, LANDMARK",
+            "9. VILLAGE",
+            "10. POST OFFICE",
+            "11. PIN COCDE",
+            "DOCUMENTS",
+            "1. ADHAAR CARD COPY",
+            "2. PROPERTY TAX RECEIPT",
+            "3. PROFESSIONAL TAX RECEIPT",
+            "4. PREVIOUS YEAR FEE RECEIPT",
+            "5. IMAGE CERTIFICATE",
+            "6. PCB CERTIFICATE"
           ],
           "icon": "List"
         },
@@ -197,7 +355,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "Company Incorporation – Check List – (One Person Company)",
             "Notes:",
             " Minimum and Maximum of one member.",
             " A nominee should be appointed before incorporation.",
@@ -211,7 +368,19 @@
             " Copy of ID proof of proposed director (Driving license or Voters ID or Passport)",
             " Residential proof of director (Bank Statement/telephone bill/Electricity bill) Note: it",
             "should not be older than two months",
-            "Other Details of Shareholder"
+            "Other Details of Shareholder",
+            " Email id and mobile no. of director",
+            " Educational qualification of director",
+            " Occupation of director",
+            " Details of directorship/partnership in other companies, if any",
+            " Passport size photo",
+            "Registered Office Details",
+            " Address of Registered office",
+            " Scanned Copy of Rent Agreement of proposed Office",
+            " Scanned Copy NOC from building owner",
+            " Utility Bill bearing complete address of proposed Registered Office of company",
+            "(Telephone Bill/Mobile bill, Gas bill or Electricity bill.)",
+            " Copy of building tax receipt"
           ],
           "icon": "List"
         },
@@ -246,9 +415,7 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "Company Incorporation – Check List – (Private Limited",
             "Company)",
-            "Note: Minimum 2 Members are required for Formation of Private Limited Company",
             "Company Details",
             " Proposed Name Of Company",
             " Details of Objective of Company",
@@ -260,9 +427,30 @@
             " Copy of ID proof of proposed shareholders / directors (Driving license or Voters ID or",
             "Passport)",
             " Residential proof of directors (Bank Statement/telephone bill/Electricity bill) Note: it",
-            "should not be older than two months"
+            "should not be older than two months",
+            "Other Details of Shareholders",
+            " Email id and mobile no. of directors/ shareholders",
+            " Educational qualification of directors/ shareholders",
+            " Occupation of directors/shareholders",
+            " Details of directorship/partnership in other companies, if any",
+            " Passport size photo",
+            "Registered Office Details",
+            " Address of Registered office",
+            " Scanned Copy of Rent Agreement of proposed Office",
+            " Scanned Copy NOC from building owner",
+            " Utility Bill bearing complete address of proposed Registered Office of company",
+            "(Telephone Bill/Mobile bill, Gas bill or Electricity bill.)",
+            " Copy of building tax receipt"
           ],
           "icon": "List"
+        },
+        {
+          "title": "Important Notes",
+          "content": "",
+          "items": [
+            "Note: Minimum 2 Members are required for Formation of Private Limited Company"
+          ],
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -295,7 +483,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "COPYRIGHT CHECKLIST",
             "1. Id Card Copy ( Aadhar card/ Passport/Driving License -",
             "having permanent address)",
             "2. Mobile No.",
@@ -303,8 +490,7 @@
             "4. Which year the script is wrote.",
             "5. If script was published please mentioned the year.",
             "6. Literary work ( Script) 3 hard copy and 1 soft copy.",
-            "7. Vakkalath - signed by the client.",
-            "-- 1 of 1 --"
+            "7. Vakkalath - signed by the client."
           ],
           "icon": "List"
         },
@@ -339,7 +525,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "CORPORATION LICENSE CHECKLIST – INDIVIDUAL",
             "BUILDING OWNER’S CONSENT LETTER",
             "( Rs. 200 STAMP PAPER, NOTARIZED)",
             "AFFIDAVIT OF APPLICANT ( Rs. 200 STAMP PAPER)",
@@ -348,8 +533,7 @@
             "ID PROOF ( APPLICANT & BUILDING OWNER)",
             "RENT AGREEMENT",
             "NAME OF THE FIRM/ SHOP",
-            "ADDRESS OF THE FIRM/ SHOP",
-            "-- 1 of 1 --"
+            "ADDRESS OF THE FIRM/ SHOP"
           ],
           "icon": "List"
         },
@@ -384,7 +568,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "CORPORATION LICENSE CHECKLIST – PVT LTD COMPANY",
             "DETAILS OF THE BUILDING",
             "1. RENT AGREEMENT",
             "2. LATEST PROPERTY TAX RECEIPT",
@@ -398,7 +581,15 @@
             "7. CAPITAL INVESTMENT",
             "8. NUMBER OF EMPLOYEES",
             "9. LICENSE PERIOD (1 TO 5)",
-            "10. PHOTO OF THE FIRM"
+            "10. PHOTO OF THE FIRM",
+            "11. VIDEO OF THE FRIM",
+            "12. EMAIL",
+            "DETAILS OF MANAGING DIRECTOR AND BUILDING OWNER",
+            "1. MANAGING DIRECTOR PHOTO",
+            "2. MANAGING DIRECTOR AADHAR CARD",
+            "3. MANAGING DIRECTOR ADDRESS",
+            "4. MANAGING DIRECTOR PHONE NO",
+            "5. BUILDING OWNER AADHAR CARD"
           ],
           "icon": "List"
         },
@@ -433,7 +624,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "CORPORATION LICENSE CHECKLIST – SPA(massage parlour/spa centre)",
             "DETAILS OF THE BUILDING",
             "1. RENT AGREEMENT",
             "2. LATEST PROPERTY TAX RECEIPT",
@@ -447,7 +637,17 @@
             "7. LICENSE PERIOD (1 TO 5)",
             "8. PHOTO OF THE FIRM/SHOP",
             "9. VIDEO OF THE FRIM/SHOP",
-            "10. EMAIL"
+            "10. EMAIL",
+            "11. HAIRTHA KARAM SENA AFFILIATION CERTIFICATE/CARD",
+            "12. DOCTOR’S CERTIFICATE",
+            "13. EMPLOYEES COURSE CERTIFICATE",
+            "DETAILS OF APPLICANT AND BUILDING OWNER",
+            "1. APPLICANT PHOTO",
+            "2. AADHAR CARD",
+            "3. ADDRESS",
+            "4. PHONE NO",
+            "5. ID PROOF",
+            "6. BUILDING OWNER AADHAR CARD"
           ],
           "icon": "List"
         },
@@ -482,7 +682,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "CORPORATION LICENSE CHECKLIST",
             "– INDIVIDUAL",
             "ID PROOF APPLICANT",
             "(INCLUDES LOCAL BODY, WARD, )",
@@ -496,7 +695,15 @@
             "( RS. 200 STAMP PAPER, NOTARIZED)",
             "AFFIDAVIT OF APPLICANT ( RS. 200 STAMP PAPER)",
             "NAME OF THE FIRM/ SHOP",
-            "ADDRESS OF THE FIRM/ SHOP"
+            "ADDRESS OF THE FIRM/ SHOP",
+            "PCB, ELIGIBILITY CERTIFICATES IF ANY",
+            "IF LODGE- NUMBER OF ROOMS",
+            "HOTEL – SEAT CAPACITY",
+            "PROPOSED DATE",
+            "BUILDING NAME",
+            "VILLAGE, SURVEY NUMBER",
+            "STREET NAME, ROAD, LAND MARK",
+            "CAPITAL INVESTMENT"
           ],
           "icon": "List"
         },
@@ -542,8 +749,7 @@
             " Rental/Lease Agreement, in case of office is rented/ leased; or",
             "latest electricity /telephone bill",
             " Current A/c Cancel Cheque / Bank Certificate",
-            " DSC (Digital Signature Certificate)",
-            "-- 1 of 1 --"
+            " DSC (Digital Signature Certificate)"
           ],
           "icon": "List"
         },
@@ -592,7 +798,17 @@
             "Copy of Property paper (If owned property)",
             "Copy of Rent agreement (If rented property)",
             "Site Plan and key plan of the premises",
-            "Refrigerator invoice and details"
+            "Refrigerator invoice and details",
+            "Affidavit regarding compliance of MPD 2021 (if premises are located on DDA residential flat/",
+            "plot/ building)",
+            "Additional document for Retail Sale Registered Pharmacist",
+            "Proof of qualification i.e. final degree certificate/provisional certificate with mark sheets",
+            "Registration of Delhi Pharmacy Council",
+            "Appointment Letter and Bio-data",
+            "Additional document for Wholesale Licence Competent person",
+            "Proof of qualification i.e. final degree certificate/provisional certificate with mark sheets",
+            "Experience Certificate",
+            "Appointment Letter and Bio-data"
           ],
           "icon": "List"
         },
@@ -627,13 +843,11 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "DSC REGISTRATION CHECKLIST",
             "1. PAN CARD COPY",
             "2. AADHAR CARD COPY",
             "3. PHOTO",
             "4. EMAIL ID",
-            "5. MOBILE NO",
-            "-- 1 of 1 --"
+            "5. MOBILE NO"
           ],
           "icon": "List"
         },
@@ -672,7 +886,6 @@
             "Digital Signature Certificate(DSC)",
             "(Controller General of Patents, Designs &",
             "Trademarks)",
-            "-- 1 of 4 --",
             "STEP TO INSTALL CAPICOM.DLL",
             "The Installation of or registration of capicom.dll varies according to the Windows bit version like 32 bit",
             "version or 64 bit.",
@@ -680,9 +893,29 @@
             " For Windows 7 or Windows 8 (64 bit)",
             "To see windows bit version right click on My Computer and choose property, given below screen show",
             "Windows bit version",
-            "-- 2 of 4 --",
             " For Windows XP, Windows 7 or Windows 8 (32 bit)",
-            " Go to My Computer/ Local Disc (C:)/Windows/ System32"
+            " Go to My Computer/ Local Disc (C:)/Windows/ System32",
+            " Copy capicom.dll to My Computer/ Local Disc (C:)/Windows/ System32",
+            " Search cmd file",
+            " Right click on cmd and open in Administrator Mode",
+            " Type command regsvr32 capicom.dll",
+            " On clicking Enter button, the successful installation message displays.",
+            " For Windows 7 or Windows 8 (64 bit)",
+            " Click on windows Start button",
+            " Type “%systemroot%\\SysWoW64\\” in the search text box to open system folder",
+            " Copy the corresponding capicom.dll to following folder “%systemroot%\\SysWoW64\\”",
+            " Open the cmd prompt in administrator mode",
+            " Goto folder “%systemroot%\\SysWoW64” from cmd prompt",
+            " Run command “regsvr32 capicom.dll”",
+            " On clicking the ‘Enter’ button, the successful installation message displays.",
+            " IE Settings",
+            "Settings Enable Disable Prompt",
+            "Allow previously unused ActiveX controls to run",
+            "without prompt Y",
+            "Allow Scriptlets Y",
+            "Automatic prompting of ActiveX controls Y",
+            "Run ActiveX controls and plug-ins Y",
+            "Script ActiveX controls marked safe for scripting Y"
           ],
           "icon": "List"
         },
@@ -731,7 +964,21 @@
             "11. Water Connection Details (if Applicable)",
             "12. Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
             "13. Id, Age and address Proof of all partners",
-            "14. Building Tax Receipt"
+            "14. Building Tax Receipt",
+            "DETAILS OF ESI REGISTRATION",
+            "1. Attendance Register",
+            "2. Wages Register",
+            "3. Address Proof of the firm",
+            "4. Copy of Partnership Deed, if any.",
+            "5. Resolution for registration, If any",
+            "6. Copy of Pan Card of all partners",
+            "7. Copy of PAN Card of firm (in case of partnership)",
+            "8. Copy of GST Registration Certificate",
+            "9. Electricity Connection Details (if Applicable)",
+            "10. Water Connection Details (if Applicable)",
+            "11. Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
+            "12. Id, Age and address Proof of all partners",
+            "13. Building Tax Receipt"
           ],
           "icon": "List"
         },
@@ -779,8 +1026,7 @@
             "10. Water Connection Details (if Applicable)",
             "11. Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
             "12. Id, Age and address Proof of all partners",
-            "13. Building Tax Receipt",
-            "-- 1 of 1 --"
+            "13. Building Tax Receipt"
           ],
           "icon": "List"
         },
@@ -815,7 +1061,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "For image",
             "Number of Beds",
             "No. of Patient Beds in Ward",
             "No. of Patient Beds in IP Rooms",
@@ -829,7 +1074,8 @@
             "Biochemistry",
             "Heamatology",
             "Microbiology",
-            "Serology/ Immunology/ Endocrinology"
+            "Serology/ Immunology/ Endocrinology",
+            "Pathology"
           ],
           "icon": "List"
         },
@@ -864,7 +1110,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "FSSAI LICENSE CHECK LIST",
             "1. Company Name and Address",
             "2. Aadhar card copy of Applicant",
             "3. Business nature and activity",
@@ -876,8 +1121,7 @@
             "9. Corporation license copy",
             "10. GST No. (if any)",
             "11. PAN No. of company",
-            "12. Food product Category",
-            "-- 1 of 1 --"
+            "12. Food product Category"
           ],
           "icon": "List"
         },
@@ -912,7 +1156,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "FSSAI LICENSE CHECK LIST",
             "1. Company Name and Address",
             "2. Aadhar card copy of Applicant",
             "3. Business nature and activity",
@@ -924,8 +1167,7 @@
             "9. Corporation license copy",
             "10. GST No. (if any)",
             "11. PAN No. of company",
-            "12. Food product Category",
-            "-- 1 of 1 --"
+            "12. Food product Category"
           ],
           "icon": "List"
         },
@@ -960,7 +1202,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "FSSAI REGISTRATION CHECK LIST",
             "1. Company Name and Address",
             "2. Aadhar card copy",
             "3. Business nature and activity",
@@ -968,8 +1209,7 @@
             "5. Phone No",
             "6. Period for license required",
             "7. Food product Category",
-            "8. Photo",
-            "-- 1 of 1 --"
+            "8. Photo"
           ],
           "icon": "List"
         },
@@ -1004,7 +1244,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "GST REGISTRATION CHECK LIST -COMPANY",
             "COMPANY PAN CARD COPY",
             "PAN CARD – ALL MEMBERS",
             "AADHAR CARD COPY OF ALL MEMBERS",
@@ -1053,7 +1292,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "PARTNERSHIP FIRM GST REGISTRATION CHECK LIST",
             "FIRM PAN CARD",
             "PAN CARD – ALL PARTNERS",
             "AADHAR CARD COPY OF ALL PARTNERS",
@@ -1102,7 +1340,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "GST REGISTRATION CHECKLIST - PROPRIETORSHIP",
             "PAN CARD COPY",
             "AADHAR CARD COPY",
             "ADDRESS OF BUSINESS",
@@ -1112,8 +1349,7 @@
             "MOBILE NO",
             "EMAIL ID",
             "NATURE OF BUSSINESS",
-            "FIVE SALE PRODUCTS / SERVICE",
-            "-- 1 of 1 --"
+            "FIVE SALE PRODUCTS / SERVICE"
           ],
           "icon": "List"
         },
@@ -1148,7 +1384,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "IE CODE REGISTRATION CHECK LIST",
             "Partnership firm",
             "1. Pass port size photographs 4 nos ( applicant) 1 photos",
             "each other partners",
@@ -1162,7 +1397,10 @@
             "9 Mail id",
             "10 Phone number",
             "11 service sector- attach the copy of ssi certificate or",
-            "service tax certificate"
+            "service tax certificate",
+            "12 Manufactures- Attach the copy of ssi certificate",
+            "13. Resolution",
+            "14 Degital signature"
           ],
           "icon": "List"
         },
@@ -1197,7 +1435,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "IE CODE REGISTRATION CHECK LIST",
             "PROPRIETORSHIP",
             "1. Pass port size photographs 4 nos",
             "2. Copy Pan card copy 2 side",
@@ -1246,7 +1483,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "INCOME TAX FILING CHECK LIST",
             "1. Pan Card Copy",
             "2. Address proof & Id Proof (Aadhaar Card is",
             "Mandatory)",
@@ -1260,7 +1496,8 @@
             "8. Deduction details :- House Rent , Insurance ,",
             "Mediclaim, School Fees, Houing loan,",
             "Donation,Fixed Deposit , Proprietory Sale . .. Etc",
-            "9. Bank Statement ..01.04 …. To 31.03….."
+            "9. Bank Statement ..01.04 …. To 31.03…..",
+            "10. If any Other income"
           ],
           "icon": "List"
         },
@@ -1295,8 +1532,8 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "LLP INCORPORATION CHECKLIST",
             "Details Required:",
+            "LLP",
             " Address of Registered office of LLP",
             " Contact No",
             " Email Id",
@@ -1309,7 +1546,9 @@
             " Place of Birth",
             " Educational Qualification",
             " PAN Card of the Partners",
-            " Proof of Identity (Voters ID /Passport/Driving Licence)"
+            " Proof of Identity (Voters ID /Passport/Driving Licence)",
+            " Address Proof of the Partners (Utility bill/ Bank Statement Not older than 2 months)",
+            " DSC of Designated Partners"
           ],
           "icon": "List"
         },
@@ -1344,13 +1583,11 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "LOCATION SKETCH CHECKLIST",
             "ORIGINAL DEED OR BANK COPY WITH LETTER",
             "LATEST LAND TAX RECEIPT",
             "ENCUMERANCE CERTIFICATE",
             "LOCATION LAND MARK",
-            "PHONE NO.",
-            "-- 1 of 1 --"
+            "PHONE NO."
           ],
           "icon": "List"
         },
@@ -1385,12 +1622,12 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "MARRIAGE REGISTRATION CHECKLIST",
             "BRIDE NAME",
             "ADDRESS",
             "PHOTO",
             "AADHAR",
             "PIN CODE, VILLAGE",
+            "JOB",
             "PHONE NUMBER & EMAIL ID",
             "FATHER'S OR MOTHER'S NAME",
             "BRIDE SUB REGISTRAR OFFICE",
@@ -1399,7 +1636,18 @@
             "BRIDEGROOM NAME",
             "ADDRESS",
             "PHOTO",
-            "AADHAR"
+            "AADHAR",
+            "PIN CODE, VILLAGE",
+            "JOB",
+            "PHONE NUMBER & EMAIL ID",
+            "PRESENT ADDRESS DURATION",
+            "PROPOSED SUB REGISRAR OFFICE FOR",
+            "MARRIAGE",
+            "MARITAL STATUS",
+            "BRIDEGROOM'S SUB REGISTRAR",
+            "OFFICE",
+            "CONVENIENT DATE OF",
+            "SOLEMNIZATION"
           ],
           "icon": "List"
         },
@@ -1434,7 +1682,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "MSME REGISTRATION CHECKLIST",
             "AADHAR CARD COPY OF APPLICANT",
             "BUSINESS NAME",
             "BUSINESS ADDRESS",
@@ -1447,8 +1694,7 @@
             "TYPE OF PRODUCT OR SERVICE",
             "TOTAL NUMBER OF EMPLOYEES",
             "GST No.",
-            "INVESTMENT ( MORE THAN 1 LAKH)",
-            "-- 1 of 1 --"
+            "INVESTMENT ( MORE THAN 1 LAKH)"
           ],
           "icon": "List"
         },
@@ -1483,7 +1729,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "PAN CARD CHECK LIST – INDIVIDUAL",
             "PASSPORT SIZE PHOTO -2",
             "EMAIL ID",
             "MOBILE NO",
@@ -1491,8 +1736,7 @@
             "DATE OF BIRTH PROOF ( VOTER ID ,",
             "AADHAR CARD COPY- IF HAVE FULL DATE",
             "OF BIRTH )",
-            "SIGNATURE OF THE APPLICANT",
-            "-- 1 of 1 --"
+            "SIGNATURE OF THE APPLICANT"
           ],
           "icon": "List"
         },
@@ -1527,7 +1771,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "PARAMEDICAL CHECK LIST",
             "BUILDING OWNER’S DETAILS",
             "1. RENT AGREEMENT",
             "2. AADHAAR CARD",
@@ -1541,7 +1784,20 @@
             "5. PASSPORT SIZE PHOTO",
             "6. EMAIL ID",
             "FIRM/ SHOP DETAILS",
-            "1. ESTABLISHMENT NAME"
+            "1. ESTABLISHMENT NAME",
+            "2. TYPE OF OPERATION",
+            "3. SERVICE TYPE",
+            "4. BUILDING NUMBER",
+            "5. BULDING NAME",
+            "6. MONTHY RENT",
+            "7. ZONAL NAME",
+            "8. NEAR ROAD, LANDMARK",
+            "9. VILLAGE",
+            "10. POST OFFICE",
+            "11. PIN COCDE",
+            "DOCUMENTS",
+            "1. IMAGE CERTIFICATE",
+            "2. PCB CERTIFICATE"
           ],
           "icon": "List"
         },
@@ -1576,7 +1832,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "PARTNERSHIP DEED CHECK LIST",
             "1. All Partners Aadhar and Pan card details.",
             "2. Profit sharing ratio.",
             "3. Capital contribution.",
@@ -1590,7 +1845,9 @@
             "9. \tName of the firm.",
             "10. Duration of partnership:- for a specific period or at",
             "will.",
-            "11. If the partnership firm need to be registered before"
+            "11. If the partnership firm need to be registered before",
+            "government need photo of all partners.",
+            "12. Other condition if any."
           ],
           "icon": "List"
         },
@@ -1625,14 +1882,12 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS",
             "Documents Needed",
             "1. School Certificate /Admission Extract (for below 50 years)",
             "2. Voters ID (new model ,colour)",
             "3. Aadhar Card/PAN Card",
             "Name and Details must be same for all ID proofs.",
-            "Originals and copies of ID proofs are required.",
-            "-- 1 of 1 --"
+            "Originals and copies of ID proofs are required."
           ],
           "icon": "List"
         },
@@ -1675,8 +1930,7 @@
             "Phone number",
             "Near police station address",
             "Father full name",
-            "Mother full name",
-            "-- 1 of 1 --"
+            "Mother full name"
           ],
           "icon": "List"
         },
@@ -1725,7 +1979,22 @@
             "Priority document (on claiming priority date) in convention application, on the direction of the",
             "Controller.",
             "Declaration of inventorship where the provisional specification is followed by the complete specification",
-            "or in the case of convention/PCT national phase application (Form 5)."
+            "or in the case of convention/PCT national phase application (Form 5).",
+            "Power of attorney (if filed through Patent Agent).",
+            "Fees (paid by cash/by cheque/by demand draft).",
+            "All patent applications must bear the signature of the applicant or authorised person or Patent Attorney",
+            "along with name and date.",
+            "Priority documents are necessary in the following cases.",
+            "Convention Application (under Paris Convention).",
+            "PCT National Phase Application wherein requirements of Rule 17.1 (a or b) has not been fulfilled",
+            "Filing the patent application in India",
+            "No Stages of the patent process Form No.",
+            "1. Application for grant of patent Form 1",
+            "2. Provisional/complete specification Form 2",
+            "3. Statement and undertaking under section 8 (this is only required where a patent application is",
+            "already filed in the country other than India) Form 3",
+            "4. Declaration as to inventorship Form 5",
+            "5. Forms submitted only by start-ups and small entities. Form 28"
           ],
           "icon": "List"
         },
@@ -1760,12 +2029,10 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "POSESSION CERTIFICATE CHECKLIST",
             "ORIGINAL DEED OR BANK COPY WITH LETTER",
             "LATEST LAND TAX RECEIPT",
             "ENCUMBRANCE CERTIFICATE",
-            "PHONE NO.",
-            "-- 1 of 1 --"
+            "PHONE NO."
           ],
           "icon": "List"
         },
@@ -1800,12 +2067,10 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "POSESSION CERTIFICATE CHECKLIST",
             "ORIGINAL DEED OR BANK COPY WITH LETTER",
             "LATEST LAND TAX RECEIPT",
             "ENCUMBRANCE CERTIFICATE",
-            "PHONE NO.",
-            "-- 1 of 1 --"
+            "PHONE NO."
           ],
           "icon": "List"
         },
@@ -1840,7 +2105,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "Project Report – Checklist",
             "Details of Business",
             "1. Name, constitution, and address of Business.",
             "2. Details (about) Business (services provided, nature of business)",
@@ -1854,7 +2118,8 @@
             "Financial statements",
             "1. Financial report of previous years, in case of existing business.",
             "2. List of Fixed Assets.",
-            "3. Revenue/ turnover expected in the subsequent years."
+            "3. Revenue/ turnover expected in the subsequent years.",
+            "4. Quotations from Suppliers."
           ],
           "icon": "List"
         },
@@ -1889,7 +2154,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "Project Report – Checklist",
             "Details of Business",
             "1. Name, constitution, and address of Business.",
             "2. Details (about) Business (services provided, nature of business)",
@@ -1903,7 +2167,8 @@
             "Financial statements",
             "1. Financial report of previous years, in case of existing business.",
             "2. List of Fixed Assets.",
-            "3. Revenue/ turnover expected in the subsequent years."
+            "3. Revenue/ turnover expected in the subsequent years.",
+            "4. Quotations from Suppliers."
           ],
           "icon": "List"
         },
@@ -1938,7 +2203,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "RELEASE DEED CHECKLIST",
             "PURCHASER",
             "Name and Address",
             "Pancard",
@@ -1952,7 +2216,21 @@
             "Pancard",
             "Photo",
             "Mobile Number",
-            "Email Id"
+            "Email Id",
+            "Village, Taluk",
+            "Job, Pincode",
+            "WITNESS",
+            "Aadhaar card, Job",
+            "Village, Taluk",
+            "DOCUMENTS",
+            "Sale amount",
+            "Date of deed of execution",
+            "Land tax receipt",
+            "Deeds and previous deeds",
+            "Location sketch",
+            "Possession certificate",
+            "Encumbrance certificate",
+            "Building Receipt (If the land having a building)"
           ],
           "icon": "List"
         },
@@ -1987,7 +2265,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "RELEASE DEED CHECKLIST",
             "PURCHASER",
             "Name and Address",
             "Pancard",
@@ -2001,7 +2278,21 @@
             "Pancard",
             "Photo",
             "Mobile Number",
-            "Email Id"
+            "Email Id",
+            "Village, Taluk",
+            "Job, Pincode",
+            "WITNESS",
+            "Aadhaar card, Job",
+            "Village, Taluk",
+            "DOCUMENTS",
+            "Sale amount",
+            "Date of deed of execution",
+            "Land tax receipt",
+            "Deeds and previous deeds",
+            "Location sketch",
+            "Possession certificate",
+            "Encumbrance certificate",
+            "Building Receipt (If the land having a building)"
           ],
           "icon": "List"
         },
@@ -2039,8 +2330,7 @@
             "Details required for Renew passport",
             "Old passport copy",
             "Email id",
-            "Phone number",
-            "-- 1 of 1 --"
+            "Phone number"
           ],
           "icon": "List"
         },
@@ -2075,7 +2365,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "RENT AGREEMENT CHECKLIST",
             "NAME OF THE LESSOR",
             "NAME OF THE LESSEE",
             "AADHAR CARD COPY OF LESSOR",
@@ -2084,8 +2373,7 @@
             "MONTHLY RENT FOR THE BUILDING",
             "SECURITY DEPOSIT AMOUNT",
             "DURATION",
-            "OTHER CONDITIONS IF ANY",
-            "-- 1 of 1 --"
+            "OTHER CONDITIONS IF ANY"
           ],
           "icon": "List"
         },
@@ -2120,12 +2408,10 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "ROR CHECKLIST",
             "DEED COPY",
             "ENCUMBRANCE CERTIFICATE",
             "LATEST LAND TAX RECEIPT",
-            "PHONE NO.",
-            "-- 1 of 1 --"
+            "PHONE NO."
           ],
           "icon": "List"
         },
@@ -2174,7 +2460,92 @@
             "3. \tNumber of Claimants.",
             "a. \tName",
             "b. \tFather’s Name",
-            "c. \tOccupation"
+            "c. \tOccupation",
+            "d. \tDistrict",
+            "e. \tTaluk",
+            "f. \tVillage",
+            "g. \tDesom",
+            "h. \tAddress with Pin",
+            "4. \tWhether Land have Building",
+            "a. \t(If any) Sq. ft",
+            "b. \tBuilding No. ( Old & New )",
+            "c. \tLatest Tax Receipt No. & Date",
+            "d. \tTax Paid Amount",
+            "e. \tSource of Water ( Well/KWA/Borewell )",
+            "f. \tSeparate car shed , If any",
+            "g. \tType of Building ( Residential / Commercial )",
+            "h. \tYear of Bilding Construction",
+            "i. \tNo. of Floors",
+            "j. \tRoof Type ( Concrete/Sheet )",
+            "k. \tMaterial used for Flooring ( Tile/Marbil..)",
+            "l. \tCompound Wall, If any",
+            "m. \tNo. of Electric Points",
+            "n. \tNo. of Fans",
+            "o. \tNo. of Motors",
+            "5. \tBoundaries",
+            "a. \tNorth",
+            "b. \tEast",
+            "c. \tSouth",
+            "d. \tWest",
+            "6. \tWitness 1",
+            "a. \tName",
+            "b. \tFather’s Name",
+            "c. \tOccupation",
+            "d. \tDistrict",
+            "e. \tTaluk",
+            "f. \tVillage",
+            "g. \tAddress with Pin & PO",
+            "7. \tWitness 2",
+            "a. \tName",
+            "b. \tFather’s Name",
+            "c. \tOccupation",
+            "d. \tDistrict",
+            "e. \tTaluk",
+            "f. \tVillage",
+            "g. \tAddress with Pin & PO",
+            "8. \tProperty Details",
+            "a. \tDistrict",
+            "b. \tSub District",
+            "c. \tTaluk",
+            "d. \tVillage",
+            "e. \tDesom",
+            "f. \tLocal Body",
+            "g. \tResurvey Block No.",
+            "h. \tResurvey No.",
+            "i. \tResurvey Sub Div No.",
+            "j. \tOld survey No.",
+            "k. \tOld Survey Sub Div No.",
+            "l. \tExtent",
+            "m. \tNature of Land",
+            "n. \tExecutant’s Tandaper No.",
+            "o. \tClaimant’s Tandaper No.",
+            "PREVIOUS DOCUMENT TABLE",
+            "REQUIRED DOCUMENTS",
+            "1. \tPrior Deed copy",
+            "2. \tLocation Sketch",
+            "3. \tEncumbrance Certificate ( If any attachment, Submit Lift Order )",
+            "4. \tPassport size Photos of Parties",
+            "5. \tVillage Land Tax Receipt",
+            "6. \tBuilding Tax Receipt",
+            "7. \tAadhar Card & PAN of Buyer",
+            "8. \tAadhar Card & PAN of Seller",
+            "FAIR VALUE",
+            "Survey No \tSubDivision No \tResurvey No \tReSubDivision No \tLand Type \tFairvalue Per Are(Rs)",
+            "STAMP VERIFICATION",
+            "1. \tSTAMP DATE",
+            "2. \tSATMP VENDOR NAME & DETAILS",
+            "3. \tDENOMINATION OF STAMP",
+            "DENOMINATION \tSERIAL NO. \tSTAMP NO.",
+            "4. \tNO. OF FILING SHEET",
+            "6. \tCHECK PLOT SKETCH",
+            "7. \tCHECK VALUATION CERTIFICATE",
+            "8. \tNATIONAL TRUST ACT CLAUSE",
+            "9. \tMENTALLY RETRAD /DISABLED",
+            "CLAUSE",
+            "10. \tCHECK PAN CARD OF THE BUYER &",
+            "SELLER",
+            "11. \tCOMPARE DEED & FILING SHEETS,",
+            "END WITH FILING SHEET."
           ],
           "icon": "List"
         },
@@ -2223,7 +2594,11 @@
             "Extent",
             "Village",
             "Taluk",
-            "Witnesses 1"
+            "Witnesses 1",
+            "Witnesses 2",
+            "Old Deed Details",
+            "Deed Number",
+            "Year"
           ],
           "icon": "List"
         },
@@ -2267,8 +2642,7 @@
             "4. MOA /AOA/Certificate of incorporation / Partnership Deed /LLP Agreement",
             "5. Types of Business",
             "6. Mobile No",
-            "7. Email ID",
-            "-- 1 of 1 --"
+            "7. Email ID"
           ],
           "icon": "List"
         },
@@ -2303,7 +2677,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "SOCIETY REGISTRATION CHECKLIST",
             "NAME OF THE ASSOCIATION",
             "TOTAL NO.OF MEMBERS IN THE SOCIETY",
             "ALL MEMBERS NAME & ADDRESS",
@@ -2317,7 +2690,9 @@
             "OCCUPATION OF MEMBERS",
             "DATE OF SOCIETY FORMATION",
             "WARD NO",
-            "PANCHAYAT"
+            "PANCHAYAT",
+            "BLOCK",
+            "LOCAL BODY"
           ],
           "icon": "List"
         },
@@ -2352,7 +2727,6 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "TDS FILING CHECKLIST (TDS on sale of Property)",
             " Address of property",
             " Date of agreement",
             " Details of Transferee/ Buyer",
@@ -2366,7 +2740,8 @@
             " Email ID",
             " Pan",
             " Sale Consideration",
-            " TDS"
+            " TDS",
+            " Date of payment"
           ],
           "icon": "List"
         },
@@ -2410,8 +2785,7 @@
             "4. Address Proof of the individual or Proprietor.",
             "5. Business activity and details",
             "6. mobile number",
-            "7. Email id",
-            "-- 1 of 1 --"
+            "7. Email id"
           ],
           "icon": "List"
         },
@@ -2460,7 +2834,8 @@
             "9. KYC documents of the business (PAN, Address proof).",
             "10. Type of business (Manufacturing, service, trading).",
             "11. Business activity and details",
-            "12. Mobile number"
+            "12. Mobile number",
+            "13. Email id"
           ],
           "icon": "List"
         },
@@ -2495,8 +2870,7 @@
           "title": "Document Checklist",
           "content": "",
           "items": [
-            "-- 1 of 2 --",
-            "-- 2 of 2 --"
+            "Please refer to the downloadable document for the complete checklist."
           ],
           "icon": "List"
         },
@@ -2544,8 +2918,7 @@
             "11 Survey No/ Resurvey No.",
             "12 Village",
             "13 Building Value",
-            "14 Others if any.",
-            "-- 1 of 1 --"
+            "14 Others if any."
           ],
           "icon": "List"
         },

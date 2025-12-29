@@ -41,9 +41,9 @@ async function main() {
             let processedDetails = service.details;
             if (processedDetails && processedDetails.cards) {
                 // Filter out cards with title containing 'Download'
-                processedDetails.cards = processedDetails.cards.filter(c =>
-                    !c.title.toLowerCase().includes('download')
-                );
+                // processedDetails.cards = processedDetails.cards.filter(c =>
+                //     !c.title.toLowerCase().includes('download')
+                // );
             }
 
             // 2. Insert into DB
