@@ -31,61 +31,96 @@ const ServiceDetailView = ({ details, activeTab }) => {
     <div style={{ marginTop: '30px' }}>
       {/* Cards Section - Only show if activeTab is 'services' */}
       {activeTab === 'services' && (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-          {cards
-            .filter(card => !card.title.toLowerCase().includes('download'))
-            .sort((a, b) => {
-              const getOrder = (t) => {
-                const lower = t.toLowerCase();
-                if (lower.includes('document')) return 1;
-                if (lower.includes('process steps')) return 2;
-                if (lower.includes('process duration')) return 3;
-                return 4;
-              };
-              return getOrder(a.title) - getOrder(b.title);
-            })
-            .map((card, index) => {
-              let displayTitle = card.title;
-              let IconComponent = FileText;
+        <>
+          {/* Render Download Card Separately if it exists for visibility */}
+          {cards.find(c => c.title.toLowerCase().includes('download')) && (
+            <div style={{ marginBottom: '20px', padding: '20px', background: '#f0f9ff', border: '1px solid #b3e5fc', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <FileText size={24} color="#3498db" style={{ marginRight: '10px' }} />
+                <span style={{ fontSize: '1.1rem', color: '#2c3e50', fontWeight: '500' }}>
+                  Official Document Available
+                </span>
+              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: cards.find(c => c.title.toLowerCase().includes('download')).content }}
+                style={{ background: '#3498db', color: '#fff', padding: '8px 16px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold' }}
+              />
+            </div>
+          )}
 
-              const lowerTitle = card.title.toLowerCase();
-              if (lowerTitle.includes('document')) {
-                displayTitle = 'Documents Needed';
-                IconComponent = FileText;
-              } else if (lowerTitle.includes('process steps')) {
-                displayTitle = 'Process Steps';
-                IconComponent = ListOrdered;
-              } else if (lowerTitle.includes('process duration')) {
-                displayTitle = 'Process Duration';
-                IconComponent = Clock;
-              }
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gap: '24px',
+            marginBottom: '40px',
+            alignItems: 'start' // Prevents cards from stretching to match tallest in row
+          }}>
+            {cards
+              .filter(card => !card.title.toLowerCase().includes('download'))
+              .sort((a, b) => {
+                const getOrder = (t) => {
+                  const lower = t.toLowerCase();
+                  if (lower.includes('important')) return 0; // Important notes first
+                  if (lower.includes('document')) return 1;
+                  if (lower.includes('proof')) return 2; // Group proofs
+                  if (lower.includes('process steps')) return 3;
+                  if (lower.includes('process duration')) return 4;
+                  return 5;
+                };
+                return getOrder(a.title) - getOrder(b.title);
+              })
+              .map((card, index) => {
+                let displayTitle = card.title;
+                let IconComponent = FileText;
 
-              return (
-                <div key={index} style={{
-                  background: '#fff',
-                  padding: '25px',
-                  borderRadius: '12px',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
-                  borderTop: '4px solid #3498db'
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px', color: '#2c3e50' }}>
-                    <IconComponent size={24} color="#3498db" />
-                    <h3 style={{ marginLeft: '10px', fontSize: '1.2rem', fontWeight: '600' }}>{displayTitle}</h3>
+                const lowerTitle = card.title.toLowerCase();
+                // Map icons
+                if (lowerTitle.includes('document') || lowerTitle.includes('proof')) {
+                  IconComponent = FileText;
+                } else if (lowerTitle.includes('process steps')) {
+                  displayTitle = 'Process Steps';
+                  IconComponent = ListOrdered;
+                } else if (lowerTitle.includes('process duration')) {
+                  displayTitle = 'Process Duration';
+                  IconComponent = Clock;
+                } else if (lowerTitle.includes('important')) {
+                  IconComponent = FileText; // Or AlertIcon if imported
+                }
+
+                return (
+                  <div key={index} style={{
+                    background: '#fff',
+                    padding: '25px',
+                    borderRadius: '12px',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+                    borderTop: `4px solid ${lowerTitle.includes('important') ? '#e74c3c' : '#3498db'}`
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px', color: '#2c3e50', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>
+                      <IconComponent size={24} color={lowerTitle.includes('important') ? '#e74c3c' : '#3498db'} />
+                      <h3 style={{ marginLeft: '10px', fontSize: '1.2rem', fontWeight: '600', margin: 0 }}>{displayTitle}</h3>
+                    </div>
+
+                    {card.items ? (
+                      <ul style={{
+                        paddingLeft: '20px',
+                        color: '#555',
+                        lineHeight: '1.6',
+                        // Magic for lengthy lists: 2 columns
+                        columnCount: card.items.length > 8 ? 2 : 1,
+                        columnGap: '20px'
+                      }}>
+                        {card.items.map((item, i) => (
+                          <li key={i} style={{ marginBottom: '8px', breakInside: 'avoid' }}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <div dangerouslySetInnerHTML={{ __html: card.content }} style={{ color: '#555', lineHeight: '1.6' }} />
+                    )}
                   </div>
-
-                  {card.items ? (
-                    <ul style={{ paddingLeft: '20px', color: '#555', lineHeight: '1.6' }}>
-                      {card.items.map((item, i) => (
-                        <li key={i} style={{ marginBottom: '8px' }}>{item}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p style={{ color: '#555', lineHeight: '1.6' }}>{card.content}</p>
-                  )}
-                </div>
-              );
-            })}
-        </div>
+                );
+              })}
+          </div>
+        </>
       )}
 
       {/* FAQs Section - Only show if activeTab is 'faq' */}
