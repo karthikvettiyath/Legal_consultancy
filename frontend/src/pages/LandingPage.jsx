@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Scale, FileText } from 'lucide-react';
+import { Scale, FileText, Users } from 'lucide-react';
 
 const LandingPage = () => {
     return (
@@ -29,7 +29,7 @@ const LandingPage = () => {
                     Your Comprehensive Solution for Legal Expertise and Financial Management
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     {/* Legal Card */}
                     <Link to="/legal" className="group">
                         <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-3xl hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 h-full flex flex-col items-center">
@@ -52,6 +52,19 @@ const LandingPage = () => {
                             <h2 className="text-3xl font-bold text-white mb-4">Billing Software</h2>
                             <p className="text-slate-400 text-center">
                                 Manage invoices, quotations, and financial records with ease.
+                            </p>
+                        </div>
+                    </Link>
+
+                    {/* Client Data Card */}
+                    <Link to="/clients" className="group">
+                        <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-10 rounded-3xl hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-emerald-500/20 h-full flex flex-col items-center">
+                            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:shadow-emerald-500/50 transition-all duration-500">
+                                <Users className="text-white w-10 h-10" />
+                            </div>
+                            <h2 className="text-3xl font-bold text-white mb-4">Client Data</h2>
+                            <p className="text-slate-400 text-center">
+                                Manage client details, contact information, and records.
                             </p>
                         </div>
                     </Link>

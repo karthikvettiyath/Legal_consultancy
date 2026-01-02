@@ -7,6 +7,7 @@ import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import LandingPage from './pages/LandingPage';
 import BillingPage from './pages/BillingPage';
+import ClientManagementPage from './pages/ClientManagementPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 
@@ -36,6 +37,13 @@ function App() {
 
           {/* Billing App - UNPROTECTED as requested */}
           <Route path="/billing" element={<BillingPage />} />
+
+          {/* Client Management - Protected */}
+          <Route path="/clients" element={
+            <ProtectedRoute>
+              <ClientManagementPage />
+            </ProtectedRoute>
+          } />
 
           {/* Legal App */}
           <Route path="/legal" element={<LegalLayout />}>
