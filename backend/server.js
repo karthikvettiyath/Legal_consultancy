@@ -341,14 +341,14 @@ app.get("/api/clients", authenticateToken, async (req, res) => {
 
 // Add client
 app.post("/api/clients", authenticateToken, async (req, res) => {
-  const { name, email, phone, address, type_of_work, case_number, dob } = req.body;
+  const { name, email, phone, address, type_of_work, case_number, dob, review_rating } = req.body;
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
 
   try {
     const result = await pool.query(
-      `INSERT INTO clients (name, email, phone, address, type_of_work, case_number, dob) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-      [name, email, phone, address, type_of_work, case_number, dob]
+      `INSERT INTO clients (name, email, phone, address, type_of_work, case_number, dob, review_rating) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+      [name, email, phone, address, type_of_work, case_number, dob, review_rating]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -360,15 +360,15 @@ app.post("/api/clients", authenticateToken, async (req, res) => {
 // Update client
 app.put("/api/clients/:id", authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { name, email, phone, address, type_of_work, case_number, dob } = req.body;
+  const { name, email, phone, address, type_of_work, case_number, dob, review_rating } = req.body;
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
 
   try {
     const result = await pool.query(
       `UPDATE clients 
-       SET name = $1, email = $2, phone = $3, address = $4, type_of_work = $5, case_number = $6, dob = $7 
-       WHERE id = $8 RETURNING *`,
-      [name, email, phone, address, type_of_work, case_number, dob, id]
+       SET name = $1, email = $2, phone = $3, address = $4, type_of_work = $5, case_number = $6, dob = $7, review_rating = $8 
+       WHERE id = $9 RETURNING *`,
+      [name, email, phone, address, type_of_work, case_number, dob, review_rating, id]
     );
     if (result.rows.length === 0) {
       return res.status(404).json({ error: "Client not found" });
