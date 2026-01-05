@@ -25,8 +25,8 @@ async function seedClients() {
         console.log(`📂 Found ${files.length} files in directory.`);
 
         for (const file of files) {
-            if (!file.toUpperCase().includes("CLIENT DATA") || !file.endsWith(".xlsx")) {
-                console.log(`Skipping file: ${file}`);
+            if (!file.toUpperCase().includes("CLIENT") || !file.endsWith(".xlsx")) {
+                console.log(`Skipping file (No 'CLIENT' or not .xlsx): ${file}`);
                 continue;
             }
             if (file.includes("FORMATE")) {
@@ -82,7 +82,7 @@ async function seedClients() {
                 }
 
                 if (!name || name.length < 2) {
-                    // console.log(`   ⚠️  Row ${i}: Skipped (No valid name found/Empty)`);
+                    console.log(`   ⚠️  Row ${i}: Skipped (No valid name found/Empty). Col0: ${col0}, Col1: ${col1}`);
                     continue;
                 }
 
