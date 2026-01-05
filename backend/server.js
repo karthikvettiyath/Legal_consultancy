@@ -341,42 +341,45 @@ app.get("/api/clients", authenticateToken, async (req, res) => {
 
 // Add client
 app.post("/api/clients", authenticateToken, async (req, res) => {
-  const { name, email, phone, address, type_of_work, case_number, dob, review_rating } = req.body;
+  const { name, email, phone, address, type_of_work, case_number, dob, review_rating, file_no, file_date, is_contacted } = req.body;
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
 
   try {
     const result = await pool.query(
-      `INSERT INTO clients (name, email, phone, address, type_of_work, case_number, dob, review_rating) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      [name, email, phone, address, type_of_work, case_number, dob, review_rating]
+      `INSERT INTO clients (name, email, phone, address, type_of_work, case_number, dob, review_rating, file_no, file_date, is_contacted, managed_by) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`,
+      [name, email, phone, address, type_of_work, case_number, dob, review_rating, file_no, file_date, is_contacted || false, req.body.managed_by]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
-    console.error("❌ POST /api/clients error:", err);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error("Error adding client:", err);
+    res.status(500).json({ error: "Failed to add client" });
   }
 });
 
 // Update client
 app.put("/api/clients/:id", authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { name, email, phone, address, type_of_work, case_number, dob, review_rating } = req.body;
+  const { name, email, phone, address, type_of_work, case_number, dob, review_rating, file_no, file_date, is_contacted, managed_by } = req.body;
+
+  console.log(`PUT /api/clients/${id} Body:`, req.body);
+
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
 
   try {
     const result = await pool.query(
       `UPDATE clients 
-       SET name = $1, email = $2, phone = $3, address = $4, type_of_work = $5, case_number = $6, dob = $7, review_rating = $8 
-       WHERE id = $9 RETURNING *`,
-      [name, email, phone, address, type_of_work, case_number, dob, review_rating, id]
+       SET name = $1, email = $2, phone = $3, address = $4, type_of_work = $5, case_number = $6, dob = $7, review_rating = $8, file_no = $9, file_date = $10, is_contacted = $11, managed_by = $12 
+       WHERE id = $13 RETURNING *`,
+      [name, email, phone, address, type_of_work, case_number, dob, review_rating, file_no, file_date, is_contacted, managed_by, id]
     );
     if (result.rows.length === 0) {
       return res.status(404).json({ error: "Client not found" });
     }
     res.json(result.rows[0]);
   } catch (err) {
-    console.error("❌ PUT /api/clients/:id error:", err);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error("Error updating client:", err);
+    res.status(500).json({ error: "Failed to update client" });
   }
 });
 

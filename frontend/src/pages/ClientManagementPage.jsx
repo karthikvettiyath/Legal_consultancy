@@ -14,6 +14,10 @@ const ClientManagementPage = () => {
         type_of_work: '',
         case_number: '',
         dob: '',
+        file_no: '',
+        file_date: '',
+        is_contacted: false,
+        managed_by: '',
         review_rating: 0
     });
     const [editingId, setEditingId] = useState(null);
@@ -66,7 +70,7 @@ const ClientManagementPage = () => {
             if (res.ok) {
                 fetchClients();
                 setShowForm(false);
-                setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '', review_rating: 0 });
+                setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '', file_no: '', file_date: '', is_contacted: false, managed_by: '', review_rating: 0 });
                 setEditingId(null);
             } else {
                 alert("Failed to save client.");
@@ -76,7 +80,34 @@ const ClientManagementPage = () => {
         }
     };
 
+    const handleContactToggle = async (client) => {
+        const token = localStorage.getItem('token');
+        const newVal = !client.is_contacted;
+        // Optimistic update
+        const updatedClients = clients.map(c =>
+            c.id === client.id ? { ...c, is_contacted: newVal } : c
+        );
+        setClients(updatedClients);
 
+        try {
+            const res = await fetch(`/api/clients/${client.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ ...client, is_contacted: newVal })
+            });
+
+            if (!res.ok) {
+                fetchClients(); // Revert
+                alert("Failed to update status.");
+            }
+        } catch (error) {
+            console.error("Toggle failed", error);
+            fetchClients();
+        }
+    };
 
     const handleRatingChange = async (client, newRating) => {
         const token = localStorage.getItem('token');
@@ -138,10 +169,38 @@ const ClientManagementPage = () => {
             type_of_work: client.type_of_work || '',
             case_number: client.case_number || '',
             dob: client.dob || '',
+            file_no: client.file_no || '',
+            file_date: client.file_date || '',
+            is_contacted: client.is_contacted || false,
+            managed_by: client.managed_by || '',
             review_rating: client.review_rating || 0
         });
         setEditingId(client.id);
         setShowForm(true);
+    };
+
+    const formatDate = (raw) => {
+        if (!raw || raw === '-' || raw === 'null') return '-';
+        let str = String(raw).replace(' 00:00:00', '').trim(); // Remove basic time component
+
+        // Handle ISO strings with T
+        if (str.includes('T')) {
+            str = str.split('T')[0];
+        }
+
+        // Now str should be YYYY-MM-DD or DD/MM/YYYY or DD.MM.YYYY
+        // Normalize separators to dashes
+        str = str.replace(/\//g, '-').replace(/\./g, '-');
+
+        // Check format
+        const parts = str.split('-');
+        if (parts.length === 3) {
+            // If YYYY-MM-DD (Year first)
+            if (parts[0].length === 4) {
+                return `${parts[2]}-${parts[1]}-${parts[0]}`;
+            }
+        }
+        return str;
     };
 
     const filteredClients = clients.filter(c =>
@@ -175,7 +234,7 @@ const ClientManagementPage = () => {
                     </div>
                     <button
                         onClick={() => {
-                            setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '', review_rating: 0 });
+                            setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '', file_no: '', file_date: '', is_contacted: false, review_rating: 0 });
                             setEditingId(null);
                             setShowForm(true);
                         }}
@@ -222,11 +281,15 @@ const ClientManagementPage = () => {
                                 <thead className="bg-slate-50 text-slate-600 text-xs uppercase font-semibold">
                                     <tr>
                                         <th className="px-6 py-4 text-left">Name</th>
+                                        <th className="px-6 py-4 text-left">Email</th>
                                         <th className="px-6 py-4 text-left">Type</th>
                                         <th className="px-6 py-4 text-left">Case No</th>
+                                        <th className="px-6 py-4 text-left">File No</th>
+                                        <th className="px-6 py-4 text-left">File Date</th>
                                         <th className="px-6 py-4 text-left">Phone</th>
                                         <th className="px-6 py-4 text-left">DOB</th>
-                                        <th className="px-6 py-4 text-left">Review</th>
+                                        <th className="px-6 py-4 text-left">Managed By</th>
+                                        <th className="px-6 py-4 text-left">Contacted</th>
                                         <th className="px-6 py-4 text-right">Actions</th>
                                     </tr>
                                 </thead>
@@ -242,29 +305,29 @@ const ClientManagementPage = () => {
                                                         {client.name}
                                                     </div>
                                                 </td>
+                                                <td className="px-6 py-4 text-slate-600 truncate max-w-[150px]" title={client.email}>{client.email || '-'}</td>
                                                 <td className="px-6 py-4 text-slate-600">
                                                     <span className={`px-2 py-1 rounded text-xs font-medium ${client.type_of_work === 'Legal' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}`}>
                                                         {client.type_of_work || '-'}
                                                     </span>
                                                 </td>
                                                 <td className="px-6 py-4 text-slate-600 font-mono text-sm">{client.case_number || '-'}</td>
+                                                <td className="px-6 py-4 text-slate-600 font-mono text-sm">{client.file_no || '-'}</td>
+                                                <td className="px-6 py-4 text-slate-600">{formatDate(client.file_date)}</td>
                                                 <td className="px-6 py-4 text-slate-600">{client.phone || '-'}</td>
-                                                <td className="px-6 py-4 text-slate-600">{client.dob || '-'}</td>
+                                                <td className="px-6 py-4 text-slate-600">{formatDate(client.dob)}</td>
                                                 <td className="px-6 py-4 text-slate-600">
-                                                    <div className="flex">
-                                                        {[...Array(5)].map((_, i) => (
-                                                            <button
-                                                                key={i}
-                                                                onClick={() => handleRatingChange(client, i + 1)}
-                                                                className="focus:outline-none transition hover:scale-110"
-                                                            >
-                                                                <Star
-                                                                    size={16}
-                                                                    className={i < (client.review_rating || 0) ? "text-yellow-500 fill-yellow-500" : "text-gray-200"}
-                                                                />
-                                                            </button>
-                                                        ))}
-                                                    </div>
+                                                    <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs font-semibold">
+                                                        {client.managed_by || '-'}
+                                                    </span>
+                                                </td>
+                                                <td className="px-6 py-4 text-slate-600">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={client.is_contacted || false}
+                                                        onChange={() => handleContactToggle(client)}
+                                                        className="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 cursor-pointer"
+                                                    />
                                                 </td>
                                                 <td className="px-6 py-4 text-right">
                                                     <div className="flex justify-end gap-2">
@@ -288,7 +351,7 @@ const ClientManagementPage = () => {
                                         ))
                                     ) : (
                                         <tr>
-                                            <td colSpan="5" className="px-6 py-12 text-center text-slate-400">
+                                            <td colSpan="9" className="px-6 py-12 text-center text-slate-400">
                                                 No clients found.
                                             </td>
                                         </tr>
@@ -303,8 +366,8 @@ const ClientManagementPage = () => {
             {/* Modal Form */}
             {showForm && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all scale-100">
-                        <div className="bg-emerald-600 px-6 py-4 flex justify-between items-center">
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all scale-100 max-h-[90vh] overflow-y-auto">
+                        <div className="bg-emerald-600 px-6 py-4 flex justify-between items-center sticky top-0 z-10">
                             <h2 className="text-white text-lg font-bold">
                                 {editingId ? 'Edit Client' : 'Add New Client'}
                             </h2>
@@ -360,6 +423,29 @@ const ClientManagementPage = () => {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">File No</label>
+                                    <input
+                                        type="text"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+                                        value={formData.file_no}
+                                        onChange={e => setFormData({ ...formData, file_no: e.target.value })}
+                                        placeholder="File No"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">File Date</label>
+                                    <input
+                                        type="text"
+                                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition"
+                                        value={formData.file_date}
+                                        onChange={e => setFormData({ ...formData, file_date: e.target.value })}
+                                        placeholder="File Date"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
                                     <label className="block text-sm font-medium text-slate-700 mb-1">Date of Birth</label>
                                     <input
                                         type="text"
@@ -369,23 +455,16 @@ const ClientManagementPage = () => {
                                         placeholder="DD/MM/YYYY"
                                     />
                                 </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-slate-700 mb-1">Review (1-5)</label>
-                                    <div className="flex gap-1 py-2">
-                                        {[...Array(5)].map((_, i) => (
-                                            <button
-                                                key={i}
-                                                type="button"
-                                                onClick={() => setFormData({ ...formData, review_rating: i + 1 })}
-                                                className="focus:outline-none transition transform hover:scale-110"
-                                            >
-                                                <Star
-                                                    size={20}
-                                                    className={i < formData.review_rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300 hover:text-yellow-200"}
-                                                />
-                                            </button>
-                                        ))}
-                                    </div>
+                                <div className="flex items-center pt-6">
+                                    <label className="flex items-center gap-2 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            checked={formData.is_contacted}
+                                            onChange={e => setFormData({ ...formData, is_contacted: e.target.checked })}
+                                            className="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500"
+                                        />
+                                        <span className="text-sm font-medium text-slate-700">Contacted?</span>
+                                    </label>
                                 </div>
                             </div>
 
