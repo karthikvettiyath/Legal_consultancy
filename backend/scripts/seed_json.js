@@ -105,21 +105,15 @@ async function seed() {
             const dobClean = cleanStr(dobRaw);
             const emailClean = cleanStr(emailRaw);
 
-            // Extract Managed By
+            // Extract Managed By (Updated for Sharath Default)
             const sourceFileRaw = getVal(['SOURCE', 'FILE']) || '';
-            let managedBy = '-';
+            let managedBy = 'Sharath';
+            // console.log(`DEBUG: item ${success} source=${sourceFileRaw}`); // Uncomment to debug spam
             if (sourceFileRaw && sourceFileRaw !== '-') {
                 let s = String(sourceFileRaw).toUpperCase();
                 if (s.includes('JESNA')) managedBy = 'Jesna';
                 else if (s.includes('NITHYA')) managedBy = 'Nithya';
                 else if (s.includes('SOUMYA')) managedBy = 'Soumya';
-                else managedBy = '-';
-
-                // Debug unexpected names
-                if (managedBy === '-' && s.includes('PROMISSIONARY')) console.log(`DEBUG: Source='${s}' -> ManagedBy='${managedBy}'`);
-                if (managedBy !== '-' && managedBy !== 'Jesna' && managedBy !== 'Nithya' && managedBy !== 'Soumya') {
-                    console.log(`CRITICAL: Source='${s}' -> ManagedBy='${managedBy}' (This should not happen)`);
-                }
             }
 
             try {
