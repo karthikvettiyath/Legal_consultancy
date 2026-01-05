@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Trash2, Edit, Search, User, ArrowLeft, Loader2 } from 'lucide-react';
+import { Plus, Trash2, Edit, Search, User, ArrowLeft, Loader2, Star } from 'lucide-react';
 
 const ClientManagementPage = () => {
     const [clients, setClients] = useState([]);
@@ -13,7 +13,8 @@ const ClientManagementPage = () => {
         address: '',
         type_of_work: '',
         case_number: '',
-        dob: ''
+        dob: '',
+        review_rating: 0
     });
     const [editingId, setEditingId] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -65,13 +66,48 @@ const ClientManagementPage = () => {
             if (res.ok) {
                 fetchClients();
                 setShowForm(false);
-                setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '' });
+                setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '', review_rating: 0 });
                 setEditingId(null);
             } else {
                 alert("Failed to save client.");
             }
         } catch (error) {
             console.error("Save failed", error);
+        }
+    };
+
+
+
+    const handleRatingChange = async (client, newRating) => {
+        const token = localStorage.getItem('token');
+        // Optimistic update
+        const updatedClients = clients.map(c =>
+            c.id === client.id ? { ...c, review_rating: newRating } : c
+        );
+        setClients(updatedClients);
+
+        try {
+            // Fetch current data first to be safe, or just send what we have
+            // Assuming PUT expects full resource
+            const res = await fetch(`/api/clients/${client.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ ...client, review_rating: newRating })
+            });
+
+            if (res.ok) {
+                // optionally refresh or just leave optimistic
+            } else {
+                // Revert on failure
+                fetchClients();
+                alert("Failed to update rating.");
+            }
+        } catch (error) {
+            console.error("Rating update failed", error);
+            fetchClients();
         }
     };
 
@@ -101,7 +137,8 @@ const ClientManagementPage = () => {
             address: client.address || '',
             type_of_work: client.type_of_work || '',
             case_number: client.case_number || '',
-            dob: client.dob || ''
+            dob: client.dob || '',
+            review_rating: client.review_rating || 0
         });
         setEditingId(client.id);
         setShowForm(true);
@@ -138,7 +175,7 @@ const ClientManagementPage = () => {
                     </div>
                     <button
                         onClick={() => {
-                            setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '' });
+                            setFormData({ name: '', email: '', phone: '', address: '', type_of_work: '', case_number: '', dob: '', review_rating: 0 });
                             setEditingId(null);
                             setShowForm(true);
                         }}
@@ -189,6 +226,7 @@ const ClientManagementPage = () => {
                                         <th className="px-6 py-4 text-left">Case No</th>
                                         <th className="px-6 py-4 text-left">Phone</th>
                                         <th className="px-6 py-4 text-left">DOB</th>
+                                        <th className="px-6 py-4 text-left">Review</th>
                                         <th className="px-6 py-4 text-right">Actions</th>
                                     </tr>
                                 </thead>
@@ -212,6 +250,22 @@ const ClientManagementPage = () => {
                                                 <td className="px-6 py-4 text-slate-600 font-mono text-sm">{client.case_number || '-'}</td>
                                                 <td className="px-6 py-4 text-slate-600">{client.phone || '-'}</td>
                                                 <td className="px-6 py-4 text-slate-600">{client.dob || '-'}</td>
+                                                <td className="px-6 py-4 text-slate-600">
+                                                    <div className="flex">
+                                                        {[...Array(5)].map((_, i) => (
+                                                            <button
+                                                                key={i}
+                                                                onClick={() => handleRatingChange(client, i + 1)}
+                                                                className="focus:outline-none transition hover:scale-110"
+                                                            >
+                                                                <Star
+                                                                    size={16}
+                                                                    className={i < (client.review_rating || 0) ? "text-yellow-500 fill-yellow-500" : "text-gray-200"}
+                                                                />
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </td>
                                                 <td className="px-6 py-4 text-right">
                                                     <div className="flex justify-end gap-2">
                                                         <button
@@ -315,6 +369,24 @@ const ClientManagementPage = () => {
                                         placeholder="DD/MM/YYYY"
                                     />
                                 </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">Review (1-5)</label>
+                                    <div className="flex gap-1 py-2">
+                                        {[...Array(5)].map((_, i) => (
+                                            <button
+                                                key={i}
+                                                type="button"
+                                                onClick={() => setFormData({ ...formData, review_rating: i + 1 })}
+                                                className="focus:outline-none transition transform hover:scale-110"
+                                            >
+                                                <Star
+                                                    size={20}
+                                                    className={i < formData.review_rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300 hover:text-yellow-200"}
+                                                />
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
 
                             <div>
@@ -355,10 +427,10 @@ const ClientManagementPage = () => {
                                 </button>
                             </div>
                         </form>
-                    </div>
-                </div>
+                    </div >
+                </div >
             )}
-        </div>
+        </div >
     );
 };
 

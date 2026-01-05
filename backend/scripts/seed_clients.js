@@ -17,7 +17,7 @@ async function seedClients() {
         const client = await pool.connect();
         console.log("✅ Connected to database.");
 
-        // Clear existing data to avoid duplicates during re-seed (optional, but good for fresh sync)
+        // Clear existing data to avoid duplicates during re-seed
         await client.query("TRUNCATE clients RESTART IDENTITY");
         console.log("⚠️  Truncated 'clients' table for fresh import.");
 
@@ -44,49 +44,33 @@ async function seedClients() {
             let successCount = 0;
             let failCount = 0;
 
-            // Iterate rows. Skip header (row 0) usually.
-            // We will look for a row that has data.
             for (let i = 1; i < jsonData.length; i++) {
                 const row = jsonData[i];
                 if (!row || row.length === 0) continue;
 
                 let name = null;
                 let phone = null;
-                let address = null; // Usually not in these simple sheets, but we'll leave null
-
-                // Heuristic to find Phone (looks for 10digit pattern in any cell)
-                // Default to column 3 if it looks like a phone
-
-                // Strategy: normalization
-                // 1. Identify Phone
-                // 2. Identify Name from remaining
+                let address = null;
 
                 // 1. Find Phone
                 let phoneIndex = -1;
                 for (let j = 0; j < row.length; j++) {
                     const cell = String(row[j] || '').replace(/[^\d]/g, ''); // Digits only
                     if (cell.length >= 10 && cell.length <= 13) {
-                        // E.g. 9876543210 or 919876543210
                         phone = row[j];
                         phoneIndex = j;
                         break;
                     }
                 }
 
-                // If no phone found by regex, verify Column 3 (index 3)
                 if (!phone && row[3]) {
-                    // Maybe it has spaces or formatting we missed
                     phone = row[3];
                     phoneIndex = 3;
                 }
 
                 // 2. Find Name
-                // Typically Index 1 (if Index 0 is SlNo) or Index 0.
-                // If Index 0 is a number, try Index 1.
-
                 const col0 = row[0];
                 const col1 = row[1];
-
                 const isCol0Number = (typeof col0 === 'number') || (String(col0).trim().match(/^\d+$/));
 
                 if (isCol0Number && col1 && typeof col1 === 'string') {
@@ -94,58 +78,67 @@ async function seedClients() {
                 } else if (col0 && typeof col0 === 'string' && !isCol0Number) {
                     name = col0.trim();
                 } else {
-                    // Fallback: If Col 1 is string, take it?
                     if (col1 && typeof col1 === 'string') name = col1.trim();
                 }
 
-                // Validation
                 if (!name || name.length < 2) {
                     // console.log(`   ⚠️  Row ${i}: Skipped (No valid name found/Empty)`);
                     continue;
                 }
 
-                // 3. New Fields: TypeOfWork, CaseNumber, DOB
-                // Based on inspection:
-                // JESNA: [Sl, Name, TypeOfWork(2), Mobile(3), DOB(4)]
-                // NITHYA: [Sl, Name, TypeOfWork(2), Mobile(3), DOB(4), CaseNum(5)]
-                // Generally: 
-                // Col 2 -> Type of Work
-                // Col 4 -> DOB (if Col 3 is phone) or vice versa?
-                // Let's rely on indices roughly for now as they seem consistent in reviewed files.
-                // Col 2 is consistently TypeOfWork or "Legal"/"Consultancy"
+                // 3. New Fields & Mapping
+                function getTypeFromCode(code) {
+                    const c = String(code).trim();
+                    if (c === '1') return 'Legal';
+                    if (c === '2') return 'Consultancy';
+                    return code;
+                }
 
-                const typeOfWork = row[2] ? String(row[2]).trim() : null;
+                let typeCode = row[2] ? row[2] : null;
+                const typeOfWork = typeCode ? getTypeFromCode(typeCode) : null;
 
-                // DOB is often Col 4 (Index 4)
-                // Case Number is often Col 5 (Index 5)
+                // Date Formatting
+                function excelDateToJSDate(serial) {
+                    var utc_days = Math.floor(serial - 25569);
+                    var utc_value = utc_days * 86400;
+                    var date_info = new Date(utc_value * 1000);
+                    var fractional_day = serial - Math.floor(serial) + 0.0000001;
+                    var total_seconds = Math.floor(86400 * fractional_day);
+                    var seconds = total_seconds % 60;
+                    total_seconds -= seconds;
+                    var hours = Math.floor(total_seconds / (60 * 60));
+                    var minutes = Math.floor(total_seconds / 60) % 60;
+                    return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
+                }
 
-                // However, let's look for Case Number specifically by pattern if possible, or just take index 5
-                // Case numbers often look like "AS 35/22" or similar.
+                function formatDateDDMMYY(dateObj) {
+                    if (!dateObj || isNaN(dateObj.getTime())) return null;
+                    const day = String(dateObj.getDate()).padStart(2, '0');
+                    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                    const year = String(dateObj.getFullYear()).slice(-2);
+                    return `${day}-${month}-${year}`;
+                }
 
                 let dob = row[4];
-                if (dob && typeof dob === 'number') {
-                    // Excel date conversion if needed, or just leave as is?
-                    // Excel dates are days since 1900. 
-                    // Let's store as string for simplicity unless requested otherwise.
-                    // But if it's a number, it might be unreadable.
-                    // Simple conversion: new Date((excelDate - (25567 + 2)) * 86400 * 1000)
-                    // Let's just keep raw for now or stringify
-                    dob = String(dob);
+                let dobFormatted = null;
+
+                if (dob) {
+                    if (typeof dob === 'number') {
+                        const jsDate = excelDateToJSDate(dob);
+                        dobFormatted = formatDateDDMMYY(jsDate);
+                    } else {
+                        dobFormatted = String(dob).trim();
+                    }
                 }
 
                 const caseNumber = row[5] ? String(row[5]).trim() : null;
-
-                // Checking for "Consultancy" vs "Legal" classification if explicit
-                // Use typeOfWork for this.
-
-                // Clean phone
                 const cleanPhone = phone ? String(phone).replace(/[^\d+\s-]/g, '').trim() : null;
 
                 try {
                     await client.query(
-                        `INSERT INTO clients (name, phone, address, type_of_work, case_number, dob, created_at) 
-                         VALUES ($1, $2, $3, $4, $5, $6, NOW())`,
-                        [name, cleanPhone, address, typeOfWork, caseNumber, dob]
+                        `INSERT INTO clients (name, phone, address, type_of_work, case_number, dob, created_at, review_rating) 
+                         VALUES ($1, $2, $3, $4, $5, $6, NOW(), NULL)`,
+                        [name, cleanPhone, address, typeOfWork, caseNumber, dobFormatted]
                     );
                     successCount++;
                 } catch (err) {

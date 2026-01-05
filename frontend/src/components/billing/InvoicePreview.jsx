@@ -15,12 +15,12 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                 {/* Company Info */}
                 <div className="text-right">
                     <h1 className="text-2xl font-bold font-serif mb-2 tracking-wide">
-                        {data.category === 'Legal' ? 'COCHIN UNITED LEGAL LLP' : 'COCHIN UNITED CONSULTANCY'}
+                        {data.category === 'Legal' ? <><p>COCHIN UNITED ADVOCATES </p> <p> AND LEGAL CONSULTANT</p></> : <p>COCHIN UNITED CONSULTANCY</p>}
                     </h1>
                     <div className="text-sm font-medium leading-tight text-gray-800">
-                        <p>C BLOCK 4TH FLOOR,MATHER SQUARE</p>
-                        <p>ERNAKULAM, KERALA-682018</p>
-                        <p>EMAIL ID: <span className="text-blue-700 underline">cochinunitedconsultancydm@gmail.com</span>,</p>
+                        <p>2ND FLOOR, AMRITA TOWER</p>
+                        <p>COMBARA JUNCTION, ERNAKULAM - 682018</p>
+                        <p>EMAIL ID: <span className="text-blue-700 underline">cochinunitedconsultancydm@gmail.com</span></p>
                         <p>MOB NO: +91 7306425389</p>
                     </div>
                 </div>
