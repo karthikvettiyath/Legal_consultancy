@@ -331,7 +331,7 @@ if (require.main === module) {
 app.get("/api/clients", authenticateToken, async (req, res) => {
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
   try {
-    const result = await pool.query("SELECT * FROM clients ORDER BY created_at DESC");
+    const result = await pool.query("SELECT * FROM clients ORDER BY name ASC");
     res.json(result.rows);
   } catch (err) {
     console.error("❌ GET /api/clients error:", err);
