@@ -105,12 +105,16 @@ const ServiceDetailView = ({ details, activeTab }) => {
                         paddingLeft: '20px',
                         color: '#555',
                         lineHeight: '1.6',
+                        listStyleType: 'disc',
                         // Magic for lengthy lists: 2 columns
                         columnCount: card.items.length > 8 ? 2 : 1,
                         columnGap: '20px'
                       }}>
                         {card.items.map((item, i) => (
-                          <li key={i} style={{ marginBottom: '8px', breakInside: 'avoid' }}>{item}</li>
+                          <li key={i} style={{ marginBottom: '8px', breakInside: 'avoid' }}>
+                            {/* Strip leading numbers/special chars if they exist to enforce bullet style */}
+                            {item.replace(/^[\d\W_]+/, '').trim()}
+                          </li>
                         ))}
                       </ul>
                     ) : (

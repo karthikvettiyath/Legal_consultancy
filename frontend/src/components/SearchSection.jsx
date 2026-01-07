@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { Search, List, HelpCircle } from 'lucide-react';
 import ServiceDetailView from './ServiceDetailView';
 
 const SearchSection = () => {
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialQuery = searchParams.get('search') || '';
+
+  const [query, setQuery] = useState(initialQuery);
   const [allServices, setAllServices] = useState([]);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,6 +46,14 @@ const SearchSection = () => {
     }
   };
 
+  // Sync query with URL params
+  useEffect(() => {
+    const paramQuery = searchParams.get('search');
+    if (paramQuery !== null && paramQuery !== query) {
+      setQuery(paramQuery);
+    }
+  }, [searchParams]);
+
   // Live filtering
   useEffect(() => {
     if (!query.trim()) {
@@ -50,7 +62,8 @@ const SearchSection = () => {
       const lowerQuery = query.toLowerCase();
       // Using startsWith to match Admin Portal behavior
       const filtered = allServices.filter(service =>
-        service.title && service.title.toLowerCase().startsWith(lowerQuery)
+        (service.title && service.title.toLowerCase().startsWith(lowerQuery)) ||
+        (service.name && service.name.toLowerCase().startsWith(lowerQuery))
       );
       setResults(filtered);
     }
@@ -118,9 +131,13 @@ const SearchSection = () => {
                         cursor: 'pointer',
                         background: activeTab === 'services' ? '#3498db' : '#eee',
                         color: activeTab === 'services' ? '#fff' : '#555',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
                         transition: 'all 0.3s'
                       }}
                     >
+                      <List size={18} />
                       Services
                     </button>
                     <button
@@ -133,9 +150,13 @@ const SearchSection = () => {
                         cursor: 'pointer',
                         background: activeTab === 'faq' ? '#3498db' : '#eee',
                         color: activeTab === 'faq' ? '#fff' : '#555',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
                         transition: 'all 0.3s'
                       }}
                     >
+                      <HelpCircle size={18} />
                       FAQ
                     </button>
                   </div>
@@ -180,7 +201,7 @@ const SearchSection = () => {
           )}
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
