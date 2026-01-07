@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Plus, Trash2, Edit, Search, User, ArrowLeft, Loader2, Star } from 'lucide-react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Plus, Trash2, Edit, Search, User, ArrowLeft, Loader2, Star, Users } from 'lucide-react';
 
 const ClientManagementPage = () => {
     const [clients, setClients] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
+    const [showClientsDropdown, setShowClientsDropdown] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -21,7 +22,8 @@ const ClientManagementPage = () => {
         review_rating: 0
     });
     const [editingId, setEditingId] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchParams] = useSearchParams();
+    const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -222,6 +224,48 @@ const ClientManagementPage = () => {
                     </h1>
                 </div>
                 <div className="flex gap-2">
+                    {/* Clients Dropdown */}
+                    <div className="relative mr-2">
+                        <button
+                            onClick={() => setShowClientsDropdown(!showClientsDropdown)}
+                            className="bg-emerald-600 text-white p-2 rounded-lg hover:bg-emerald-700 transition relative"
+                            title="All Clients"
+                        >
+                            <Users size={20} />
+                            {clients.length > 0 && (
+                                <span className="absolute -top-3 -right-3 bg-red-500 text-white text-[10px] font-bold min-w-[20px] h-5 px-1 flex items-center justify-center rounded-full border-2 border-white shadow-sm z-10">
+                                    {clients.length}
+                                </span>
+                            )}
+                        </button>
+                        {showClientsDropdown && (
+                            <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 z-50 max-h-96 overflow-y-auto">
+                                <div className="p-2 border-b border-gray-100 sticky top-0 bg-white">
+                                    <h3 className="text-sm font-semibold text-gray-500">Select Client</h3>
+                                </div>
+                                {clients.length === 0 ? (
+                                    <div className="p-4 text-center text-gray-400 text-sm">No clients found</div>
+                                ) : (
+                                    clients.map(client => (
+                                        <button
+                                            key={client.id}
+                                            onClick={() => {
+                                                setSearchTerm(client.name);
+                                                setShowClientsDropdown(false);
+                                            }}
+                                            className="w-full text-left px-4 py-2 hover:bg-emerald-50 text-sm text-slate-700 hover:text-emerald-700 transition flex items-center gap-2"
+                                        >
+                                            <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 text-slate-500">
+                                                <User size={12} />
+                                            </div>
+                                            <span className="truncate">{client.name}</span>
+                                        </button>
+                                    ))
+                                )}
+                            </div>
+                        )}
+                    </div>
+
                     <div className="relative hidden md:block">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
                         <input

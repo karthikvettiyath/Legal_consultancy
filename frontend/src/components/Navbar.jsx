@@ -11,13 +11,13 @@ const Navbar = () => {
 
   // Fetch services for the dropdown
   React.useEffect(() => {
-    if (showServices && servicesList.length === 0) {
+    if (servicesList.length === 0) {
       fetch('/api/services')
         .then(res => res.ok ? res.json() : fetch('/services.json').then(r => r.json()))
         .then(data => setServicesList(data))
         .catch(err => console.error("Failed to load services for navbar", err));
     }
-  }, [showServices, servicesList.length]);
+  }, [servicesList.length]);
 
   const handleLogout = () => {
     logout();
@@ -37,6 +37,7 @@ const Navbar = () => {
         <nav>
           <ul style={{ display: 'flex', gap: '20px', alignItems: 'center', margin: 0, listStyle: 'none' }} className="desktop-nav">
             <li><Link to="/legal" style={{ color: '#fff', textDecoration: 'none' }}>Home</Link></li>
+
             {/* Services Dropdown */}
             <li style={{ position: 'relative' }}>
               <button
@@ -53,7 +54,31 @@ const Navbar = () => {
                   fontFamily: 'inherit'
                 }}
               >
-                <Briefcase size={18} />
+                <div style={{ position: 'relative' }}>
+                  <Briefcase size={18} />
+                  {servicesList.length > 0 && (
+                    <span style={{
+                      position: 'absolute',
+                      top: '-10px',
+                      right: '-10px',
+                      background: '#ef4444',
+                      color: 'white',
+                      fontSize: '0.65rem',
+                      fontWeight: 'bold',
+                      minWidth: '20px',
+                      height: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '50%',
+                      border: '2px solid white',
+                      boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                      zIndex: 10
+                    }}>
+                      {servicesList.length}
+                    </span>
+                  )}
+                </div>
                 Services
               </button>
 
