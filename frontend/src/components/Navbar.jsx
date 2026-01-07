@@ -29,14 +29,26 @@ const Navbar = () => {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div className="logo">
           {/* Link to Legal Home */}
-          <Link to="/legal" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link
+            to="/legal"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <h1 style={{ fontSize: '1.8rem', margin: 0 }}>Legal<span style={{ color: '#3498db' }}>Expert</span></h1>
           </Link>
         </div>
 
         <nav>
           <ul style={{ display: 'flex', gap: '20px', alignItems: 'center', margin: 0, listStyle: 'none' }} className="desktop-nav">
-            <li><Link to="/legal" style={{ color: '#fff', textDecoration: 'none' }}>Home</Link></li>
+            <li>
+              <Link
+                to="/legal"
+                style={{ color: '#fff', textDecoration: 'none' }}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                Home
+              </Link>
+            </li>
 
             {/* Services Dropdown */}
             <li style={{ position: 'relative' }}>
