@@ -18,8 +18,18 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                         {data.category === 'Legal' ? <><p>COCHIN UNITED ADVOCATES </p> <p> AND LEGAL CONSULTANT</p></> : <p>COCHIN UNITED CONSULTANCY</p>}
                     </h1>
                     <div className="text-sm font-medium leading-tight text-gray-800">
-                        <p>2ND FLOOR, AMRITA TOWER</p>
-                        <p>COMBARA JUNCTION, ERNAKULAM - 682018</p>
+                        {data.category === 'Legal' ? (
+                            <>
+                                <p>2ND FLOOR, AMRITA TOWER</p>
+                                <p>COMBARA JUNCTION, ERNAKULAM - 682018</p>
+                            </>
+                        ) : (
+                            <>
+                                <p>4th Floor, Mather Square, C- Block,</p>
+                                <p>Near North Railway Station, North Railway Station,</p>
+                                <p>Ernakulam, Kerala 682018</p>
+                            </>
+                        )}
                         <p>EMAIL ID: <span className="text-blue-700 underline">cochinunitedconsultancydm@gmail.com</span></p>
                         <p>MOB NO: +91 7306425389</p>
                     </div>
