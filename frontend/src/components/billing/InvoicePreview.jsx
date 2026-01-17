@@ -15,7 +15,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                 {/* Company Info */}
                 <div className="text-right">
                     <h1 className="text-2xl font-bold font-serif mb-2 tracking-wide">
-                        {data.category === 'Legal' ? <><p>COCHIN UNITED ADVOCATES </p> <p> AND LEGAL CONSULTANT</p></> : <p>COCHIN UNITED CONSULTANCY</p>}
+                        {data.category === 'Digital Marketing' ? <p>AURORA - COCHIN UNITED CONSULTANCY</p> : (data.category === 'Legal' ? <><p>COCHIN UNITED ADVOCATES </p> <p> AND LEGAL CONSULTANT</p></> : <p>COCHIN UNITED CONSULTANCY</p>)}
                     </h1>
                     <div className="text-sm font-medium leading-tight text-gray-800">
                         {data.category === 'Legal' ? (
@@ -61,7 +61,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                     <thead>
                         <tr className="bg-gray-50">
                             <th className="border border-gray-400 p-2 w-16 text-center font-bold">Sl. No.</th>
-                            <th className="border border-gray-400 p-2 text-center font-bold">LIST CERTIFICATE</th>
+                            <th className="border border-gray-400 p-2 text-center font-bold">PARTICULARS</th>
                             <th className="border border-gray-400 p-2 w-32 text-center font-bold">AMOUNT</th>
                         </tr>
                     </thead>
@@ -113,13 +113,23 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                 {data.type === 'QUOTATION' ? (
                     <>
                         <p className="font-bold mb-2">NB:</p>
-                        <ul className="list-disc pl-5 space-y-2">
-                            <li>Any increase in government fees or additional expenses during the application process must be borne by you.</li>
-                            <li>We are not liable for delays caused by changes in government regulations, system failures, network issues, or unforeseen circumstances beyond our control.</li>
-                            <li>If additional documents or steps are required, your cooperation and support will be necessary, and any extra expenses incurred must be reimbursed by you.</li>
-                            <li>Please regularly follow up on the application process and promptly share any required OTPs.</li>
-                            <li>In case of any unethical practices or misbehavior by our staff, please contact our Client Relationship Manager immediately.</li>
-                        </ul>
+                        {data.category === 'Digital Marketing' ? (
+                            <ul className="list-disc pl-5 space-y-2">
+                                <li>Any increase in platform charges, subscription fees, or additional expenses related to digital tools during the project period must be borne by you.</li>
+                                <li>We are not liable for delays caused by social media platform outages, algorithmic changes, technical glitches, policy updates, or any external factors beyond our control.</li>
+                                <li>If additional resources, materials, or approvals are required for content creation or ad campaigns, your timely cooperation is essential. Any extra costs incurred—including paid assets, ad budgets, or third-party service fees—must be reimbursed by you.</li>
+                                <li>Please provide prompt approvals for content, artwork, ad copies, and share required credentials (logins, OTPs, verification codes) on time to avoid delays.</li>
+                                <li>In case of any misunderstanding, miscommunication, or unethical behavior from our team, please contact our Client Relationship Manager immediately.</li>
+                            </ul>
+                        ) : (
+                            <ul className="list-disc pl-5 space-y-2">
+                                <li>Any increase in government fees or additional expenses during the application process must be borne by you.</li>
+                                <li>We are not liable for delays caused by changes in government regulations, system failures, network issues, or unforeseen circumstances beyond our control.</li>
+                                <li>If additional documents or steps are required, your cooperation and support will be necessary, and any extra expenses incurred must be reimbursed by you.</li>
+                                <li>Please regularly follow up on the application process and promptly share any required OTPs.</li>
+                                <li>In case of any unethical practices or misbehavior by our staff, please contact our Client Relationship Manager immediately.</li>
+                            </ul>
+                        )}
                     </>
                 ) : (
                     <div className="text-center italic text-gray-600 text-sm">

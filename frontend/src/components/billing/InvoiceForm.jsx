@@ -79,6 +79,7 @@ export default function InvoiceForm({ data, onChange }) {
                     >
                         <option value="Consultancy">Consultancy</option>
                         <option value="Legal">Legal</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
                     </select>
                 </div>
 
@@ -151,6 +152,24 @@ export default function InvoiceForm({ data, onChange }) {
                                 onChange={handleChange}
                                 className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white"
                             />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                                Authorities
+                            </label>
+                            <select
+                                name="authority"
+                                value={data.authority || 'A'}
+                                onChange={handleChange}
+                                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
+                            >
+                                <option value="A">A - Soumya</option>
+                                <option value="B">B - Jesna</option>
+                                <option value="C">C - Sharath</option>
+                                <option value="D">D - Nithya</option>
+                                <option value="E">E - Irshad</option>
+                                <option value="F">F - Construction & Supervising</option>
+                            </select>
                         </div>
                     </div>
                 </div>
