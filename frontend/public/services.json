@@ -1,6 +1,43 @@
 [
   {
     "id": 1,
+    "name": "NAME CHANGE",
+    "title": "Name Change Checklist",
+    "description": "Requirements and checklist for Name Change via Gazette.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Process Overview",
+          "content": "Changing your name involves three main steps: Affidavit, Newspaper Publication, and Gazette Notification.",
+          "items": [],
+          "icon": "Info"
+        },
+        {
+          "title": "Documents Required",
+          "items": [
+            "Affidavit on Non-Judicial Stamp Paper (min. value)",
+            "Original Newspaper Advertisement (one English, one Regional)",
+            "Performance Proforma (in duplicate)",
+            "Passport size photographs (2)",
+            "Self-attested copy of ID Proof (Aadhaar/PAN/Passport)",
+            "CD containing the soft copy of the application (in MS Word)",
+            "Request letter to the Controller of Publications",
+            "Demand Draft for the required fee"
+          ],
+          "icon": "List"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "How long does it take?",
+          "a": "The Gazette publication usually takes 15-30 days after submission."
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
     "name": "CERTIFICATE LIST FOR AADHAAR UPDATE (1)",
     "title": "certificate list for aadhaar update (1) Checklist",
     "description": "Requirements and checklist for certificate list for aadhaar update (1).",
@@ -8,153 +45,416 @@
     "details": {
       "cards": [
         {
-          "title": "Proof of Identity (POI)",
-          "content": "Documents containing Name and Photo",
+          "title": "Document Checklist",
           "items": [
-            "1. Passport",
-            "2. PAN Card",
-            "3. Ration/ PDS Photo Card",
-            "4. Voter ID",
-            "5. Driving License",
-            "6. Government Photo ID Cards/ Service photo identity card issued by PSU",
-            "7. NREGS Job Card",
-            "8. Photo ID issued by Recognized Educational Institution",
-            "9. Arms License",
-            "10. Photo Bank ATM Card",
-            "11. Photo Credit Card",
-            "12. Pensioner Photo Card",
-            "13. Freedom Fighter Photo Card",
-            "14. Kissan Photo Passbook",
-            "15. CGHS/ ECHS Photo Card",
-            "16. Address Card having Name and Photo issued by Department of Posts",
-            "17. Certificate of Identity having photo issued by Gazetted Officer or Tehsildar on UIDAI standard certificate format for enrolment/ update",
-            "18. Disability ID Card/ handicapped medical certificate issued by the respective State/ UT Governments/ Administrations",
-            "19. Bhamashah Card/Jan-Aadhaar card issued by Govt. of Rajasthan",
-            "20. Certificate from Superintendent/ Warden/ Matron/ Head of Institution of recognized shelter homes or orphanages etc. on UIDAI standard certificate format for enrolment/ update",
-            "21. Certificate of Identity having photo issued by MP or MLA or MLC or Municipal Councilor on UIDAI standard certificate format for enrolment/ update",
-            "22. Certificate of Identity having photo issued by Village Panchayat Head or Mukhiya or its equivalent authority (for rural areas) on UIDAI standard certificate format for enrolment/ update",
-            "23. Gazette notification for name change",
-            "24. Marriage certificate with photograph",
-            "25. RSBY Card",
-            "26. SSLC book having candidates photograph",
-            "27. ST/ SC/ OBC certificate with photograph",
-            "28. School Leaving Certificate (SLC)/ School Transfer Certificate (TC), containing name and photograph",
-            "29. Extract of School Records issued by Head of School containing name and photograph",
-            "30. Bank Pass Book having name and photograph",
-            "31. Certificate of Identity containing name and photo issued by Recognized Educational Institution signed by Head of Institute on UIDAI standard certificate format for enrolment/ update.",
-            "32. Certificate of identity containing Name, DOB and Photograph issued by Employees’ Provident Fund Organisation (EPFO) on UIDAI standard certificate format for enrolment/ update"
+            "POI (Proof of Identity) documents",
+            "containing Name and Photo",
+            "Passport",
+            "PAN Card",
+            "Ration/ PDS Photo Card",
+            "Voter ID",
+            "Driving License",
+            "Government Photo ID Cards/ Service photo identity card",
+            "issued by PSU",
+            "NREGS Job Card",
+            "Photo ID issued by Recognized Educational Institution",
+            "Arms License",
+            "Photo Bank ATM Card",
+            "Photo Credit Card",
+            "Pensioner Photo Card",
+            "Freedom Fighter Photo Card",
+            "Kissan Photo Passbook",
+            "CGHS/ ECHS Photo Card",
+            "Address Card having Name and Photo issued by",
+            "Department of Posts",
+            "Certificate of Identity having photo issued by Gazetted",
+            "Officer or Tehsildar on UIDAI standard certificate format",
+            "for enrolment/ update",
+            "Disability ID Card/ handicapped medical certificate",
+            "issued by the respective State/ UT Governments/",
+            "Administrations",
+            "Bhamashah Card/Jan-Aadhaar card issued by Govt. of",
+            "Rajasthan",
+            "Certificate from Superintendent/ Warden/ Matron/ Head",
+            "of Institution of recognized shelter homes or orphanages",
+            "etc. on UIDAI standard certificate format for enrolment/",
+            "update",
+            "Certificate of Identity having photo issued by MP or",
+            "MLA or MLC or Municipal Councilor on UIDAI standard",
+            "certificate format for enrolment/ update",
+            "Certificate of Identity having photo issued by Village",
+            "Panchayat Head or Mukhiya or its equivalent authority",
+            "(for rural areas) on UIDAI standard certificate format for",
+            "enrolment/ update",
+            "Gazette notification for name change",
+            "Marriage certificate with photograph",
+            "RSBY Card",
+            "SSLC book having candidates photograph",
+            "ST/ SC/ OBC certificate with photograph",
+            "School Leaving Certificate (SLC)/ School Transfer",
+            "Certificate (TC), containing name and photograph",
+            "Extract of School Records issued by Head of School",
+            "containing name and photograph",
+            "Bank Pass Book having name and photograph",
+            "Certificate of Identity containing name and photo issued",
+            "by Recognized Educational Institution signed by Head",
+            "of Institute on UIDAI standard certificate format for",
+            "enrolment/ update.",
+            "Certificate of identity containing Name, DOB and",
+            "Photograph issued by Employees’ Provident Fund",
+            "Organisation (EPFO) on UIDAI standard certificate",
+            "format for enrolment/ update",
+            "POR (Proof of Relationship) documents containing",
+            "Name of applicant and Name of HoF (Head of Family)",
+            "PDS Card",
+            "MNREGA Job Card",
+            "CGHS/ State Government/ ECHS/ ESIC Medical card",
+            "Pension Card",
+            "Army Canteen Card",
+            "Passport",
+            "Birth Certificate issued by Registrar of Birth, Municipal",
+            "Corporation and other notified local government bodies",
+            "like Taluk, Tehsil etc.",
+            "Any other Central/ State government issued family",
+            "entitlement document",
+            "Marriage Certificate issued by the government",
+            "Address card having name and photo issued by",
+            "Department of Posts",
+            "Bhamashah Card/Jan-Aadhaar card issued by Govt. of",
+            "Rajasthan",
+            "Discharge card/ slip issued by Government hospitals for",
+            "birth of a child",
+            "Certificate of Identity having photo issued by MP or",
+            "MLA or MLC or Municipal Councillor or Gazetted Officer",
+            "on UIDAI standard certificate format for enrolment/",
+            "update",
+            "Certificate of Identity having photo and relationship with",
+            "HoF issued by Village Panchayat Head or Mukhiya or its",
+            "equivalent authority (for rural areas) on UIDAI standard",
+            "certificate format for enrolment/ update",
+            "DOB (Date of Birth) documents",
+            "containing Name and DOB",
+            "Birth Certificate",
+            "SSLC Book/ Certificate",
+            "Passport",
+            "Certificate of Date of Birth issued by Group A Gazetted",
+            "Officer on UIDAI standard certificate format for",
+            "enrolment/ update",
+            "A certificate (on UIDAI standard certificate format for",
+            "enrolment/ update) or ID Card having photo and Date",
+            "of Birth (DOB) duly signed and issued by a Government",
+            "authority",
+            "Photo ID card having Date of Birth, issued by",
+            "Recognized Educational Institution",
+            "PAN Card",
+            "Marksheet issued by any Government Board or",
+            "University",
+            "Government Photo ID Card/ Photo Identity Card issued",
+            "by PSU containing DOB"
           ],
-          "icon": "User"
+          "icon": "List"
         },
         {
-          "title": "Proof of Address (POA)",
-          "content": "Documents containing Name and Address",
+          "title": "List Of Acceptable Supporting Documents For Verification",
           "items": [
-            "1. Passport",
-            "2. Bank Statement/ Passbook",
-            "3. Post Office Account Statement/ Passbook",
-            "4. Ration Card",
-            "5. Voter ID",
-            "6. Driving License",
-            "7. Government Photo ID cards/ service photo identity card issued by PSU",
-            "8. Electricity Bill (not older than 3 months)",
-            "9. Water Bill (not older than 3 months)",
-            "10. Telephone Landline Bill (not older than 3 months)",
-            "11. Property Tax Receipt (not older than 1 year)",
-            "12. Credit Card Statement (not older than 3 months)",
-            "13. Insurance Policy",
-            "14. Signed Letter having Photo from Bank on letterhead",
-            "15. Signed Letter having Photo issued by registered Company on letterhead",
-            "16. Signed Letter having Photo issued by Recognized Educational Institution on letterhead or Photo ID having address issued by Recognized Educational Institution",
-            "17. NREGS Job Card",
-            "18. Arms License",
-            "19. Pensioner Card",
-            "20. Freedom Fighter Card",
-            "21. Kissan Passbook",
-            "22. CGHS/ ECHS Card",
-            "23. Certificate of Address having photo issued by MP or MLA or MLC or Gazetted Officer or Tehsildar on UIDAI standard certificate format for enrolment/ update",
-            "24. Certificate of Address issued by Village Panchayat head or its equivalent authority (for rural areas) on UIDAI standard certificate format for enrolment/ update",
-            "25. Income Tax Assessment Order",
-            "26. Vehicle Registration Certificate",
-            "27. Registered Sale/ Lease/ Rent Agreement",
-            "28. Address Card having Photo issued by Department of Posts",
-            "29. Caste and Domicile Certificate having Photo issued by State Govt",
-            "30. Disability ID Card/ handicapped medical certificate issued by the respective State/ UT Governments/ Administrations",
-            "31. Gas Connection Bill (not older than 3 months)",
-            "32. Passport of Spouse",
-            "33. Passport of Parents (in case of Minor)",
-            "34. Allotment letter of accommodation issued by Central/ State Govt. (not more than 3 years old)",
-            "35. Marriage Certificate issued by the Government, containing address",
-            "36. Bhamashah Card/Jan-Aadhaar card issued by Govt. of Rajasthan",
-            "37. Certificate from Superintendent/ Warden/ Matron/ Head of Institution of recognized shelter homes or orphanages etc. on UIDAI standard certificate format for enrolment/ update",
-            "38. Certificate of Address having photo issued by Municipal Councillor on UIDAI standard certificate format for enrolment/ update",
-            "39. Identity Card issued by recognized educational institutions",
-            "40. SSLC book having photograph",
-            "41. School Identity card",
-            "42. School Leaving Certificate (SLC)/ School Transfer Certificate (TC), containing Name and Address",
-            "43. Extract of School Records containing Name, Address and Photograph issued by Head of School",
-            "44. Certificate of Identity containing Name, Address and Photo issued by Recognized Educational Institution signed by Head of Institute on UIDAI standard certificate format for enrolment/ update",
-            "45. Certificate of identity containing Name, DOB and Photograph issued by Employees’ Provident Fund Organisation (EPFO) on UIDAI standard certificate format for enrolment/ update"
+            "02nd Nov, 2020",
+            "Bring original documents for Enrolment/ Update. No photocopy required.",
+            "Original documents are scanned and given back to you.",
+            "Central/ State Pension Payment Order",
+            "Central Government Health Service Scheme Photo Card",
+            "or Ex-Servicemen Contributory Health Scheme Photo card",
+            "School Leaving Certificate (SLC)/ School Transfer",
+            "Certificate (TC), containing Name and Date of Birth",
+            "Extract of School Records issued by Head of School",
+            "containing Name, Date of Birth and Photograph",
+            "Certificate of Identity containing Name, DOB and Photo",
+            "issued by Recognized Educational Institution signed by",
+            "Head of Institute on UIDAI standard certificate format",
+            "for enrolment/ update",
+            "Certificate of identity containing Name, DOB and",
+            "Photograph issued by Employees’ Provident Fund",
+            "Organisation (EPFO) on UIDAI standard certificate",
+            "format for enrolment/ update",
+            "Passport",
+            "Bank Statement/ Passbook",
+            "Post Office Account Statement/ Passbook",
+            "Ration Card",
+            "Voter ID",
+            "Driving License",
+            "Government Photo ID cards/ service photo identity card",
+            "issued by PSU",
+            "Electricity Bill (not older than 3 months)",
+            "Water Bill (not older than 3 months)",
+            "Telephone Landline Bill (not older than 3 months)",
+            "Property Tax Receipt (not older than 1 year)",
+            "Credit Card Statement (not older than 3 months)",
+            "Insurance Policy",
+            "Signed Letter having Photo from Bank on letterhead",
+            "Signed Letter having Photo issued by registered",
+            "Company on letterhead",
+            "Signed Letter having Photo issued by Recognized",
+            "Educational Institution on letterhead or Photo ID having",
+            "address issued by Recognized Educational Institution",
+            "NREGS Job Card",
+            "Arms License",
+            "Pensioner Card",
+            "Freedom Fighter Card",
+            "Kissan Passbook",
+            "CGHS/ ECHS Card",
+            "Certificate of Address having photo issued by MP or",
+            "MLA or MLC or Gazetted Officer or Tehsildar on UIDAI",
+            "standard certificate format for enrolment/ update",
+            "Certificate of Address issued by Village Panchayat head",
+            "or its equivalent authority (for rural areas) on UIDAI",
+            "standard certificate format for enrolment/ update",
+            "Income Tax Assessment Order",
+            "Vehicle Registration Certificate",
+            "Registered Sale/ Lease/ Rent Agreement",
+            "Address Card having Photo issued by Department of",
+            "Posts",
+            "Caste and Domicile Certificate having Photo issued by",
+            "State Govt",
+            "Disability ID Card/ handicapped medical certificate",
+            "issued by the respective State/ UT Governments/",
+            "Administrations",
+            "Gas Connection Bill (not older than 3 months)",
+            "Passport of Spouse",
+            "Passport of Parents (in case of Minor)",
+            "Allotment letter of accommodation issued by Central/",
+            "State Govt. (not more than 3 years old)",
+            "Marriage Certificate issued by the Government,",
+            "containing address",
+            "Bhamashah Card/Jan-Aadhaar card issued by Govt. of",
+            "Rajasthan",
+            "Certificate from Superintendent/ Warden/ Matron/ Head",
+            "of Institution of recognized shelter homes or orphanages",
+            "etc. on UIDAI standard certificate format for enrolment/",
+            "update",
+            "Certificate of Address having photo issued by Municipal",
+            "Councillor on UIDAI standard certificate format for",
+            "enrolment/ update",
+            "Identity Card issued by recognized educational",
+            "institutions",
+            "SSLC book having photograph",
+            "School Identity card",
+            "School Leaving Certificate (SLC)/ School Transfer",
+            "Certificate (TC), containing Name and Address",
+            "Extract of School Records containing Name, Address",
+            "and Photograph issued by Head of School",
+            "Certificate of Identity containing Name, Address and",
+            "Photo issued by Recognized Educational Institution",
+            "signed by Head of Institute on UIDAI standard certificate",
+            "format for enrolment/ update",
+            "Certificate of identity containing Name, DOB and",
+            "Photograph issued by Employees’ Provident Fund",
+            "Organisation (EPFO) on UIDAI standard certificate",
+            "format for enrolment/ update",
+            "POA (Proof of Address) documents",
+            "containing Name and Address"
           ],
-          "icon": "MapPin"
+          "icon": "Folder"
         },
         {
-          "title": "Proof of Relationship (POR)",
-          "content": "Documents containing Name of applicant and Name of HoF",
+          "title": "List Of Acceptable Supporting Documents For Verification",
           "items": [
-            "1. PDS Card",
-            "2. MNREGA Job Card",
-            "3. CGHS/ State Government/ ECHS/ ESIC Medical card",
-            "4. Pension Card",
-            "5. Army Canteen Card",
-            "6. Passport",
-            "7. Birth Certificate issued by Registrar of Birth, Municipal Corporation and other notified local government bodies like Taluk, Tehsil etc.",
-            "8. Any other Central/ State government issued family entitlement document",
-            "9. Marriage Certificate issued by the government",
-            "10. Address card having name and photo issued by Department of Posts",
-            "11. Bhamashah Card/Jan-Aadhaar card issued by Govt. of Rajasthan",
-            "12. Discharge card/ slip issued by Government hospitals for birth of a child",
-            "13. Certificate of Identity having photo issued by MP or MLA or MLC or Municipal Councilor or Gazetted Officer on UIDAI standard certificate format for enrolment/ update",
-            "14. Certificate of Identity having photo and relationship with HoF issued by Village Panchayat Head or Mukhiya or its equivalent authority (for rural areas) on UIDAI standard certificate format for enrolment/ update"
+            "Resident’s Recent",
+            "Colour Photograph",
+            "5cm x 4.5 cm",
+            "Cross Signed and",
+            "Cross Stamped",
+            "by the Certifier."
           ],
-          "icon": "Users"
+          "icon": "Folder"
         },
         {
-          "title": "Date of Birth (DOB)",
-          "content": "Documents containing Name and DOB",
+          "title": "Text Boxes",
           "items": [
-            "1. Birth Certificate",
-            "2. SSLC Book/ Certificate",
-            "3. Passport",
-            "4. Certificate of Date of Birth issued by Group A Gazetted Officer on UIDAI standard certificate format for enrolment/ update",
-            "5. A certificate (on UIDAI standard certificate format for enrolment/ update) or ID Card having photo and Date of Birth (DOB) duly signed and issued by a Government authority",
-            "6. Photo ID card having Date of Birth, issued by Recognized Educational Institution",
-            "7. PAN Card",
-            "8. Marksheet issued by any Government Board or University",
-            "9. Government Photo ID Card/ Photo Identity Card issued by PSU containing DOB",
-            "10. Central/ State Pension Payment Order",
-            "11. Central Government Health Service Scheme Photo Card or Ex-Servicemen Contributory Health Scheme Photo card",
-            "12. School Leaving Certificate (SLC)/ School Transfer Certificate (TC), containing Name and Date of Birth",
-            "13. Extract of School Records issued by Head of School containing Name, Date of Birth and Photograph",
-            "14. Certificate of Identity containing Name, DOB and Photo issued by Recognized Educational Institution signed by Head of Institute on UIDAI standard certificate format for enrolment/ update",
-            "15. Certificate of identity containing Name, DOB and Photograph issued by Employees’ Provident Fund Organisation (EPFO) on UIDAI standard certificate format for enrolment/ update"
+            "Signature of the Resident/",
+            "Thumb/ Finger Impression"
           ],
-          "icon": "Calendar"
+          "icon": "Folder"
         },
         {
-          "title": "Important Instructions",
-          "content": "Guidelines for filling the form",
+          "title": "Certificate For Aadhaar Enrolment/ Update",
+          "items": [
+            "Resident’s Details",
+            "Instructions: All details to be filled in Block Letters \t(To be valid for 3 months from date of issue)",
+            "To be printed on plain A4 paper size; \tNot required to print on letter head;"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Aadhaar Number",
+          "items": [
+            "(For update only)"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Date Of Birth",
+          "items": [
+            "Resident \tNon-Resident Indian (NRI) \tNew Enrolment \tUpdate Request",
+            "Certifier’s Details (To be filled by the certifier Only)"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Contact Number",
+          "items": [
+            "Signature & Stamp of the Certifier",
+            "NOTE: This format is applicable for POI documents at SI. Nos. 17, 20, 21, 22, 31 & 32; POA documents at SI. Nos. 23, 24, 37, 38, 44 & 45; POR documents at SI. Nos. 13",
+            "& 14 DOB documents at SI. Nos. 4, 5, 14 & 15 of Schedule II of the Aadhaar (Enrolment and Update) Regulations, 2016, as amended from time to time."
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "D \td \tm \tm \ty \ty \ty \ty",
+          "items": [
+            "Gazetted Officer - Group A",
+            "Village Panchayat Head or Mukhiya",
+            "Gazetted Officer - Group B",
+            "MP/ MLA/ MLC/ Muncipal Councilor",
+            "Tehsildar",
+            "Head of Recognized Educational Institution",
+            "Superintendent/ Warden/ Matron/ Head of Institution",
+            "of Recognized shelter homes/ Orphanages",
+            "EPFO Officer",
+            "I hereby certify above mentioned details of the resident",
+            "and I am a.... (Tick appropriate box below) \tNo overwriting \tIssue date is filled \tResident’s signature \tCertifier’s details",
+            "Resident’s Photo is cross signed and cross stamped (paper to photo or photo to paper)",
+            "Checklist for Certifier"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Instructions For Filling Up Certificate For Aadhaar Enrolment/ Update",
+          "items": [
+            "A. GENERAL INSTRUCTIONS Please read the below instructions carefully before filling the application form",
+            "The Application Form consists of two parts, i.e., Resident details and Certifier details.",
+            "A Sample filled form is provided inline with the instructions for reference. Residents are advised to also view the sample filled form provided",
+            "after reading these instructions.",
+            "Please note: Incomplete or inappropriately-filled application form will not be accepted."
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Please Follow The Instructions Given Below While Filling The Form",
+          "items": [
+            "Certificate has to be printed on Plain paper.",
+            "Use CAPITAL LETTERS only, as shown in the image below –",
+            "Incorrect Correct",
+            "Use standard fonts and avoid stylized writing.",
+            "Use black or blue ball point pen only. Do NOT fill the application form with ink-pen or pencil.",
+            "Put a tick marks (✓), in the boxes where you have to select options as your answer and leave the other option(s) blank.",
+            "Write clearly within the boxes without touching the boundaries. Try and write in the centre of the box, as shown in the image below–",
+            "Incorrect Correct",
+            "Leave one box blank after each complete word, while filling up the boxes.",
+            "Incorrect Correct",
+            "Do NOT write “NA” or “N/A” or “NOT APPLICABLE” in any boxes in the form to convey that the column is not relevant for your case.",
+            "Leave that column blank.",
+            "B. FIELD-WISE GUIDELINES FOR FILLING UP “CERTIFICATE FOR AADHAAR ENROLMENT/ UPDATE”- Resident section",
+            "Ensure all the fields are filled properly, as per below instructions.",
+            "S No Filed Name General Instructions",
+            "1 Date of Issue • Specify the date in DD-MM-YYYY format.",
+            "Ensure the Certificate is submitted within 3 months of date of issue.",
+            "Enrolment or Update Request will be rejected if Date of Issue is blank or Certificate has",
+            "expired.",
+            "2 Resident Category • Specify the resident is native Resident of India or belongs to Non Resident Indian (NRI)",
+            "Category",
+            "3 Enrolment type • Specify the current request is either for obtaining a Aadhaar card which is known as",
+            "“New Enrolment” or for updating an existing Aadhaar details which is known as “Update",
+            "Request”.",
+            "4 Aadhaar Number • Mention your Aadhaar Number.",
+            "In case of Enrolment, Kindly leave it blank.",
+            "In case of Update, it is mandatory to specify the aadhaar number.",
+            "5 Full Name • Mention the name of Resident.",
+            "Name shall be mentioned in the format as to be recorded in the Aadhaar.",
+            "6 C/o • Mention the Care of (C/o) if required in the address field.",
+            "This field can be left blank as well.",
+            "7 House No/ Bldg./ Apt: • Mention the House Number, Building Name or Apartment Name as per the address.",
+            "8 Street/Road/ Lane • Mention Street Name, Road & Lane of the address.",
+            "9 Landmark • Mention the Landmark near your address.",
+            "This field can be left blank as well, if not required.",
+            "10 Area/ Locality/ Sector • Mention Area/ Locality/ Sector of your address.",
+            "11 Village/ Town/ City • Mention Village/ Town/ City of your address.",
+            "12 Post Office • Mention the nearest post office of your address.",
+            "This filed can be left blank.",
+            "13 District • Mention the District of your address.",
+            "r a m e s h R A M E S H"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "R A M E S H G U P T A R A M E S H G U P T A",
+          "items": [
+            "14 State • Mention the State of your address.",
+            "15 Pin Code • Mention the pincode of your address.",
+            "16 Date of Birth • Mention the Date of Birth.",
+            "17 Signature • Resident shall put his/her Signature in the box specified for signature.",
+            "Illiterate Resident can provide Thumb or Finger impression.",
+            "18 Resident Photo • Resident shall paste latest color photograph of size 3.5 cm X 4.5 cm.",
+            "Ensure photo is pasted in the space provided. It shall not overlap in text boxes.",
+            "Photo needs to be cross signed by the certifier.",
+            "Photo needs to be cross stamped by the certifier.",
+            "C. FIELD-WISE GUIDELINES FOR FILLING UP “CERTIFICATE FOR AADHAAR ENROLMENT/ UPDATE”- Certifier section",
+            "Kindly ensure all the fields are filled properly by the Certifier, as per below instructions.",
+            "S No Filed Name General Instructions",
+            "1 Name of Certifier • Mention the name of Certifier",
+            "2 Designation and office",
+            "name",
+            "Specify the designation and office name of the Certifier.",
+            "3 Office Address • Specify the complete address of the certifier, along with Department name.",
+            "4 Contact Number • Specify the contact details of the certifier.",
+            "5 Certifier Type • Mention the certifier type by tick (✓) mark on one of the box provided against below"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Mentioned Categories",
+          "items": [
+            "o Gazetted Officer - Group A",
+            "o Village Panchayat Head or Mukhiya",
+            "o Gazetted Officer - Group B",
+            "o MP/ MLA/ MLC/ Muncipal Councilor",
+            "o Tehsildar",
+            "o Head of Recognized Educational Institution",
+            "o Superintendent/ Warden/ Matron/ Head of Institution of Recognized shelter homes/",
+            "Orphanages",
+            "o EPFO Officer"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "6 Checklist For Certifier • Verify The Below Checklist By Putting Tick (✓) Mark On The Boxes",
+          "items": [
+            "o No overwriting",
+            "o Issue date is filled",
+            "o Resident’s signature",
+            "o Certifier’s details",
+            "o Resident’s Photo is cross signed and cross stamped (paper to photo or photo to",
+            "paper)",
+            "o Please ensure that complete form is duly filled, and all boxes of checklist all",
+            "selected.",
+            "7 Sign & Stamp of the",
+            "certifier",
+            "Provide certifier’s signature and stamp in the space specified."
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Below Are Few Important Steps That Resident Shall Ensure Before Submitting The Form",
           "items": [
             "Certificate must be printed on Plain paper.",
             "Form must be submitted within 3 months of date of issue.",
-            "No overwriting in the form.",
+            "Ensure No overwriting in the form.",
+            "Date of issue must be filled properly in DD-MM-YYYY format.",
+            "Resident signature or thumb impression is must.",
             "Certifier details must be filled in properly.",
-            "Use BLOCK LETTERS only.",
-            "Resident signature or thumb impression is mandatory.",
-            "Latest colored photograph of 3.5cm X 4.5 cm should be pasted.",
-            "Certifier cross sign & cross stamp must be available on the resident photograph."
+            "Latest colored photograph of 3.5cm X 4.5 cm should be pasted within the defined area.",
+            "Certifier cross sign & cross stamp must be available on the resident photograph.",
+            "Certifier complete details must be filled in."
           ],
-          "icon": "AlertCircle"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -176,26 +476,25 @@
     }
   },
   {
-    "id": 2,
-    "name": "DIN",
-    "title": "DIN Checklist",
-    "description": "Requirements and checklist for DIN.",
+    "id": 3,
+    "name": "CHECKLIST DIN",
+    "title": "Checklist DIN Checklist",
+    "description": "Requirements and checklist for Checklist DIN.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details Required For Filing Din Application – Form Dir – 3",
           "items": [
-            "DETAILS REQUIRED FOR FILING DIN APPLICATION – FORM DIR – 3",
-            "1. Photograph",
-            "2. PAN",
-            "3. Aadhaar",
-            "4. Proof of Identity (Passport/ Driving Licence/ Voters ID)",
-            "5. Proof of Address ( Bank Statements/ Electricity Bill) – not older than 2 months",
-            "6. Contact Number",
-            "7. Email ID",
-            "8. Digital Signature Certificate",
+            "Photograph",
+            "PAN",
+            "Aadhaar",
+            "Proof of Identity (Passport/ Driving Licence/ Voters ID)",
+            "Proof of Address ( Bank Statements/ Electricity Bill) – not older than 2 months",
+            "Contact Number",
+            "Email ID",
+            "Digital Signature Certificate",
+            "NB: All documents Should be self attested",
             "Other Details of Applicant",
             " Educational Qualification",
             " Occupation Type",
@@ -203,21 +502,13 @@
             "Director Identification Number.",
             " Consent letter of Director",
             "Fee for filing DIN Application Form DIR -3 – Rs. 500/-",
+            "Note: DIN application form should be attested by the Director/ Designanted Partner of the Company",
             "Details Required for Certification",
             " CIN Of Company",
             " DIN of Director of the company",
             " DSC of Director"
           ],
-          "icon": "List"
-        },
-        {
-          "title": "Important Notes",
-          "content": "",
-          "items": [
-            "NB: All documents Should be self attested",
-            "Note: DIN application form should be attested by the Director/ Designanted Partner of the Company"
-          ],
-          "icon": "AlertCircle"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -228,8 +519,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for DIN?",
-          "a": "The required documents include: DETAILS REQUIRED FOR FILING DIN APPLICATION – FORM DIR – 3, 1. Photograph, 2. PAN, 3. Aadhaar, 4. Proof of Identity (Passport/ Driving Licence/ Voters ID), 5. Proof of Address ( Bank Statements/ Electricity Bill) – not older than 2 months, 6. Contact Number, 7. Email ID... (see full checklist)."
+          "q": "What is needed for Checklist DIN?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -239,17 +530,17 @@
     }
   },
   {
-    "id": 3,
-    "name": "REGISTERED OFFICE CHANGE",
-    "title": "Registered office change Checklist",
-    "description": "Requirements and checklist for Registered office change.",
+    "id": 4,
+    "name": "CHECKLIST REGISTERED OFFICE CHANGE",
+    "title": "Checklist Registered office change Checklist",
+    "description": "Requirements and checklist for Checklist Registered office change.",
     "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
+            "Check List for Registered Office Change within the limits of same city",
             " NOC if the property is owned by other entity or person",
             " Rent agreement or lease deed, if the same is hired or leased",
             " Utility bill not older than 2 months (Electricity bill)"
@@ -265,76 +556,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for Registered office change?",
-          "a": "The required documents include:  NOC if the property is owned by other entity or person,  Rent agreement or lease deed, if the same is hired or leased,  Utility bill not older than 2 months (Electricity bill)... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 4,
-    "name": "CLINIC CHECK LIST",
-    "title": "CLINIC CHECK LIST Checklist",
-    "description": "Requirements and checklist for CLINIC CHECK LIST.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "APPLICANT DETAILS",
-            "1. NAME",
-            "2. AGE",
-            "3. MOB NUMBER",
-            "4. FATHERS NAME",
-            "5. HOUSE NUMBER",
-            "6. HOUSE NAME",
-            "7. LOCAL PLACE",
-            "8. AREA",
-            "9. POST OFFICE",
-            "10. PIN CODE",
-            "11. LOCAL BODY",
-            "12. LOCAL BODY WARD",
-            "13. DISTRICT",
-            "14. STATUS OF APPLICANT- OWNER/PARTNER/DIRECTOR",
-            "FIRM/ SHOP DETAILS",
-            "1. ESTABLISHMENT NAME",
-            "2. TYPE OF OPERATION",
-            "3. SERVICE TYPE",
-            "4. BUILDING NUMBER",
-            "5. BULDING NAME",
-            "6. MONTHY RENT",
-            "7. ZONAL NAME",
-            "8. NEAR ROAD, LANDMARK",
-            "9. VILLAGE",
-            "10. POST OFFICE",
-            "11. PIN COCDE",
-            "DOCUMENTS",
-            "1. ADHAAR CARD COPY",
-            "2. PROPERTY TAX RECEIPT",
-            "3. PROFESSIONAL TAX RECEIPT",
-            "4. PREVIOUS YEAR FEE RECEIPT",
-            "5. IMAGE CERTIFICATE",
-            "6. PCB CERTIFICATE"
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/CLINIC%20CHECK%20LIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for CLINIC CHECK LIST?",
-          "a": "The required documents include: APPLICANT DETAILS, 1. NAME, 2. AGE, 3. MOB NUMBER, 4. FATHERS NAME, 5. HOUSE NUMBER, 6. HOUSE NAME, 7. LOCAL PLACE... (see full checklist)."
+          "q": "What is needed for Checklist Registered office change?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -345,17 +568,98 @@
   },
   {
     "id": 5,
-    "name": "COMPANY INCORPORATIN   OPC (1)",
-    "title": "Company Incorporation   OPC (1) Checklist",
-    "description": "Requirements and checklist for Company Incorporation   OPC (1).",
+    "name": "CLINIC CHECK LIST (1)",
+    "title": "CLINIC CHECK LIST (1) Checklist",
+    "description": "Requirements and checklist for CLINIC CHECK LIST (1).",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Applicant Details",
+          "items": [
+            "NAME",
+            "AGE",
+            "MOB NUMBER",
+            "FATHERS NAME",
+            "HOUSE NUMBER",
+            "HOUSE NAME",
+            "LOCAL PLACE",
+            "AREA",
+            "POST OFFICE",
+            "PIN CODE",
+            "LOCAL BODY",
+            "LOCAL BODY WARD",
+            "DISTRICT",
+            "STATUS OF APPLICANT- OWNER/PARTNER/DIRECTOR"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Firm/ Shop Details",
+          "items": [
+            "ESTABLISHMENT NAME",
+            "TYPE OF OPERATION",
+            "SERVICE TYPE",
+            "BUILDING NUMBER",
+            "BULDING NAME",
+            "MONTHY RENT",
+            "ZONAL NAME",
+            "NEAR ROAD, LANDMARK",
+            "VILLAGE",
+            "POST OFFICE",
+            "PIN COCDE"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Documents",
+          "items": [
+            "ADHAAR CARD COPY",
+            "PROPERTY TAX RECEIPT",
+            "PROFESSIONAL TAX RECEIPT",
+            "PREVIOUS YEAR FEE RECEIPT",
+            "IMAGE CERTIFICATE",
+            "PCB CERTIFICATE"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/CLINIC%20CHECK%20LIST%20(1).pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for CLINIC CHECK LIST (1)?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "name": "COMPANY INCORPORATIN CHECKLIST OPC (1)",
+    "title": "Company Incorporatin Checklist OPC (1) Checklist",
+    "description": "Requirements and checklist for Company Incorporatin Checklist OPC (1).",
     "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
-            "Notes:",
+            "Company Incorporation – Check List – (One Person Company)"
+          ],
+          "icon": "List"
+        },
+        {
+          "title": "Notes",
+          "items": [
             " Minimum and Maximum of one member.",
             " A nominee should be appointed before incorporation.",
             " Consent of the nominee should be obtained in Form INC-3.",
@@ -382,7 +686,7 @@
             "(Telephone Bill/Mobile bill, Gas bill or Electricity bill.)",
             " Copy of building tax receipt"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -393,8 +697,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for Company Incorporation   OPC (1)?",
-          "a": "The required documents include: Notes:,  Minimum and Maximum of one member.,  A nominee should be appointed before incorporation.,  Consent of the nominee should be obtained in Form INC-3.,  Minimum authorised capital of Rs.1 lakh.,  Proposed Name Of Company,  Details of Objective of Company, Details of Proposed Director... (see full checklist)."
+          "q": "What is needed for Company Incorporatin Checklist OPC (1)?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -404,18 +708,19 @@
     }
   },
   {
-    "id": 6,
-    "name": "COMPANY INCORPORATIN",
-    "title": "Company Incorporation Checklist",
-    "description": "Requirements and checklist for Company Incorporation.",
+    "id": 7,
+    "name": "COMPANY INCORPORATIN CHECKLIST",
+    "title": "Company Incorporatin Checklist Checklist",
+    "description": "Requirements and checklist for Company Incorporatin Checklist.",
     "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
+            "Company Incorporation – Check List – (Private Limited",
             "Company)",
+            "Note: Minimum 2 Members are required for Formation of Private Limited Company",
             "Company Details",
             " Proposed Name Of Company",
             " Details of Objective of Company",
@@ -445,14 +750,6 @@
           "icon": "List"
         },
         {
-          "title": "Important Notes",
-          "content": "",
-          "items": [
-            "Note: Minimum 2 Members are required for Formation of Private Limited Company"
-          ],
-          "icon": "AlertCircle"
-        },
-        {
           "title": "Download",
           "content": "Download the official document here: <a href=\"/docs/Company%20Incorporatin%20Checklist.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
           "items": [],
@@ -461,50 +758,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for Company Incorporation?",
-          "a": "The required documents include: Company), Company Details,  Proposed Name Of Company,  Details of Objective of Company,  Shareholding Pattern of Shareholders,  Email ID & Contact Number, Shareholder’s Details (Documents),  Digital Signature Certificate of directors... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 7,
-    "name": "COPYRIGHT",
-    "title": "COPYRIGHT Checklist",
-    "description": "Requirements and checklist for COPYRIGHT.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "1. Id Card Copy ( Aadhar card/ Passport/Driving License -",
-            "having permanent address)",
-            "2. Mobile No.",
-            "3. Email Id.",
-            "4. Which year the script is wrote.",
-            "5. If script was published please mentioned the year.",
-            "6. Literary work ( Script) 3 hard copy and 1 soft copy.",
-            "7. Vakkalath - signed by the client."
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/COPYRIGHT%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for COPYRIGHT?",
-          "a": "The required documents include: 1. Id Card Copy ( Aadhar card/ Passport/Driving License -, having permanent address), 2. Mobile No., 3. Email Id., 4. Which year the script is wrote., 5. If script was published please mentioned the year., 6. Literary work ( Script) 3 hard copy and 1 soft copy., 7. Vakkalath - signed by the client.... (see full checklist)."
+          "q": "What is needed for Company Incorporatin Checklist?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -515,39 +770,37 @@
   },
   {
     "id": 8,
-    "name": "CORPORATION LICENSE    INDIVIDUAL",
-    "title": "CORPORATION LICENSE    INDIVIDUAL Checklist",
-    "description": "Requirements and checklist for CORPORATION LICENSE    INDIVIDUAL.",
+    "name": "COPYRIGHT CHECKLIST",
+    "title": "COPYRIGHT CHECKLIST Checklist",
+    "description": "Requirements and checklist for COPYRIGHT CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Copyright Checklist",
           "items": [
-            "BUILDING OWNER’S CONSENT LETTER",
-            "( Rs. 200 STAMP PAPER, NOTARIZED)",
-            "AFFIDAVIT OF APPLICANT ( Rs. 200 STAMP PAPER)",
-            "PHONE NO",
-            "LATEST PROPERTY TAX RECEIPT",
-            "ID PROOF ( APPLICANT & BUILDING OWNER)",
-            "RENT AGREEMENT",
-            "NAME OF THE FIRM/ SHOP",
-            "ADDRESS OF THE FIRM/ SHOP"
+            "Id Card Copy ( Aadhar card/ Passport/Driving License -",
+            "having permanent address)",
+            "Mobile No.",
+            "Email Id.",
+            "Which year the script is wrote.",
+            "If script was published please mentioned the year.",
+            "Literary work ( Script) 3 hard copy and 1 soft copy.",
+            "Vakkalath - signed by the client."
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/CORPORATION%20LICENSE%20CHECKLIST%20-%20INDIVIDUAL.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "content": "Download the official document here: <a href=\"/docs/COPYRIGHT%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
           "items": [],
           "icon": "Download"
         }
       ],
       "faqs": [
         {
-          "q": "What is needed for CORPORATION LICENSE    INDIVIDUAL?",
-          "a": "The required documents include: BUILDING OWNER’S CONSENT LETTER, ( Rs. 200 STAMP PAPER, NOTARIZED), AFFIDAVIT OF APPLICANT ( Rs. 200 STAMP PAPER), PHONE NO, LATEST PROPERTY TAX RECEIPT, ID PROOF ( APPLICANT & BUILDING OWNER), RENT AGREEMENT, NAME OF THE FIRM/ SHOP... (see full checklist)."
+          "q": "What is needed for COPYRIGHT CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -558,52 +811,31 @@
   },
   {
     "id": 9,
-    "name": "CORPORATION LICENSE  – PVT LTD COMPANY",
-    "title": "CORPORATION LICENSE  – PVT LTD COMPANY Checklist",
-    "description": "Requirements and checklist for CORPORATION LICENSE  – PVT LTD COMPANY.",
+    "name": "CORPORATION LICENSE CHECKLIST INDIVIDUAL",
+    "title": "CORPORATION LICENSE CHECKLIST INDIVIDUAL Checklist",
+    "description": "Requirements and checklist for CORPORATION LICENSE CHECKLIST INDIVIDUAL.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Building Owner’s Consent Letter",
           "items": [
-            "DETAILS OF THE BUILDING",
-            "1. RENT AGREEMENT",
-            "2. LATEST PROPERTY TAX RECEIPT",
-            "DETAILS OF THE FIRM/SHOP",
-            "1. NAME OF THE FIRM",
-            "2. ADDRESS OF THE FIRM",
-            "3. COMPANY INCORPORATION CERTIFICATE",
-            "4. COMPANY PANCARD",
-            "5. BUSINESS CATEGORY AND TYPE",
-            "6. DATE OF COMMENCEMENT",
-            "7. CAPITAL INVESTMENT",
-            "8. NUMBER OF EMPLOYEES",
-            "9. LICENSE PERIOD (1 TO 5)",
-            "10. PHOTO OF THE FIRM",
-            "11. VIDEO OF THE FRIM",
-            "12. EMAIL",
-            "DETAILS OF MANAGING DIRECTOR AND BUILDING OWNER",
-            "1. MANAGING DIRECTOR PHOTO",
-            "2. MANAGING DIRECTOR AADHAR CARD",
-            "3. MANAGING DIRECTOR ADDRESS",
-            "4. MANAGING DIRECTOR PHONE NO",
-            "5. BUILDING OWNER AADHAR CARD"
+            "( Rs. 200 STAMP PAPER, NOTARIZED)",
+            "AFFIDAVIT OF APPLICANT ( Rs. 200 STAMP PAPER)"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/CORPORATION%20LICENSE%20CHECKLIST%20%E2%80%93%20PVT%20LTD%20COMPANY.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "content": "Download the official document here: <a href=\"/docs/CORPORATION%20LICENSE%20CHECKLIST%20-%20INDIVIDUAL.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
           "items": [],
           "icon": "Download"
         }
       ],
       "faqs": [
         {
-          "q": "What is needed for CORPORATION LICENSE  – PVT LTD COMPANY?",
-          "a": "The required documents include: DETAILS OF THE BUILDING, 1. RENT AGREEMENT, 2. LATEST PROPERTY TAX RECEIPT, DETAILS OF THE FIRM/SHOP, 1. NAME OF THE FIRM, 2. ADDRESS OF THE FIRM, 3. COMPANY INCORPORATION CERTIFICATE, 4. COMPANY PANCARD... (see full checklist)."
+          "q": "What is needed for CORPORATION LICENSE CHECKLIST INDIVIDUAL?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -614,54 +846,61 @@
   },
   {
     "id": 10,
-    "name": "CORPORATION LICENSE SPA CENTER",
-    "title": "CORPORATION LICENSE SPA CENTER Checklist",
-    "description": "Requirements and checklist for CORPORATION LICENSE SPA CENTER.",
+    "name": "IFTF& OS LICENSE CHECKLIST PVT LTD COMPANY",
+    "title": "IFTF& OS LICENSE CHECKLIST PVT LTD COMPANY Checklist",
+    "description": "Requirements and checklist for IFTF& OS LICENSE CHECKLIST PVT LTD COMPANY.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details Of The Building",
           "items": [
-            "DETAILS OF THE BUILDING",
-            "1. RENT AGREEMENT",
-            "2. LATEST PROPERTY TAX RECEIPT",
-            "DETAILS OF THE FIRM/SHOP",
-            "1. NAME OF THE FIRM/ SHOP",
-            "2. ADDRESS OF THE FIRM/ SHOP",
-            "3. BUSINESS CATEGORY AND TYPE",
-            "4. DATE OF COMMENCEMENT",
-            "5. CAPITAL INVESTMENT",
-            "6. NUMBER OF EMPLOYEES",
-            "7. LICENSE PERIOD (1 TO 5)",
-            "8. PHOTO OF THE FIRM/SHOP",
-            "9. VIDEO OF THE FRIM/SHOP",
-            "10. EMAIL",
-            "11. HAIRTHA KARAM SENA AFFILIATION CERTIFICATE/CARD",
-            "12. DOCTOR’S CERTIFICATE",
-            "13. EMPLOYEES COURSE CERTIFICATE",
-            "DETAILS OF APPLICANT AND BUILDING OWNER",
-            "1. APPLICANT PHOTO",
-            "2. AADHAR CARD",
-            "3. ADDRESS",
-            "4. PHONE NO",
-            "5. ID PROOF",
-            "6. BUILDING OWNER AADHAR CARD"
+            "RENT AGREEMENT",
+            "LATEST PROPERTY TAX RECEIPT"
           ],
-          "icon": "List"
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of The Firm/shop",
+          "items": [
+            "NAME OF THE FIRM",
+            "ADDRESS OF THE FIRM",
+            "COMPANY INCORPORATION CERTIFICATE",
+            "COMPANY PANCARD",
+            "BUSINESS CATEGORY AND TYPE",
+            "DATE OF COMMENCEMENT",
+            "CAPITAL INVESTMENT",
+            "NUMBER OF EMPLOYEES",
+            "LICENSE PERIOD (1 TO 5)",
+            "PHOTO OF THE FIRM",
+            "VIDEO OF THE FRIM",
+            "EMAIL"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of Managing Director And Building Owner",
+          "items": [
+            "MANAGING DIRECTOR PHOTO",
+            "MANAGING DIRECTOR AADHAR CARD",
+            "MANAGING DIRECTOR ADDRESS",
+            "MANAGING DIRECTOR PHONE NO",
+            "MANAGING DIRECTOR EMAIL ID",
+            "BUILDING OWNER AADHAR CARD"
+          ],
+          "icon": "Folder"
         },
         {
           "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/CORPORATION%20LICENSE%20SPA%20CENTER%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "content": "Download the official document here: <a href=\"/docs/IFTF%26%20OS%20LICENSE%20CHECKLIST%20%20PVT%20LTD%20COMPANY.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
           "items": [],
           "icon": "Download"
         }
       ],
       "faqs": [
         {
-          "q": "What is needed for CORPORATION LICENSE SPA CENTER?",
-          "a": "The required documents include: DETAILS OF THE BUILDING, 1. RENT AGREEMENT, 2. LATEST PROPERTY TAX RECEIPT, DETAILS OF THE FIRM/SHOP, 1. NAME OF THE FIRM/ SHOP, 2. ADDRESS OF THE FIRM/ SHOP, 3. BUSINESS CATEGORY AND TYPE, 4. DATE OF COMMENCEMENT... (see full checklist)."
+          "q": "What is needed for IFTF& OS LICENSE CHECKLIST PVT LTD COMPANY?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -672,6 +911,79 @@
   },
   {
     "id": 11,
+    "name": "CORPORATION LICENSE SPA CENTER CHECKLIST (1)",
+    "title": "CORPORATION LICENSE SPA CENTER CHECKLIST (1) Checklist",
+    "description": "Requirements and checklist for CORPORATION LICENSE SPA CENTER CHECKLIST (1).",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Document Checklist",
+          "items": [
+            "CORPORATION LICENSE CHECKLIST – SPA(massage parlour/spa centre)"
+          ],
+          "icon": "List"
+        },
+        {
+          "title": "Details Of The Building",
+          "items": [
+            ". RENT AGREEMENT",
+            ". LATEST PROPERTY TAX RECEIPT"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of The Firm/shop",
+          "items": [
+            ". NAME OF THE FIRM/ SHOP",
+            ". ADDRESS OF THE FIRM/ SHOP",
+            ". BUSINESS CATEGORY AND TYPE",
+            ". DATE OF COMMENCEMENT",
+            ". CAPITAL INVESTMENT",
+            ". NUMBER OF EMPLOYEES",
+            ". LICENSE PERIOD (1 TO 5)",
+            ". PHOTO OF THE FIRM/SHOP",
+            ". VIDEO OF THE FRIM/SHOP",
+            ". EMAIL",
+            ". HAIRTHA KARAM SENA AFFILIATION CERTIFICATE/CARD",
+            ". DOCTOR’S CERTIFICATE",
+            ". EMPLOYEES COURSE CERTIFICATE"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of Applicant And Building Owner",
+          "items": [
+            ". APPLICANT PHOTO",
+            ". AADHAR CARD",
+            ". ADDRESS",
+            ". PHONE NO",
+            ". ID PROOF",
+            ". BUILDING OWNER AADHAR CARD"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/CORPORATION%20LICENSE%20SPA%20CENTER%20CHECKLIST%20(1).pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for CORPORATION LICENSE SPA CENTER CHECKLIST (1)?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 12,
     "name": "CORPORATION LICENSE",
     "title": "CORPORATION LICENSE Checklist",
     "description": "Requirements and checklist for CORPORATION LICENSE.",
@@ -679,33 +991,25 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Corporation License Checklist",
           "items": [
-            "– INDIVIDUAL",
-            "ID PROOF APPLICANT",
-            "(INCLUDES LOCAL BODY, WARD, )",
-            "ID PROOF BUILDING OWNER)",
-            "PASSPORT SIZE PHOTO – APPLICANT",
-            "RENT AGREEMENT",
-            "PARTNERSHIP DEED",
-            "LATEST PROPERTY TAX RECEIPT",
-            "MOB NO",
-            "BUILDING OWNER’S CONSENT LETTER",
-            "( RS. 200 STAMP PAPER, NOTARIZED)",
-            "AFFIDAVIT OF APPLICANT ( RS. 200 STAMP PAPER)",
-            "NAME OF THE FIRM/ SHOP",
-            "ADDRESS OF THE FIRM/ SHOP",
-            "PCB, ELIGIBILITY CERTIFICATES IF ANY",
-            "IF LODGE- NUMBER OF ROOMS",
-            "HOTEL – SEAT CAPACITY",
-            "PROPOSED DATE",
-            "BUILDING NAME",
-            "VILLAGE, SURVEY NUMBER",
-            "STREET NAME, ROAD, LAND MARK",
-            "CAPITAL INVESTMENT"
+            "– INDIVIDUAL"
           ],
-          "icon": "List"
+          "icon": "Folder"
+        },
+        {
+          "title": "Id Proof Applicant",
+          "items": [
+            "(INCLUDES LOCAL BODY, WARD, )"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Building Owner’s Consent Letter",
+          "items": [
+            "( RS. 200 STAMP PAPER, NOTARIZED)"
+          ],
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -717,7 +1021,7 @@
       "faqs": [
         {
           "q": "What is needed for CORPORATION LICENSE?",
-          "a": "The required documents include: – INDIVIDUAL, ID PROOF APPLICANT, (INCLUDES LOCAL BODY, WARD, ), ID PROOF BUILDING OWNER), PASSPORT SIZE PHOTO – APPLICANT, RENT AGREEMENT, PARTNERSHIP DEED, LATEST PROPERTY TAX RECEIPT... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -727,19 +1031,16 @@
     }
   },
   {
-    "id": 12,
-    "name": "DOCUMENTS NEEDED FOR IEC REGISTRATION  LLP",
-    "title": "Documents needed for IEC Registration  LLP Checklist",
-    "description": "Requirements and checklist for Documents needed for IEC Registration  LLP.",
+    "id": 13,
+    "name": "DOCUMENTS NEEDED FOR IEC REGISTRATION LLP",
+    "title": "Documents needed for IEC Registration LLP Checklist",
+    "description": "Requirements and checklist for Documents needed for IEC Registration LLP.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Llp (limited Liability Partnership)",
           "items": [
-            "Documents needed for IEC Registration:",
-            "LLP (Limited Liability Partnership):",
             " Passport size photograph of Designated Partner",
             " Scan copy of Pan Card of Entity",
             " PAN Card Copy of Designated Partner",
@@ -751,7 +1052,7 @@
             " Current A/c Cancel Cheque / Bank Certificate",
             " DSC (Digital Signature Certificate)"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -762,8 +1063,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for Documents needed for IEC Registration  LLP?",
-          "a": "The required documents include: Documents needed for IEC Registration:, LLP (Limited Liability Partnership):,  Passport size photograph of Designated Partner,  Scan copy of Pan Card of Entity,  PAN Card Copy of Designated Partner,  Copy of Voter Id / DL / Passport / Aadhar Card of Designated, Partner,  Certificate of incorporation... (see full checklist)."
+          "q": "What is needed for Documents needed for IEC Registration LLP?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -773,7 +1074,7 @@
     }
   },
   {
-    "id": 13,
+    "id": 14,
     "name": "DRUG LICENSE",
     "title": "Drug License Checklist",
     "description": "Requirements and checklist for Drug License.",
@@ -782,17 +1083,26 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Requirements to get Drug License",
-            "Types: Wholesale DL, Retail DL, Restricted DL",
-            "Process:",
+            "Types: Wholesale DL, Retail DL, Restricted DL"
+          ],
+          "icon": "List"
+        },
+        {
+          "title": "Process",
+          "items": [
             "Eligibility Consultation",
             "Document Preparation",
             "Application Drafting",
             "Application Filing",
-            "Government Fees",
-            "Following documents are required with application form to apply for Drug Licence:",
+            "Government Fees"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Following Documents Are Required With Application Form To Apply For Drug Licence",
+          "items": [
             "Constitution of the firm (MOA/AOA)",
             "Photo ID proof of proprietor/partner/director",
             "Copy of Property paper (If owned property)",
@@ -810,7 +1120,7 @@
             "Experience Certificate",
             "Appointment Letter and Bio-data"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -822,46 +1132,7 @@
       "faqs": [
         {
           "q": "What is needed for Drug License?",
-          "a": "The required documents include: Requirements to get Drug License, Types: Wholesale DL, Retail DL, Restricted DL, Process:, Eligibility Consultation, Document Preparation, Application Drafting, Application Filing, Government Fees... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 14,
-    "name": "DSC REGISTRATION",
-    "title": "DSC REGISTRATION Checklist",
-    "description": "Requirements and checklist for DSC REGISTRATION.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "1. PAN CARD COPY",
-            "2. AADHAR CARD COPY",
-            "3. PHOTO",
-            "4. EMAIL ID",
-            "5. MOBILE NO"
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/DSC%20REGISTRATION%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for DSC REGISTRATION?",
-          "a": "The required documents include: 1. PAN CARD COPY, 2. AADHAR CARD COPY, 3. PHOTO, 4. EMAIL ID, 5. MOBILE NO... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -872,6 +1143,44 @@
   },
   {
     "id": 15,
+    "name": "DSC REGISTRATION CHECKLIST",
+    "title": "DSC REGISTRATION CHECKLIST Checklist",
+    "description": "Requirements and checklist for DSC REGISTRATION CHECKLIST.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Dsc Registration Checklist",
+          "items": [
+            "PAN CARD COPY",
+            "AADHAR CARD COPY",
+            "PHOTO",
+            "EMAIL ID",
+            "MOBILE NO"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/DSC%20REGISTRATION%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for DSC REGISTRATION CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 16,
     "name": "DSCMANUAL",
     "title": "DSCManual Checklist",
     "description": "Requirements and checklist for DSCManual.",
@@ -880,13 +1189,17 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "User Manual",
             "Digital Signature Certificate(DSC)",
             "(Controller General of Patents, Designs &",
-            "Trademarks)",
-            "STEP TO INSTALL CAPICOM.DLL",
+            "Trademarks)"
+          ],
+          "icon": "List"
+        },
+        {
+          "title": "Step To Install Capicom.dll",
+          "items": [
             "The Installation of or registration of capicom.dll varies according to the Windows bit version like 32 bit",
             "version or 64 bit.",
             " For Windows XP, Windows 7 or Windows 8 (32 bit)",
@@ -917,7 +1230,7 @@
             "Run ActiveX controls and plug-ins Y",
             "Script ActiveX controls marked safe for scripting Y"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -929,7 +1242,7 @@
       "faqs": [
         {
           "q": "What is needed for DSCManual?",
-          "a": "The required documents include: User Manual, Digital Signature Certificate(DSC), (Controller General of Patents, Designs &, Trademarks), STEP TO INSTALL CAPICOM.DLL, The Installation of or registration of capicom.dll varies according to the Windows bit version like 32 bit, version or 64 bit.,  For Windows XP, Windows 7 or Windows 8 (32 bit)... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -939,7 +1252,7 @@
     }
   },
   {
-    "id": 16,
+    "id": 17,
     "name": "ESI & PF CHECK LIST",
     "title": "ESI & PF Check List Checklist",
     "description": "Requirements and checklist for ESI & PF Check List.",
@@ -947,40 +1260,43 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details Of Pf Registration",
           "items": [
-            "DETAILS OF PF REGISTRATION",
-            "1. Attendance Register",
-            "2. Wages Register",
-            "3. Address Proof of the firm",
-            "4. Copy of Partnership Deed, if any.",
-            "5. Resolution for registration, If any",
-            "6. Copy of Pan Card of all partners",
-            "7. Copy of PAN Card of firm (in case of partnership)",
-            "8. Copy of GST Registration Certificate",
-            "9. Copy of Corporation Licence",
-            "10. Electricity Connection Details (if Applicable)",
-            "11. Water Connection Details (if Applicable)",
-            "12. Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
-            "13. Id, Age and address Proof of all partners",
-            "14. Building Tax Receipt",
-            "DETAILS OF ESI REGISTRATION",
-            "1. Attendance Register",
-            "2. Wages Register",
-            "3. Address Proof of the firm",
-            "4. Copy of Partnership Deed, if any.",
-            "5. Resolution for registration, If any",
-            "6. Copy of Pan Card of all partners",
-            "7. Copy of PAN Card of firm (in case of partnership)",
-            "8. Copy of GST Registration Certificate",
-            "9. Electricity Connection Details (if Applicable)",
-            "10. Water Connection Details (if Applicable)",
-            "11. Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
-            "12. Id, Age and address Proof of all partners",
-            "13. Building Tax Receipt"
+            "Attendance Register",
+            "Wages Register",
+            "Address Proof of the firm",
+            "Copy of Partnership Deed, if any.",
+            "Resolution for registration, If any",
+            "Copy of Pan Card of all partners",
+            "Copy of PAN Card of firm (in case of partnership)",
+            "Copy of GST Registration Certificate",
+            "Copy of Corporation Licence",
+            "Electricity Connection Details (if Applicable)",
+            "Water Connection Details (if Applicable)",
+            "Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
+            "Id, Age and address Proof of all partners",
+            "Building Tax Receipt"
           ],
-          "icon": "List"
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of Esi Registration",
+          "items": [
+            "Attendance Register",
+            "Wages Register",
+            "Address Proof of the firm",
+            "Copy of Partnership Deed, if any.",
+            "Resolution for registration, If any",
+            "Copy of Pan Card of all partners",
+            "Copy of PAN Card of firm (in case of partnership)",
+            "Copy of GST Registration Certificate",
+            "Electricity Connection Details (if Applicable)",
+            "Water Connection Details (if Applicable)",
+            "Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
+            "Id, Age and address Proof of all partners",
+            "Building Tax Receipt"
+          ],
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -992,55 +1308,7 @@
       "faqs": [
         {
           "q": "What is needed for ESI & PF Check List?",
-          "a": "The required documents include: DETAILS OF PF REGISTRATION, 1. Attendance Register, 2. Wages Register, 3. Address Proof of the firm, 4. Copy of Partnership Deed, if any., 5. Resolution for registration, If any, 6. Copy of Pan Card of all partners, 7. Copy of PAN Card of firm (in case of partnership)... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 17,
-    "name": "ESI",
-    "title": "ESI Checklist",
-    "description": "Requirements and checklist for ESI.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "DETAILS OF ESI REGISTRATION",
-            "1. Attendance Register",
-            "2. Wages Register",
-            "3. Address Proof of the firm",
-            "4. Copy of Partnership Deed, if any.",
-            "5. Resolution for registration, If any",
-            "6. Copy of Pan Card of all partners",
-            "7. Copy of PAN Card of firm (in case of partnership)",
-            "8. Copy of GST Registration Certificate",
-            "9. Electricity Connection Details (if Applicable)",
-            "10. Water Connection Details (if Applicable)",
-            "11. Bank Account Details (A/c No, Branch, Bank Name, Branch, Type of A/c)",
-            "12. Id, Age and address Proof of all partners",
-            "13. Building Tax Receipt"
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/ESI%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for ESI?",
-          "a": "The required documents include: DETAILS OF ESI REGISTRATION, 1. Attendance Register, 2. Wages Register, 3. Address Proof of the firm, 4. Copy of Partnership Deed, if any., 5. Resolution for registration, If any, 6. Copy of Pan Card of all partners, 7. Copy of PAN Card of firm (in case of partnership)... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1059,8 +1327,8 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
+            "For image",
             "Number of Beds",
             "No. of Patient Beds in Ward",
             "No. of Patient Beds in IP Rooms",
@@ -1089,7 +1357,7 @@
       "faqs": [
         {
           "q": "What is needed for For image?",
-          "a": "The required documents include: Number of Beds, No. of Patient Beds in Ward, No. of Patient Beds in IP Rooms, No. of Patient Beds in ICU, No. of Patient Beds in Labour Room, No. of Patient tables in OT, No. of Patient tables in Procedure Rooms, No. of Patient Beds in Emergency Unit... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1100,52 +1368,6 @@
   },
   {
     "id": 19,
-    "name": "FSSAI LICENSE CHECK LIST (3) (1)",
-    "title": "FSSAI LICENSE CHECK LIST (3) (1) Checklist",
-    "description": "Requirements and checklist for FSSAI LICENSE CHECK LIST (3) (1).",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "1. Company Name and Address",
-            "2. Aadhar card copy of Applicant",
-            "3. Business nature and activity",
-            "4. E- mail id",
-            "5. Phone No",
-            "6. MOA",
-            "7. Period for license required",
-            "8. Rent Agreement",
-            "9. Corporation license copy",
-            "10. GST No. (if any)",
-            "11. PAN No. of company",
-            "12. Food product Category"
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/FSSAI%20LICENSE%20CHECK%20LIST%20(3)%20(1).pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for FSSAI LICENSE CHECK LIST (3) (1)?",
-          "a": "The required documents include: 1. Company Name and Address, 2. Aadhar card copy of Applicant, 3. Business nature and activity, 4. E- mail id, 5. Phone No, 6. MOA, 7. Period for license required, 8. Rent Agreement... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 20,
     "name": "FSSAI LICENSE CHECK LIST (3)",
     "title": "FSSAI LICENSE CHECK LIST (3) Checklist",
     "description": "Requirements and checklist for FSSAI LICENSE CHECK LIST (3).",
@@ -1153,23 +1375,22 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Fssai License Check List",
           "items": [
-            "1. Company Name and Address",
-            "2. Aadhar card copy of Applicant",
-            "3. Business nature and activity",
-            "4. E- mail id",
-            "5. Phone No",
-            "6. MOA",
-            "7. Period for license required",
-            "8. Rent Agreement",
-            "9. Corporation license copy",
-            "10. GST No. (if any)",
-            "11. PAN No. of company",
-            "12. Food product Category"
+            "Company Name and Address",
+            "Aadhar card copy of Applicant",
+            "Business nature and activity",
+            "E- mail id",
+            "Phone No",
+            "MOA",
+            "Period for license required",
+            "Rent Agreement",
+            "Corporation license copy",
+            "GST No. (if any)",
+            "PAN No. of company",
+            "Food product Category"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1181,7 +1402,7 @@
       "faqs": [
         {
           "q": "What is needed for FSSAI LICENSE CHECK LIST (3)?",
-          "a": "The required documents include: 1. Company Name and Address, 2. Aadhar card copy of Applicant, 3. Business nature and activity, 4. E- mail id, 5. Phone No, 6. MOA, 7. Period for license required, 8. Rent Agreement... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1191,7 +1412,7 @@
     }
   },
   {
-    "id": 21,
+    "id": 20,
     "name": "FSSAI REGISTRATION CHECK LIST",
     "title": "FSSAI REGISTRATION CHECK LIST Checklist",
     "description": "Requirements and checklist for FSSAI REGISTRATION CHECK LIST.",
@@ -1199,19 +1420,18 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Fssai Registration Check List",
           "items": [
-            "1. Company Name and Address",
-            "2. Aadhar card copy",
-            "3. Business nature and activity",
-            "4. E- mail id",
-            "5. Phone No",
-            "6. Period for license required",
-            "7. Food product Category",
-            "8. Photo"
+            "Company Name and Address",
+            "Aadhar card copy",
+            "Business nature and activity",
+            "E- mail id",
+            "Phone No",
+            "Period for license required",
+            "Food product Category",
+            "Photo"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1223,7 +1443,7 @@
       "faqs": [
         {
           "q": "What is needed for FSSAI REGISTRATION CHECK LIST?",
-          "a": "The required documents include: 1. Company Name and Address, 2. Aadhar card copy, 3. Business nature and activity, 4. E- mail id, 5. Phone No, 6. Period for license required, 7. Food product Category, 8. Photo... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1233,33 +1453,19 @@
     }
   },
   {
-    "id": 22,
-    "name": "GST REGISTRATION    COMPANY",
-    "title": "GST REGISTRATION    COMPANY Checklist",
-    "description": "Requirements and checklist for GST REGISTRATION    COMPANY.",
+    "id": 21,
+    "name": "GST REGISTRATION CHECKLIST COMPANY",
+    "title": "GST REGISTRATION CHECKLIST COMPANY Checklist",
+    "description": "Requirements and checklist for GST REGISTRATION CHECKLIST COMPANY.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details",
           "items": [
-            "COMPANY PAN CARD COPY",
-            "PAN CARD – ALL MEMBERS",
-            "AADHAR CARD COPY OF ALL MEMBERS",
-            "ADDRESS OF THE BUSINESS",
-            "PASSPORT SIZE PHOTO – ALL MEMBERS",
-            "EMAIL ID – ALL MEMBER",
-            "MOBILE NO – ALL MEMBERS",
-            "BANK STATEMENT OR CANCELLED CHEQUE LEAF",
-            "RENT AGREEMENT",
-            "BUILDING TAX RECEIPT ( CURRENT FINACIAL YEAR)",
-            "FIVE SALE PRODUCTS / SERVICES",
-            "NAME OF AUTHORIZED SIGNATORY",
-            "DIGITAL SIGNATURE- AUTHORIZED SIGNATORY",
-            "DIN NUMBER OF ALL MEMBERS"
+            "Please refer to the document."
           ],
-          "icon": "List"
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -1270,8 +1476,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for GST REGISTRATION    COMPANY?",
-          "a": "The required documents include: COMPANY PAN CARD COPY, PAN CARD – ALL MEMBERS, AADHAR CARD COPY OF ALL MEMBERS, ADDRESS OF THE BUSINESS, PASSPORT SIZE PHOTO – ALL MEMBERS, EMAIL ID – ALL MEMBER, MOBILE NO – ALL MEMBERS, BANK STATEMENT OR CANCELLED CHEQUE LEAF... (see full checklist)."
+          "q": "What is needed for GST REGISTRATION CHECKLIST COMPANY?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1281,33 +1487,19 @@
     }
   },
   {
-    "id": 23,
-    "name": "GST REGISTRATION    PARTNERSHIP FIRM",
-    "title": "GST REGISTRATION    PARTNERSHIP FIRM Checklist",
-    "description": "Requirements and checklist for GST REGISTRATION    PARTNERSHIP FIRM.",
+    "id": 22,
+    "name": "GST REGISTRATION CHECKLIST PARTNERSHIP FIRM",
+    "title": "GST REGISTRATION CHECKLIST PARTNERSHIP FIRM Checklist",
+    "description": "Requirements and checklist for GST REGISTRATION CHECKLIST PARTNERSHIP FIRM.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details",
           "items": [
-            "FIRM PAN CARD",
-            "PAN CARD – ALL PARTNERS",
-            "AADHAR CARD COPY OF ALL PARTNERS",
-            "ADDRESS OF THE FIRM",
-            "PASSPORT SIZE PHOTO – ALL PARTNERS",
-            "EMAIL ID – ALL MEMBER",
-            "MOBILE NO – ALL PARTNERS",
-            "BANK STATEMENT OR CANCELLED CHEQUE LEAF",
-            "RENT AGREEMENT",
-            "BUILDING TAX RECEIPT ( CURRENT FINACIAL YEAR)",
-            "FIVE SALE PRODUCTS / SERVICES",
-            "PARTNERSHIP DEED COPY",
-            "SPECIFY WHO IS THE AUTHORIZED PARTNER FOR",
-            "GST FILING"
+            "Please refer to the document."
           ],
-          "icon": "List"
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -1318,8 +1510,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for GST REGISTRATION    PARTNERSHIP FIRM?",
-          "a": "The required documents include: FIRM PAN CARD, PAN CARD – ALL PARTNERS, AADHAR CARD COPY OF ALL PARTNERS, ADDRESS OF THE FIRM, PASSPORT SIZE PHOTO – ALL PARTNERS, EMAIL ID – ALL MEMBER, MOBILE NO – ALL PARTNERS, BANK STATEMENT OR CANCELLED CHEQUE LEAF... (see full checklist)."
+          "q": "What is needed for GST REGISTRATION CHECKLIST PARTNERSHIP FIRM?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1329,29 +1521,19 @@
     }
   },
   {
-    "id": 24,
-    "name": "GST REGISTRATION    PROPRIETORSHIP",
-    "title": "GST REGISTRATION    PROPRIETORSHIP Checklist",
-    "description": "Requirements and checklist for GST REGISTRATION    PROPRIETORSHIP.",
+    "id": 23,
+    "name": "GST REGISTRATION CHECKLIST PROPRIETORSHIP",
+    "title": "GST REGISTRATION CHECKLIST PROPRIETORSHIP Checklist",
+    "description": "Requirements and checklist for GST REGISTRATION CHECKLIST PROPRIETORSHIP.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details",
           "items": [
-            "PAN CARD COPY",
-            "AADHAR CARD COPY",
-            "ADDRESS OF BUSINESS",
-            "PASSPORT SIZE PHOTO",
-            "RENT AGREEMENT",
-            "BUILDING TAX RECEIPT ( CURRENT FINACIAL YEAR)",
-            "MOBILE NO",
-            "EMAIL ID",
-            "NATURE OF BUSSINESS",
-            "FIVE SALE PRODUCTS / SERVICE"
+            "Please refer to the document."
           ],
-          "icon": "List"
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -1362,8 +1544,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for GST REGISTRATION    PROPRIETORSHIP?",
-          "a": "The required documents include: PAN CARD COPY, AADHAR CARD COPY, ADDRESS OF BUSINESS, PASSPORT SIZE PHOTO, RENT AGREEMENT, BUILDING TAX RECEIPT ( CURRENT FINACIAL YEAR), MOBILE NO, EMAIL ID... (see full checklist)."
+          "q": "What is needed for GST REGISTRATION CHECKLIST PROPRIETORSHIP?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1373,7 +1555,7 @@
     }
   },
   {
-    "id": 25,
+    "id": 24,
     "name": "IEC PARTNERSHIP FIRM",
     "title": "IEC Partnership firm Checklist",
     "description": "Requirements and checklist for IEC Partnership firm.",
@@ -1381,16 +1563,15 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Ie Code Registration Check List",
           "items": [
             "Partnership firm",
-            "1. Pass port size photographs 4 nos ( applicant) 1 photos",
+            "Pass port size photographs 4 nos ( applicant) 1 photos",
             "each other partners",
-            "2. Copy Pan card copy 2 side (firm and partners)",
-            "3. Copy of Address proof each partners (election",
+            "Copy Pan card copy 2 side (firm and partners)",
+            "Copy of Address proof each partners (election",
             "id/passport/aadhar/ Driving licence etc..)",
-            "5. Partnership deed copy",
+            "Partnership deed copy",
             "6 rent agreement",
             "7 building tax receipt",
             "8 .Bank certificate",
@@ -1399,10 +1580,10 @@
             "11 service sector- attach the copy of ssi certificate or",
             "service tax certificate",
             "12 Manufactures- Attach the copy of ssi certificate",
-            "13. Resolution",
+            "Resolution",
             "14 Degital signature"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1414,7 +1595,7 @@
       "faqs": [
         {
           "q": "What is needed for IEC Partnership firm?",
-          "a": "The required documents include: Partnership firm, 1. Pass port size photographs 4 nos ( applicant) 1 photos, each other partners, 2. Copy Pan card copy 2 side (firm and partners), 3. Copy of Address proof each partners (election, id/passport/aadhar/ Driving licence etc..), 5. Partnership deed copy, 6 rent agreement... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1424,7 +1605,7 @@
     }
   },
   {
-    "id": 26,
+    "id": 25,
     "name": "IEC PROPRIETORSHIP",
     "title": "IEC PROPRIETORSHIP Checklist",
     "description": "Requirements and checklist for IEC PROPRIETORSHIP.",
@@ -1432,25 +1613,23 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Proprietorship",
           "items": [
-            "PROPRIETORSHIP",
-            "1. Pass port size photographs 4 nos",
-            "2. Copy Pan card copy 2 side",
-            "3. Copy of Address proof (election id/passport/aadhar/",
+            "Pass port size photographs 4 nos",
+            "Copy Pan card copy 2 side",
+            "Copy of Address proof (election id/passport/aadhar/",
             "Driving licence etc..)",
             "4 rent agrement",
             "5 building tax receipt",
-            "6.Bank certificate",
-            "7. Mail id",
+            "Bank certificate",
+            "Mail id",
             "8 Phone number",
-            "9. service sector- attach the copy of ssi certificate or",
+            "service sector- attach the copy of ssi certificate or",
             "service tax certificate",
-            "10. Manufactures- Attach the copy of ssi certificate",
+            "Manufactures- Attach the copy of ssi certificate",
             "11 Degital signature"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1462,7 +1641,7 @@
       "faqs": [
         {
           "q": "What is needed for IEC PROPRIETORSHIP?",
-          "a": "The required documents include: PROPRIETORSHIP, 1. Pass port size photographs 4 nos, 2. Copy Pan card copy 2 side, 3. Copy of Address proof (election id/passport/aadhar/, Driving licence etc..), 4 rent agrement, 5 building tax receipt, 6.Bank certificate... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1472,7 +1651,7 @@
     }
   },
   {
-    "id": 27,
+    "id": 26,
     "name": "IT FILING CHECK LIST",
     "title": "it filing Check List Checklist",
     "description": "Requirements and checklist for it filing Check List.",
@@ -1480,26 +1659,25 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Income Tax Filing Check List",
           "items": [
-            "1. Pan Card Copy",
-            "2. Address proof & Id Proof (Aadhaar Card is",
+            "Pan Card Copy",
+            "Address proof & Id Proof (Aadhaar Card is",
             "Mandatory)",
-            "3. Mob Number",
-            "4. Email id",
-            "5. Bank Account Details (A/c No, Branch , Type of",
+            "Mob Number",
+            "Email id",
+            "Bank Account Details (A/c No, Branch , Type of",
             "Account , Ifsc Code etc..)",
-            "6. If Pancard Registered in Income tax site Provide",
+            "If Pancard Registered in Income tax site Provide",
             "the Password",
-            "7. Business details",
-            "8. Deduction details :- House Rent , Insurance ,",
+            "Business details",
+            "Deduction details :- House Rent , Insurance ,",
             "Mediclaim, School Fees, Houing loan,",
             "Donation,Fixed Deposit , Proprietory Sale . .. Etc",
-            "9. Bank Statement ..01.04 …. To 31.03…..",
-            "10. If any Other income"
+            "Bank Statement ..01.04 …. To 31.03…..",
+            "If any Other income"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1511,7 +1689,7 @@
       "faqs": [
         {
           "q": "What is needed for it filing Check List?",
-          "a": "The required documents include: 1. Pan Card Copy, 2. Address proof & Id Proof (Aadhaar Card is, Mandatory), 3. Mob Number, 4. Email id, 5. Bank Account Details (A/c No, Branch , Type of, Account , Ifsc Code etc..), 6. If Pancard Registered in Income tax site Provide... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1521,19 +1699,16 @@
     }
   },
   {
-    "id": 28,
-    "name": "LLP INCORPORATION CHECK LIST",
-    "title": "LLP Incorporation Check List Checklist",
-    "description": "Requirements and checklist for LLP Incorporation Check List.",
+    "id": 27,
+    "name": "LLP INCORPORATION CHECK LIST 1",
+    "title": "LLP Incorporation Check List 1 Checklist",
+    "description": "Requirements and checklist for LLP Incorporation Check List 1.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Llp",
           "items": [
-            "Details Required:",
-            "LLP",
             " Address of Registered office of LLP",
             " Contact No",
             " Email Id",
@@ -1550,19 +1725,19 @@
             " Address Proof of the Partners (Utility bill/ Bank Statement Not older than 2 months)",
             " DSC of Designated Partners"
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/LLP%20Incorporation%20Check%20List.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "content": "Download the official document here: <a href=\"/docs/LLP%20Incorporation%20Check%20List-1.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
           "items": [],
           "icon": "Download"
         }
       ],
       "faqs": [
         {
-          "q": "What is needed for LLP Incorporation Check List?",
-          "a": "The required documents include: Details Required:, LLP,  Address of Registered office of LLP,  Contact No,  Email Id,  Utility Bill of the proposed Registered Office of the LLP (Not older than 2 Months),  No-Objection Certificate from the Landlord or,,  Rental Agreement Copy between the LLP and the Landlord... (see full checklist)."
+          "q": "What is needed for LLP Incorporation Check List 1?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1572,17 +1747,17 @@
     }
   },
   {
-    "id": 29,
-    "name": "LOCATION SKETCH",
-    "title": "LOCATION SKETCH Checklist",
-    "description": "Requirements and checklist for LOCATION SKETCH.",
+    "id": 28,
+    "name": "LOCATION SKETCH CHECKLIST",
+    "title": "LOCATION SKETCH CHECKLIST Checklist",
+    "description": "Requirements and checklist for LOCATION SKETCH CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Document Requirements",
           "items": [
+            "LOCATION SKETCH CHECKLIST",
             "ORIGINAL DEED OR BANK COPY WITH LETTER",
             "LATEST LAND TAX RECEIPT",
             "ENCUMERANCE CERTIFICATE",
@@ -1600,8 +1775,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for LOCATION SKETCH?",
-          "a": "The required documents include: ORIGINAL DEED OR BANK COPY WITH LETTER, LATEST LAND TAX RECEIPT, ENCUMERANCE CERTIFICATE, LOCATION LAND MARK, PHONE NO.... (see full checklist)."
+          "q": "What is needed for LOCATION SKETCH CHECKLIST?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1611,45 +1786,19 @@
     }
   },
   {
-    "id": 30,
-    "name": "MARRIAGE REGISTRATION  REMOVED",
-    "title": "MARRIAGE REGISTRATION  removed Checklist",
-    "description": "Requirements and checklist for MARRIAGE REGISTRATION  removed.",
+    "id": 29,
+    "name": "MARRIAGE REGISTRATION CHECKLIST REMOVED",
+    "title": "MARRIAGE REGISTRATION CHECKLIST removed Checklist",
+    "description": "Requirements and checklist for MARRIAGE REGISTRATION CHECKLIST removed.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details",
           "items": [
-            "BRIDE NAME",
-            "ADDRESS",
-            "PHOTO",
-            "AADHAR",
-            "PIN CODE, VILLAGE",
-            "JOB",
-            "PHONE NUMBER & EMAIL ID",
-            "FATHER'S OR MOTHER'S NAME",
-            "BRIDE SUB REGISTRAR OFFICE",
-            "MARITAL STATUS",
-            "PRESENT ADDRESS DURATION",
-            "BRIDEGROOM NAME",
-            "ADDRESS",
-            "PHOTO",
-            "AADHAR",
-            "PIN CODE, VILLAGE",
-            "JOB",
-            "PHONE NUMBER & EMAIL ID",
-            "PRESENT ADDRESS DURATION",
-            "PROPOSED SUB REGISRAR OFFICE FOR",
-            "MARRIAGE",
-            "MARITAL STATUS",
-            "BRIDEGROOM'S SUB REGISTRAR",
-            "OFFICE",
-            "CONVENIENT DATE OF",
-            "SOLEMNIZATION"
+            "Please refer to the document."
           ],
-          "icon": "List"
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -1660,8 +1809,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for MARRIAGE REGISTRATION  removed?",
-          "a": "The required documents include: BRIDE NAME, ADDRESS, PHOTO, AADHAR, PIN CODE, VILLAGE, JOB, PHONE NUMBER & EMAIL ID, FATHER'S OR MOTHER'S NAME... (see full checklist)."
+          "q": "What is needed for MARRIAGE REGISTRATION CHECKLIST removed?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1671,32 +1820,19 @@
     }
   },
   {
-    "id": 31,
-    "name": "MSME REGISTRATION  (1)",
-    "title": "MSME REGISTRATION  (1) Checklist",
-    "description": "Requirements and checklist for MSME REGISTRATION  (1).",
+    "id": 30,
+    "name": "MSME REGISTRATION CHECKLIST (1)",
+    "title": "MSME REGISTRATION CHECKLIST (1) Checklist",
+    "description": "Requirements and checklist for MSME REGISTRATION CHECKLIST (1).",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Total Number Of Employees",
           "items": [
-            "AADHAR CARD COPY OF APPLICANT",
-            "BUSINESS NAME",
-            "BUSINESS ADDRESS",
-            "TYPE OF ORGANIZATION ( PROPRIETORSHIP,",
-            "PARTNERSHIP,COMPANY)",
-            "BUSINESS EMAIL ID",
-            "BUSINESS STARTUP DATE",
-            "BANK DETAILS",
-            "TYPE OF BUSINESS (MANUFACTURING OR SERVICE) &",
-            "TYPE OF PRODUCT OR SERVICE",
-            "TOTAL NUMBER OF EMPLOYEES",
-            "GST No.",
-            "INVESTMENT ( MORE THAN 1 LAKH)"
+            "GST No."
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1707,8 +1843,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for MSME REGISTRATION  (1)?",
-          "a": "The required documents include: AADHAR CARD COPY OF APPLICANT, BUSINESS NAME, BUSINESS ADDRESS, TYPE OF ORGANIZATION ( PROPRIETORSHIP,, PARTNERSHIP,COMPANY), BUSINESS EMAIL ID, BUSINESS STARTUP DATE, BANK DETAILS... (see full checklist)."
+          "q": "What is needed for MSME REGISTRATION CHECKLIST (1)?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1718,27 +1854,19 @@
     }
   },
   {
-    "id": 32,
-    "name": "PAN CARD    INDIVIDUAL",
-    "title": "PAN CARD    INDIVIDUAL Checklist",
-    "description": "Requirements and checklist for PAN CARD    INDIVIDUAL.",
+    "id": 31,
+    "name": "PAN CARD CHECKLIST INDIVIDUAL",
+    "title": "PAN CARD CHECKLIST INDIVIDUAL Checklist",
+    "description": "Requirements and checklist for PAN CARD CHECKLIST INDIVIDUAL.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details",
           "items": [
-            "PASSPORT SIZE PHOTO -2",
-            "EMAIL ID",
-            "MOBILE NO",
-            "AADHAR CARD COPY (AADRESS PROOF)",
-            "DATE OF BIRTH PROOF ( VOTER ID ,",
-            "AADHAR CARD COPY- IF HAVE FULL DATE",
-            "OF BIRTH )",
-            "SIGNATURE OF THE APPLICANT"
+            "Please refer to the document."
           ],
-          "icon": "List"
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -1749,8 +1877,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for PAN CARD    INDIVIDUAL?",
-          "a": "The required documents include: PASSPORT SIZE PHOTO -2, EMAIL ID, MOBILE NO, AADHAR CARD COPY (AADRESS PROOF), DATE OF BIRTH PROOF ( VOTER ID ,, AADHAR CARD COPY- IF HAVE FULL DATE, OF BIRTH ), SIGNATURE OF THE APPLICANT... (see full checklist)."
+          "q": "What is needed for PAN CARD CHECKLIST INDIVIDUAL?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1760,7 +1888,7 @@
     }
   },
   {
-    "id": 33,
+    "id": 32,
     "name": "PARAMEDICAL CHECK LIST",
     "title": "PARAMEDICAL CHECK LIST Checklist",
     "description": "Requirements and checklist for PARAMEDICAL CHECK LIST.",
@@ -1768,38 +1896,51 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Building Owner’s Details",
           "items": [
-            "BUILDING OWNER’S DETAILS",
-            "1. RENT AGREEMENT",
-            "2. AADHAAR CARD",
-            "3. LATEST PROPERTY TAX RECEIPT",
-            "4. PASSPORT SIZE PHOTO",
-            "DOCTOR’S DETAILS",
-            "1. NAME",
-            "2. AADHAAR CARD",
-            "3. MOB NUMBER",
-            "4. CERTIFICATE",
-            "5. PASSPORT SIZE PHOTO",
-            "6. EMAIL ID",
-            "FIRM/ SHOP DETAILS",
-            "1. ESTABLISHMENT NAME",
-            "2. TYPE OF OPERATION",
-            "3. SERVICE TYPE",
-            "4. BUILDING NUMBER",
-            "5. BULDING NAME",
-            "6. MONTHY RENT",
-            "7. ZONAL NAME",
-            "8. NEAR ROAD, LANDMARK",
-            "9. VILLAGE",
-            "10. POST OFFICE",
-            "11. PIN COCDE",
-            "DOCUMENTS",
-            "1. IMAGE CERTIFICATE",
-            "2. PCB CERTIFICATE"
+            "RENT AGREEMENT",
+            "AADHAAR CARD",
+            "LATEST PROPERTY TAX RECEIPT",
+            "PASSPORT SIZE PHOTO"
           ],
-          "icon": "List"
+          "icon": "Folder"
+        },
+        {
+          "title": "Doctor’s Details",
+          "items": [
+            "NAME",
+            "AADHAAR CARD",
+            "MOB NUMBER",
+            "CERTIFICATE",
+            "PASSPORT SIZE PHOTO",
+            "EMAIL ID"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Firm/ Shop Details",
+          "items": [
+            "ESTABLISHMENT NAME",
+            "TYPE OF OPERATION",
+            "SERVICE TYPE",
+            "BUILDING NUMBER",
+            "BULDING NAME",
+            "MONTHY RENT",
+            "ZONAL NAME",
+            "NEAR ROAD, LANDMARK",
+            "VILLAGE",
+            "POST OFFICE",
+            "PIN COCDE"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Documents",
+          "items": [
+            "IMAGE CERTIFICATE",
+            "PCB CERTIFICATE"
+          ],
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1811,7 +1952,7 @@
       "faqs": [
         {
           "q": "What is needed for PARAMEDICAL CHECK LIST?",
-          "a": "The required documents include: BUILDING OWNER’S DETAILS, 1. RENT AGREEMENT, 2. AADHAAR CARD, 3. LATEST PROPERTY TAX RECEIPT, 4. PASSPORT SIZE PHOTO, DOCTOR’S DETAILS, 1. NAME, 2. AADHAAR CARD... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1821,7 +1962,7 @@
     }
   },
   {
-    "id": 34,
+    "id": 33,
     "name": "PARTNERSHIP DEED CHECK LIST",
     "title": "PARTNERSHIP DEED CHECK LIST Checklist",
     "description": "Requirements and checklist for PARTNERSHIP DEED CHECK LIST.",
@@ -1829,27 +1970,26 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Partnership Deed Check List",
           "items": [
-            "1. All Partners Aadhar and Pan card details.",
-            "2. Profit sharing ratio.",
-            "3. Capital contribution.",
-            "4. Activity of business.",
-            "5. Address of firm.",
-            "6. Specify who is the managing partner.",
-            "7. Managing partner phone no, firm email id , land",
+            "All Partners Aadhar and Pan card details.",
+            "Profit sharing ratio.",
+            "Capital contribution.",
+            "Activity of business.",
+            "Address of firm.",
+            "Specify who is the managing partner.",
+            "Managing partner phone no, firm email id , land",
             "phone if any.",
-            "8. \tSpecify the bank account operation :- Whether the",
+            "Specify the bank account operation :- Whether the",
             "managing partner or other partners.",
-            "9. \tName of the firm.",
-            "10. Duration of partnership:- for a specific period or at",
+            "Name of the firm.",
+            "Duration of partnership:- for a specific period or at",
             "will.",
-            "11. If the partnership firm need to be registered before",
+            "If the partnership firm need to be registered before",
             "government need photo of all partners.",
-            "12. Other condition if any."
+            "Other condition if any."
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -1861,7 +2001,46 @@
       "faqs": [
         {
           "q": "What is needed for PARTNERSHIP DEED CHECK LIST?",
-          "a": "The required documents include: 1. All Partners Aadhar and Pan card details., 2. Profit sharing ratio., 3. Capital contribution., 4. Activity of business., 5. Address of firm., 6. Specify who is the managing partner., 7. Managing partner phone no, firm email id , land, phone if any.... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 34,
+    "name": "PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS 1",
+    "title": "PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS 1 Checklist",
+    "description": "Requirements and checklist for PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS 1.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Passport Application For 10th Failed Applicants",
+          "items": [
+            "Documents Needed",
+            "School Certificate /Admission Extract (for below 50 years)",
+            "Voters ID (new model ,colour)",
+            "Aadhar Card/PAN Card",
+            "Name and Details must be same for all ID proofs.",
+            "Originals and copies of ID proofs are required."
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/PASSPORT%20APPLICATION%20FOR%2010TH%20FAILED%20APPLICANTS-1.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS 1?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1872,46 +2051,6 @@
   },
   {
     "id": 35,
-    "name": "PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS",
-    "title": "PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS Checklist",
-    "description": "Requirements and checklist for PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "Documents Needed",
-            "1. School Certificate /Admission Extract (for below 50 years)",
-            "2. Voters ID (new model ,colour)",
-            "3. Aadhar Card/PAN Card",
-            "Name and Details must be same for all ID proofs.",
-            "Originals and copies of ID proofs are required."
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/PASSPORT%20APPLICATION%20FOR%2010TH%20FAILED%20APPLICANTS.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for PASSPORT APPLICATION FOR 10TH FAILED APPLICANTS?",
-          "a": "The required documents include: Documents Needed, 1. School Certificate /Admission Extract (for below 50 years), 2. Voters ID (new model ,colour), 3. Aadhar Card/PAN Card, Name and Details must be same for all ID proofs., Originals and copies of ID proofs are required.... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 36,
     "name": "PASSPORT",
     "title": "passport Checklist",
     "description": "Requirements and checklist for passport.",
@@ -1920,7 +2059,6 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Details required for new passport application",
             "Address Proof: Aadhaar Card, Voter ID card",
@@ -1944,7 +2082,7 @@
       "faqs": [
         {
           "q": "What is needed for passport?",
-          "a": "The required documents include: Details required for new passport application, Address Proof: Aadhaar Card, Voter ID card, Present Address, Date of Birth Proof: Birth Certificate, Email id, Phone number, Near police station address, Father full name... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -1954,7 +2092,7 @@
     }
   },
   {
-    "id": 37,
+    "id": 36,
     "name": "PATENT",
     "title": "patent Checklist",
     "description": "Requirements and checklist for patent.",
@@ -1963,7 +2101,6 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Documents for Patent Registration",
             "(Form 1)Application form in duplicate – it includes information relating to the name and address of the",
@@ -1989,12 +2126,12 @@
             "PCT National Phase Application wherein requirements of Rule 17.1 (a or b) has not been fulfilled",
             "Filing the patent application in India",
             "No Stages of the patent process Form No.",
-            "1. Application for grant of patent Form 1",
-            "2. Provisional/complete specification Form 2",
-            "3. Statement and undertaking under section 8 (this is only required where a patent application is",
+            "Application for grant of patent Form 1",
+            "Provisional/complete specification Form 2",
+            "Statement and undertaking under section 8 (this is only required where a patent application is",
             "already filed in the country other than India) Form 3",
-            "4. Declaration as to inventorship Form 5",
-            "5. Forms submitted only by start-ups and small entities. Form 28"
+            "Declaration as to inventorship Form 5",
+            "Forms submitted only by start-ups and small entities. Form 28"
           ],
           "icon": "List"
         },
@@ -2008,7 +2145,7 @@
       "faqs": [
         {
           "q": "What is needed for patent?",
-          "a": "The required documents include: Documents for Patent Registration, (Form 1)Application form in duplicate – it includes information relating to the name and address of the, inventor, name, and address of the applicant and other declarations., (Form 2)– The provisional or complete specification in duplicate. If you are filing the provisional, specification, provide the complete specification within 12 months., Drawing in duplicate (if any). The drawing sheets attached should also contain the signature of an, applicant or his agent in the right-hand bottom corner., Abstract of the invention.... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2018,55 +2155,17 @@
     }
   },
   {
-    "id": 38,
-    "name": "POSESSION CERTIFICATE  (1)",
-    "title": "POSESSION CERTIFICATE  (1) Checklist",
-    "description": "Requirements and checklist for POSESSION CERTIFICATE  (1).",
+    "id": 37,
+    "name": "POSESSION CERTIFICATE CHECKLIST",
+    "title": "POSESSION CERTIFICATE CHECKLIST Checklist",
+    "description": "Requirements and checklist for POSESSION CERTIFICATE CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Document Requirements",
           "items": [
-            "ORIGINAL DEED OR BANK COPY WITH LETTER",
-            "LATEST LAND TAX RECEIPT",
-            "ENCUMBRANCE CERTIFICATE",
-            "PHONE NO."
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/POSESSION%20CERTIFICATE%20CHECKLIST%20(1).pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for POSESSION CERTIFICATE  (1)?",
-          "a": "The required documents include: ORIGINAL DEED OR BANK COPY WITH LETTER, LATEST LAND TAX RECEIPT, ENCUMBRANCE CERTIFICATE, PHONE NO.... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 39,
-    "name": "POSESSION CERTIFICATE",
-    "title": "POSESSION CERTIFICATE Checklist",
-    "description": "Requirements and checklist for POSESSION CERTIFICATE.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
+            "POSESSION CERTIFICATE CHECKLIST",
             "ORIGINAL DEED OR BANK COPY WITH LETTER",
             "LATEST LAND TAX RECEIPT",
             "ENCUMBRANCE CERTIFICATE",
@@ -2083,8 +2182,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for POSESSION CERTIFICATE?",
-          "a": "The required documents include: ORIGINAL DEED OR BANK COPY WITH LETTER, LATEST LAND TAX RECEIPT, ENCUMBRANCE CERTIFICATE, PHONE NO.... (see full checklist)."
+          "q": "What is needed for POSESSION CERTIFICATE CHECKLIST?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2094,81 +2193,32 @@
     }
   },
   {
-    "id": 40,
-    "name": "PROJECT REPORT  (1)",
-    "title": "Project Report  (1) Checklist",
-    "description": "Requirements and checklist for Project Report  (1).",
+    "id": 38,
+    "name": "PROJECT REPORT CHECKLIST",
+    "title": "Project Report Checklist Checklist",
+    "description": "Requirements and checklist for Project Report Checklist.",
     "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
+            "Project Report – Checklist",
             "Details of Business",
-            "1. Name, constitution, and address of Business.",
-            "2. Details (about) Business (services provided, nature of business)",
-            "3. Name, address experience of Owner/promoter",
-            "4. Capital of business & Contributions of promoter.",
+            "Name, constitution, and address of Business.",
+            "Details (about) Business (services provided, nature of business)",
+            "Name, address experience of Owner/promoter",
+            "Capital of business & Contributions of promoter.",
             "Details of Loan",
-            "1. Nature of Loan proposed",
-            "2. Name of bank",
-            "3. Tenure of loan",
-            "4. Interest rate applicable",
+            "Nature of Loan proposed",
+            "Name of bank",
+            "Tenure of loan",
+            "Interest rate applicable",
             "Financial statements",
-            "1. Financial report of previous years, in case of existing business.",
-            "2. List of Fixed Assets.",
-            "3. Revenue/ turnover expected in the subsequent years.",
-            "4. Quotations from Suppliers."
-          ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/Project%20Report%20Checklist%20(1).pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for Project Report  (1)?",
-          "a": "The required documents include: Details of Business, 1. Name, constitution, and address of Business., 2. Details (about) Business (services provided, nature of business), 3. Name, address experience of Owner/promoter, 4. Capital of business & Contributions of promoter., Details of Loan, 1. Nature of Loan proposed, 2. Name of bank... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 41,
-    "name": "PROJECT REPORT",
-    "title": "Project Report Checklist",
-    "description": "Requirements and checklist for Project Report.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "Details of Business",
-            "1. Name, constitution, and address of Business.",
-            "2. Details (about) Business (services provided, nature of business)",
-            "3. Name, address experience of Owner/promoter",
-            "4. Capital of business & Contributions of promoter.",
-            "Details of Loan",
-            "1. Nature of Loan proposed",
-            "2. Name of bank",
-            "3. Tenure of loan",
-            "4. Interest rate applicable",
-            "Financial statements",
-            "1. Financial report of previous years, in case of existing business.",
-            "2. List of Fixed Assets.",
-            "3. Revenue/ turnover expected in the subsequent years.",
-            "4. Quotations from Suppliers."
+            "Financial report of previous years, in case of existing business.",
+            "List of Fixed Assets.",
+            "Revenue/ turnover expected in the subsequent years.",
+            "Quotations from Suppliers."
           ],
           "icon": "List"
         },
@@ -2181,8 +2231,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for Project Report?",
-          "a": "The required documents include: Details of Business, 1. Name, constitution, and address of Business., 2. Details (about) Business (services provided, nature of business), 3. Name, address experience of Owner/promoter, 4. Capital of business & Contributions of promoter., Details of Loan, 1. Nature of Loan proposed, 2. Name of bank... (see full checklist)."
+          "q": "What is needed for Project Report Checklist?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2192,37 +2242,50 @@
     }
   },
   {
-    "id": 42,
-    "name": "RELEASE DEED  (1)",
-    "title": "RELEASE DEED  (1) Checklist",
-    "description": "Requirements and checklist for RELEASE DEED  (1).",
+    "id": 39,
+    "name": "RELEASE DEED CHECKLIST",
+    "title": "RELEASE DEED CHECKLIST Checklist",
+    "description": "Requirements and checklist for RELEASE DEED CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Purchaser",
           "items": [
-            "PURCHASER",
             "Name and Address",
             "Pancard",
             "Photo",
             "Mobile Number",
             "Email Id",
             "Village, Taluk",
-            "Job, Pincode",
-            "SELLER",
+            "Job, Pincode"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Seller",
+          "items": [
             "Name and Address",
             "Pancard",
             "Photo",
             "Mobile Number",
             "Email Id",
             "Village, Taluk",
-            "Job, Pincode",
-            "WITNESS",
+            "Job, Pincode"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Witness",
+          "items": [
             "Aadhaar card, Job",
-            "Village, Taluk",
-            "DOCUMENTS",
+            "Village, Taluk"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Documents",
+          "items": [
             "Sale amount",
             "Date of deed of execution",
             "Land tax receipt",
@@ -2232,69 +2295,7 @@
             "Encumbrance certificate",
             "Building Receipt (If the land having a building)"
           ],
-          "icon": "List"
-        },
-        {
-          "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/RELEASE%20DEED%20CHECKLIST%20(1).pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
-          "items": [],
-          "icon": "Download"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "What is needed for RELEASE DEED  (1)?",
-          "a": "The required documents include: PURCHASER, Name and Address, Pancard, Photo, Mobile Number, Email Id, Village, Taluk, Job, Pincode... (see full checklist)."
-        },
-        {
-          "q": "How long does the process take?",
-          "a": "Timelines vary based on government processing. Please contact us for an estimate."
-        }
-      ]
-    }
-  },
-  {
-    "id": 43,
-    "name": "RELEASE DEED",
-    "title": "RELEASE DEED Checklist",
-    "description": "Requirements and checklist for RELEASE DEED.",
-    "image_path": "",
-    "details": {
-      "cards": [
-        {
-          "title": "Document Checklist",
-          "content": "",
-          "items": [
-            "PURCHASER",
-            "Name and Address",
-            "Pancard",
-            "Photo",
-            "Mobile Number",
-            "Email Id",
-            "Village, Taluk",
-            "Job, Pincode",
-            "SELLER",
-            "Name and Address",
-            "Pancard",
-            "Photo",
-            "Mobile Number",
-            "Email Id",
-            "Village, Taluk",
-            "Job, Pincode",
-            "WITNESS",
-            "Aadhaar card, Job",
-            "Village, Taluk",
-            "DOCUMENTS",
-            "Sale amount",
-            "Date of deed of execution",
-            "Land tax receipt",
-            "Deeds and previous deeds",
-            "Location sketch",
-            "Possession certificate",
-            "Encumbrance certificate",
-            "Building Receipt (If the land having a building)"
-          ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -2305,8 +2306,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for RELEASE DEED?",
-          "a": "The required documents include: PURCHASER, Name and Address, Pancard, Photo, Mobile Number, Email Id, Village, Taluk, Job, Pincode... (see full checklist)."
+          "q": "What is needed for RELEASE DEED CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2316,7 +2317,7 @@
     }
   },
   {
-    "id": 44,
+    "id": 40,
     "name": "RENEW PASSPORT",
     "title": "renew passport Checklist",
     "description": "Requirements and checklist for renew passport.",
@@ -2325,7 +2326,6 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Details required for Renew passport",
             "Old passport copy",
@@ -2344,7 +2344,7 @@
       "faqs": [
         {
           "q": "What is needed for renew passport?",
-          "a": "The required documents include: Details required for Renew passport, Old passport copy, Email id, Phone number... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2354,7 +2354,7 @@
     }
   },
   {
-    "id": 45,
+    "id": 41,
     "name": "RENT AGREEMENT CHECK LIST 1",
     "title": "RENT AGREEMENT CHECK LIST 1 Checklist",
     "description": "Requirements and checklist for RENT AGREEMENT CHECK LIST 1.",
@@ -2362,20 +2362,11 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details",
           "items": [
-            "NAME OF THE LESSOR",
-            "NAME OF THE LESSEE",
-            "AADHAR CARD COPY OF LESSOR",
-            "AADHAR CARD COPY OF LESSEE",
-            "BUSINESS NAME,DOOR NO, AND ADDRESS",
-            "MONTHLY RENT FOR THE BUILDING",
-            "SECURITY DEPOSIT AMOUNT",
-            "DURATION",
-            "OTHER CONDITIONS IF ANY"
+            "Please refer to the document."
           ],
-          "icon": "List"
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -2387,7 +2378,7 @@
       "faqs": [
         {
           "q": "What is needed for RENT AGREEMENT CHECK LIST 1?",
-          "a": "The required documents include: NAME OF THE LESSOR, NAME OF THE LESSEE, AADHAR CARD COPY OF LESSOR, AADHAR CARD COPY OF LESSEE, BUSINESS NAME,DOOR NO, AND ADDRESS, MONTHLY RENT FOR THE BUILDING, SECURITY DEPOSIT AMOUNT, DURATION... (see full checklist)."
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2397,17 +2388,17 @@
     }
   },
   {
-    "id": 46,
-    "name": "ROR",
-    "title": "ROR Checklist",
-    "description": "Requirements and checklist for ROR.",
+    "id": 42,
+    "name": "ROR CHECKLIST",
+    "title": "ROR CHECKLIST Checklist",
+    "description": "Requirements and checklist for ROR CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Document Requirements",
           "items": [
+            "ROR CHECKLIST",
             "DEED COPY",
             "ENCUMBRANCE CERTIFICATE",
             "LATEST LAND TAX RECEIPT",
@@ -2424,8 +2415,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for ROR?",
-          "a": "The required documents include: DEED COPY, ENCUMBRANCE CERTIFICATE, LATEST LAND TAX RECEIPT, PHONE NO.... (see full checklist)."
+          "q": "What is needed for ROR CHECKLIST?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2435,20 +2426,19 @@
     }
   },
   {
-    "id": 47,
-    "name": "SALE DEED",
-    "title": "Sale DEED Checklist",
-    "description": "Requirements and checklist for Sale DEED.",
+    "id": 43,
+    "name": "SALE DEED CHECKLIST",
+    "title": "Sale DEED CHECKLIST Checklist",
+    "description": "Requirements and checklist for Sale DEED CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
-            "1. \tType of Deed.",
+            "Type of Deed.",
             "( Sale Deed, Settlement, Partition, will, etc..",
-            "2. \tNumber of Executants.",
+            "Number of Executants.",
             "a. \tName",
             "b. \tFather’s Name",
             "c. \tOccupation",
@@ -2457,7 +2447,7 @@
             "f. \tVillage",
             "g. \tDesom",
             "h. \tAddress with Pin",
-            "3. \tNumber of Claimants.",
+            "Number of Claimants.",
             "a. \tName",
             "b. \tFather’s Name",
             "c. \tOccupation",
@@ -2466,7 +2456,7 @@
             "f. \tVillage",
             "g. \tDesom",
             "h. \tAddress with Pin",
-            "4. \tWhether Land have Building",
+            "Whether Land have Building",
             "a. \t(If any) Sq. ft",
             "b. \tBuilding No. ( Old & New )",
             "c. \tLatest Tax Receipt No. & Date",
@@ -2482,12 +2472,12 @@
             "m. \tNo. of Electric Points",
             "n. \tNo. of Fans",
             "o. \tNo. of Motors",
-            "5. \tBoundaries",
+            "Boundaries",
             "a. \tNorth",
             "b. \tEast",
             "c. \tSouth",
             "d. \tWest",
-            "6. \tWitness 1",
+            "Witness 1",
             "a. \tName",
             "b. \tFather’s Name",
             "c. \tOccupation",
@@ -2495,7 +2485,7 @@
             "e. \tTaluk",
             "f. \tVillage",
             "g. \tAddress with Pin & PO",
-            "7. \tWitness 2",
+            "Witness 2",
             "a. \tName",
             "b. \tFather’s Name",
             "c. \tOccupation",
@@ -2503,7 +2493,7 @@
             "e. \tTaluk",
             "f. \tVillage",
             "g. \tAddress with Pin & PO",
-            "8. \tProperty Details",
+            "Property Details",
             "a. \tDistrict",
             "b. \tSub District",
             "c. \tTaluk",
@@ -2518,36 +2508,80 @@
             "l. \tExtent",
             "m. \tNature of Land",
             "n. \tExecutant’s Tandaper No.",
-            "o. \tClaimant’s Tandaper No.",
-            "PREVIOUS DOCUMENT TABLE",
-            "REQUIRED DOCUMENTS",
-            "1. \tPrior Deed copy",
-            "2. \tLocation Sketch",
-            "3. \tEncumbrance Certificate ( If any attachment, Submit Lift Order )",
-            "4. \tPassport size Photos of Parties",
-            "5. \tVillage Land Tax Receipt",
-            "6. \tBuilding Tax Receipt",
-            "7. \tAadhar Card & PAN of Buyer",
-            "8. \tAadhar Card & PAN of Seller",
-            "FAIR VALUE",
-            "Survey No \tSubDivision No \tResurvey No \tReSubDivision No \tLand Type \tFairvalue Per Are(Rs)",
-            "STAMP VERIFICATION",
-            "1. \tSTAMP DATE",
-            "2. \tSATMP VENDOR NAME & DETAILS",
-            "3. \tDENOMINATION OF STAMP",
-            "DENOMINATION \tSERIAL NO. \tSTAMP NO.",
-            "4. \tNO. OF FILING SHEET",
-            "6. \tCHECK PLOT SKETCH",
-            "7. \tCHECK VALUATION CERTIFICATE",
-            "8. \tNATIONAL TRUST ACT CLAUSE",
-            "9. \tMENTALLY RETRAD /DISABLED",
-            "CLAUSE",
-            "10. \tCHECK PAN CARD OF THE BUYER &",
-            "SELLER",
-            "11. \tCOMPARE DEED & FILING SHEETS,",
-            "END WITH FILING SHEET."
+            "o. \tClaimant’s Tandaper No."
           ],
           "icon": "List"
+        },
+        {
+          "title": "Previous Document Table",
+          "items": [
+            "Doc No. \tYear \tVolume \tPages from \tPages To \tExtent \tType of Deed"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Required Documents",
+          "items": [
+            "Prior Deed copy",
+            "Location Sketch",
+            "Encumbrance Certificate ( If any attachment, Submit Lift Order )",
+            "Passport size Photos of Parties",
+            "Village Land Tax Receipt",
+            "Building Tax Receipt",
+            "Aadhar Card & PAN of Buyer",
+            "Aadhar Card & PAN of Seller"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Fair Value",
+          "items": [
+            "Survey No \tSubDivision No \tResurvey No \tReSubDivision No \tLand Type \tFairvalue Per Are(Rs)"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Stamp Verification",
+          "items": [
+            "STAMP DATE",
+            "SATMP VENDOR NAME & DETAILS",
+            "DENOMINATION OF STAMP"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Denomination \tserial No. \tstamp No.",
+          "items": [
+            "NO. OF FILING SHEET",
+            "TOTAL NO. OF PAGES IN THE DEED",
+            "CHECK PLOT SKETCH",
+            "CHECK VALUATION CERTIFICATE",
+            "NATIONAL TRUST ACT CLAUSE",
+            "MENTALLY RETRAD /DISABLED"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Clause",
+          "items": [
+            "CHECK PAN CARD OF THE BUYER &"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Seller",
+          "items": [
+            "COMPARE DEED & FILING SHEETS,"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "End With Filing Sheet.",
+          "items": [
+            "ATTACH ALL REQUIRED FORMS.",
+            "COPY OF ALL RELEVANT"
+          ],
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -2558,8 +2592,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for Sale DEED?",
-          "a": "The required documents include: 1. \tType of Deed., ( Sale Deed, Settlement, Partition, will, etc.., 2. \tNumber of Executants., a. \tName, b. \tFather’s Name, c. \tOccupation, d. \tDistrict, e. \tTaluk... (see full checklist)."
+          "q": "What is needed for Sale DEED CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2569,7 +2603,7 @@
     }
   },
   {
-    "id": 48,
+    "id": 44,
     "name": "SALES AGREEMENT FORMAT",
     "title": "Sales Agreement format Checklist",
     "description": "Requirements and checklist for Sales Agreement format.",
@@ -2578,7 +2612,6 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Sale Agreement Format",
             "Sale amount",
@@ -2612,7 +2645,7 @@
       "faqs": [
         {
           "q": "What is needed for Sales Agreement format?",
-          "a": "The required documents include: Sale Agreement Format, Sale amount, Advance Amount, Purchaser name and address, Seller name and address, Date of agreement of execution, Sale Period with in Months, Building Number and details... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2622,41 +2655,41 @@
     }
   },
   {
-    "id": 49,
-    "name": "SHOP AND ESTABLISHMENT   UPDATED",
-    "title": "SHOP AND ESTABLISHMENT   UPDATED Checklist",
-    "description": "Requirements and checklist for SHOP AND ESTABLISHMENT   UPDATED.",
+    "id": 45,
+    "name": "SHOP AND ESTABLISHMENT CHECKLIST",
+    "title": "SHOP AND ESTABLISHMENT CHECKLIST Checklist",
+    "description": "Requirements and checklist for SHOP AND ESTABLISHMENT CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Documents required for Shop and Establishment",
             "Registration",
-            "1. Address proof (Rent Agreement / Aadhar )",
-            "2. Pan of the applicant",
-            "3. List of employees with Name and Address , DOB , Designation and Year of",
+            "Address proof (Rent Agreement / Aadhar )",
+            "Pan of the applicant",
+            "List of employees with Name and Address , DOB , Designation and Year of",
             "joining",
-            "4. MOA /AOA/Certificate of incorporation / Partnership Deed /LLP Agreement",
-            "5. Types of Business",
-            "6. Mobile No",
-            "7. Email ID"
+            "MOA /AOA/Certificate of incorporation / Partnership Deed /LLP Agreement",
+            "Types of Business",
+            "Bank Details",
+            "Mobile No",
+            "Email ID"
           ],
           "icon": "List"
         },
         {
           "title": "Download",
-          "content": "Download the official document here: <a href=\"/docs/SHOP%20AND%20ESTABLISHMENT%20CHECKLIST%20-UPDATED.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "content": "Download the official document here: <a href=\"/docs/SHOP%20AND%20ESTABLISHMENT%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
           "items": [],
           "icon": "Download"
         }
       ],
       "faqs": [
         {
-          "q": "What is needed for SHOP AND ESTABLISHMENT   UPDATED?",
-          "a": "The required documents include: Documents required for Shop and Establishment, Registration, 1. Address proof (Rent Agreement / Aadhar ), 2. Pan of the applicant, 3. List of employees with Name and Address , DOB , Designation and Year of, joining, 4. MOA /AOA/Certificate of incorporation / Partnership Deed /LLP Agreement, 5. Types of Business... (see full checklist)."
+          "q": "What is needed for SHOP AND ESTABLISHMENT CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2666,17 +2699,17 @@
     }
   },
   {
-    "id": 50,
-    "name": "SOCIETY REGISTRATION",
-    "title": "SOCIETY REGISTRATION Checklist",
-    "description": "Requirements and checklist for SOCIETY REGISTRATION.",
+    "id": 46,
+    "name": "SOCIETY REGISTRATION CHECKLIST",
+    "title": "SOCIETY REGISTRATION CHECKLIST Checklist",
+    "description": "Requirements and checklist for SOCIETY REGISTRATION CHECKLIST.",
     "image_path": "",
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Document Requirements",
           "items": [
+            "SOCIETY REGISTRATION CHECKLIST",
             "NAME OF THE ASSOCIATION",
             "TOTAL NO.OF MEMBERS IN THE SOCIETY",
             "ALL MEMBERS NAME & ADDRESS",
@@ -2691,7 +2724,6 @@
             "DATE OF SOCIETY FORMATION",
             "WARD NO",
             "PANCHAYAT",
-            "BLOCK",
             "LOCAL BODY"
           ],
           "icon": "List"
@@ -2705,8 +2737,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for SOCIETY REGISTRATION?",
-          "a": "The required documents include: NAME OF THE ASSOCIATION, TOTAL NO.OF MEMBERS IN THE SOCIETY, ALL MEMBERS NAME & ADDRESS, SOCIETY ADDRESS, MOA , BYLAW, EMAIL ID, PHONE NO., NAME OF APPLICANT... (see full checklist)."
+          "q": "What is needed for SOCIETY REGISTRATION CHECKLIST?",
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2716,32 +2748,32 @@
     }
   },
   {
-    "id": 51,
-    "name": "TDS FILING    SALE OF PROPERTY",
-    "title": "TDS FILING    Sale of Property Checklist",
-    "description": "Requirements and checklist for TDS FILING    Sale of Property.",
+    "id": 47,
+    "name": "TDS FILING CHECKLIST SALE OF PROPERTY",
+    "title": "TDS FILING CHECKLIST Sale of Property Checklist",
+    "description": "Requirements and checklist for TDS FILING CHECKLIST Sale of Property.",
     "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
-            " Address of property",
-            " Date of agreement",
-            " Details of Transferee/ Buyer",
+            "TDS FILING CHECKLIST (TDS on sale of Property)",
+            "Address of property",
+            "Date of agreement",
+            "Details of Transferee/ Buyer",
             " Name",
             " Address",
             " Email ID",
             " Pan",
-            " Details of Transferor /Seller",
+            "Details of Transferor /Seller",
             " Name",
             " Address",
             " Email ID",
             " Pan",
-            " Sale Consideration",
-            " TDS",
-            " Date of payment"
+            "Sale Consideration",
+            "TDS",
+            "Date of payment"
           ],
           "icon": "List"
         },
@@ -2754,8 +2786,8 @@
       ],
       "faqs": [
         {
-          "q": "What is needed for TDS FILING    Sale of Property?",
-          "a": "The required documents include:  Address of property,  Date of agreement,  Details of Transferee/ Buyer,  Name,  Address,  Email ID,  Pan,  Details of Transferor /Seller... (see full checklist)."
+          "q": "What is needed for TDS FILING CHECKLIST Sale of Property?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2765,7 +2797,7 @@
     }
   },
   {
-    "id": 52,
+    "id": 48,
     "name": "TRADE MARK FOR PROPRIETORSHIP (1)",
     "title": "trade mark for Proprietorship (1) Checklist",
     "description": "Requirements and checklist for trade mark for Proprietorship (1).",
@@ -2774,18 +2806,17 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Sole Proprietorship concern",
-            "1. Copy of the logo, preferably in black & white (Optional).",
-            "2. Signed Form-48. It is an authorization from the applicant to a",
+            "Copy of the logo, preferably in black & white (Optional).",
+            "Signed Form-48. It is an authorization from the applicant to a",
             "Trademark Attorney for filing the trademark application on his/her",
             "behalf",
-            "3. Identity Proof of the individual or Proprietor.",
-            "4. Address Proof of the individual or Proprietor.",
-            "5. Business activity and details",
-            "6. mobile number",
-            "7. Email id"
+            "Identity Proof of the individual or Proprietor.",
+            "Address Proof of the individual or Proprietor.",
+            "Business activity and details",
+            "mobile number",
+            "Email id"
           ],
           "icon": "List"
         },
@@ -2799,7 +2830,7 @@
       "faqs": [
         {
           "q": "What is needed for trade mark for Proprietorship (1)?",
-          "a": "The required documents include: Sole Proprietorship concern, 1. Copy of the logo, preferably in black & white (Optional)., 2. Signed Form-48. It is an authorization from the applicant to a, Trademark Attorney for filing the trademark application on his/her, behalf, 3. Identity Proof of the individual or Proprietor., 4. Address Proof of the individual or Proprietor., 5. Business activity and details... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2809,7 +2840,7 @@
     }
   },
   {
-    "id": 53,
+    "id": 49,
     "name": "TRADEMARK PARTNERSHIP LLP COMPANY",
     "title": "trademark Partnership LLP Company Checklist",
     "description": "Requirements and checklist for trademark Partnership LLP Company.",
@@ -2818,24 +2849,23 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "Partnership/LLP/Company",
-            "1. Copy of Logo (Optional)",
-            "2. Signed Form-48. (It is an authorization from the applicant to a",
+            "Copy of Logo (Optional)",
+            "Signed Form-48. (It is an authorization from the applicant to a",
             "trademark attorney for filing the trademark application on his/her",
             "behalf)",
-            "3. 3. udyog Aadhar Registration Certificate, if applicable.",
-            "4. Incorporation Certificate in case of a Company.",
-            "5. Registered Partnership Deed for Partnership Companies.",
-            "6. LLP deed in the case of LLP.",
-            "7. Identity Proof of Signatory.",
-            "8. Address Proof of Signatory",
-            "9. KYC documents of the business (PAN, Address proof).",
-            "10. Type of business (Manufacturing, service, trading).",
-            "11. Business activity and details",
-            "12. Mobile number",
-            "13. Email id"
+            "3. udyog Aadhar Registration Certificate, if applicable.",
+            "Incorporation Certificate in case of a Company.",
+            "Registered Partnership Deed for Partnership Companies.",
+            "LLP deed in the case of LLP.",
+            "Identity Proof of Signatory.",
+            "Address Proof of Signatory",
+            "KYC documents of the business (PAN, Address proof).",
+            "Type of business (Manufacturing, service, trading).",
+            "Business activity and details",
+            "Mobile number",
+            "Email id"
           ],
           "icon": "List"
         },
@@ -2849,7 +2879,7 @@
       "faqs": [
         {
           "q": "What is needed for trademark Partnership LLP Company?",
-          "a": "The required documents include: Partnership/LLP/Company, 1. Copy of Logo (Optional), 2. Signed Form-48. (It is an authorization from the applicant to a, trademark attorney for filing the trademark application on his/her, behalf), 3. 3. udyog Aadhar Registration Certificate, if applicable., 4. Incorporation Certificate in case of a Company., 5. Registered Partnership Deed for Partnership Companies.... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2859,7 +2889,7 @@
     }
   },
   {
-    "id": 54,
+    "id": 50,
     "name": "TRADE LISENCE FORM",
     "title": "trade lisence form Checklist",
     "description": "Requirements and checklist for trade lisence form.",
@@ -2867,12 +2897,11 @@
     "details": {
       "cards": [
         {
-          "title": "Document Checklist",
-          "content": "",
+          "title": "Details",
           "items": [
-            "Please refer to the downloadable document for the complete checklist."
+            "Please refer to the document."
           ],
-          "icon": "List"
+          "icon": "AlertCircle"
         },
         {
           "title": "Download",
@@ -2884,7 +2913,7 @@
       "faqs": [
         {
           "q": "What is needed for trade lisence form?",
-          "a": "The required documents include: Please refer to the downloadable document for the complete checklist.... (see full checklist)."
+          "a": "Please download the PDF to view requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2894,7 +2923,7 @@
     }
   },
   {
-    "id": 55,
+    "id": 51,
     "name": "VALUATION CERTIFICATE CHECK LIST",
     "title": "VALUATION CERTIFICATE CHECK LIST Checklist",
     "description": "Requirements and checklist for VALUATION CERTIFICATE CHECK LIST.",
@@ -2903,7 +2932,6 @@
       "cards": [
         {
           "title": "Document Checklist",
-          "content": "",
           "items": [
             "1 Flat / House",
             "2 Owners Name",
@@ -2912,15 +2940,20 @@
             "5 Name & Address of the building",
             "6 Door No.",
             "7 Name of panchayath / muncipality/ corporation",
-            "8 Sqft",
-            "9 M2",
+            "8 Sqft"
+          ],
+          "icon": "List"
+        },
+        {
+          "title": "9 M2",
+          "items": [
             "10 Year of construction",
             "11 Survey No/ Resurvey No.",
             "12 Village",
             "13 Building Value",
             "14 Others if any."
           ],
-          "icon": "List"
+          "icon": "Folder"
         },
         {
           "title": "Download",
@@ -2932,7 +2965,323 @@
       "faqs": [
         {
           "q": "What is needed for VALUATION CERTIFICATE CHECK LIST?",
-          "a": "The required documents include: 1 Flat / House, 2 Owners Name, 3 Date of Inspection, 4 Sub Registery office, 5 Name & Address of the building, 6 Door No., 7 Name of panchayath / muncipality/ corporation, 8 Sqft... (see full checklist)."
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 52,
+    "name": "CHECK LIST GIFT OR SETTLEMENT",
+    "title": "CHECK LIST GIFT OR SETTLEMENT Checklist",
+    "description": "Requirements and checklist for CHECK LIST GIFT OR SETTLEMENT.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Settlement Deed Check List",
+          "items": [
+            "SETTLOR",
+            "Aadhaar card",
+            "Pancard",
+            "Photo",
+            "Mobile Number",
+            "Email Id",
+            "Village,",
+            "Taluk",
+            "Job,",
+            "Pin code",
+            "SETTLEE",
+            "Aadhaar card",
+            "Pan card",
+            "Photo",
+            "Mobile Number",
+            "Email Id",
+            "Village,",
+            "Taluk",
+            "Job,",
+            "Pin code",
+            "WITNESS",
+            "Aadhaar card,",
+            "Job",
+            "Village,",
+            "Taluk,",
+            "DOCUMENTS",
+            "Land tax receipt",
+            "Deeds and previous deeds",
+            "Location sketch",
+            "Possession certificate",
+            "Encumbrance certificate",
+            "Building Receipt (If the land having a building)"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/CHECK%20LIST%20GIFT%20OR%20SETTLEMENT.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for CHECK LIST GIFT OR SETTLEMENT?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 53,
+    "name": "CORPORATION LICENSE CHECKLIST",
+    "title": "CORPORATION LICENSE CHECKLIST Checklist",
+    "description": "Requirements and checklist for CORPORATION LICENSE CHECKLIST.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Details Of The Building",
+          "items": [
+            "BUILDING OWNER’S CONSENT LETTER",
+            "( RS. 200 STAMP PAPER, NOTARIZED)",
+            "AFFIDAVIT OF APPLICANT ( RS. 200 STAMP PAPER)",
+            "RENT AGREEMENT",
+            "LATEST PROPERTY TAX RECEIPT"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of The Firm/shop",
+          "items": [
+            "NAME OF THE FIRM/ SHOP",
+            "ADDRESS OF THE FIRM/ SHOP",
+            "BUSINESS CATEGORY AND TYPE",
+            "DATE OF COMMENCEMENT",
+            "CAPITAL INVESTMENT",
+            "NUMBER OF EMPLOYEES",
+            "LICENSE PERIOD (1 TO 5)",
+            "PHOTO OF THE FIRM/SHOP",
+            "VIDEO OF THE FRIM/SHOP",
+            "EMAIL",
+            "HAIRTHA KARAM SENA AFFILIATION CERTIFICATE/CARD",
+            "DOCTOR’S CERTIFICATE",
+            "EMPLOYEES COURSE CERTIFICATE"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of Applicant And Building Owner",
+          "items": [
+            "APPLICANT PHOTO",
+            "AADHAR CARD",
+            "ADDRESS",
+            "PHONE NO",
+            "ID PROOF",
+            "BUILDING OWNER AADHAR CARD"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/CORPORATION%20LICENSE%20%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for CORPORATION LICENSE CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 54,
+    "name": "DEED REGISTRATION CHECK LIST",
+    "title": "DEED REGISTRATION CHECK LIST Checklist",
+    "description": "Requirements and checklist for DEED REGISTRATION CHECK LIST.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Buyer Details",
+          "items": [
+            ". Aadhaar Card: Copy of buyer's Aadhaar card"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "2. Father's Name",
+          "items": [
+            ". Village, Taluk: Buyer's village and taluk",
+            ". Job Details: Buyer's occupation and job details",
+            ". Pan Card: Copy of buyer's Pan card"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Seller Details",
+          "items": [
+            ". Aadhaar Card: Copy of seller's Aadhaar card"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "2. Father's Name",
+          "items": [
+            ". Village, Taluk: Seller's village and taluk",
+            ". Job Details: Seller's occupation and job details",
+            ". Pan Card: Copy of seller's Pan card"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Property Details",
+          "items": [
+            ". ROR (Record of Rights): Copy of ROR document",
+            ". Location Sketch: Sketch of the property location",
+            ". Deed Copy: Copy of the property deed",
+            ". Land Tax: Latest land tax receipt up to March",
+            ". Building Tax: Latest building tax receipt up to March",
+            ". Boundaries (North, East, South, West)"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "1. Witness 1",
+          "items": [
+            "a) Aadhaar card",
+            "b) Village",
+            "c) Job details",
+            "d) Taluk",
+            "e) Father's name"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "2. Witness 2",
+          "items": [
+            "a) Aadhaar card",
+            "b) Village",
+            "c) Job details",
+            "d) Taluk",
+            "e) Father's name"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Whether Land Have Building",
+          "items": [
+            ". (If any) Sq. ft",
+            ". Building No. ( Old & New )",
+            ". Latest Tax Receipt No. & Date",
+            ". Tax Paid Amount",
+            ". Source of Water ( Well/KWA/Bore well )",
+            ". Separate car shed , If any",
+            ". Type of Building ( Residential / Commercial )",
+            ". Year of Building Construction",
+            ". No. of Floors",
+            ". Roof Type ( Concrete/Sheet )",
+            ". Material used for Flooring (Tile/Marble.)",
+            ". Compound Wall, If any",
+            ". No. of Electric Points",
+            ". No. of Fans",
+            ". No. of Motors"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/DEED%20REGISTRATION%20CHECK%20LIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for DEED REGISTRATION CHECK LIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 55,
+    "name": "IFTE & OS LICENSE CHECKLIST",
+    "title": "IFTE & OS LICENSE CHECKLIST Checklist",
+    "description": "Requirements and checklist for IFTE & OS LICENSE CHECKLIST.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Details Of The Building",
+          "items": [
+            "BUILDING OWNER’S CONSENT LETTER",
+            "( RS. 200 STAMP PAPER, NOTARIZED)",
+            "AFFIDAVIT OF APPLICANT ( RS. 200 STAMP PAPER)",
+            "RENT AGREEMENT",
+            "LATEST PROPERTY TAX RECEIPT",
+            "POWER OF ATTORNY COPY"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of The Firm/shop",
+          "items": [
+            "NAME OF THE PARTNERSHIP FIRM/ SHOP",
+            "ADDRESS OF THE PARTNERSHIP FIRM/ SHOP",
+            "BUSINESS CATEGORY AND TYPE",
+            "DATE OF COMMENCEMENT",
+            "CAPITAL INVESTMENT",
+            "NUMBER OF EMPLOYEES",
+            "LICENSE PERIOD (1 TO 5)",
+            "PHOTO OF THE FIRM/SHOP",
+            "VIDEO OF THE FRIM/SHOP",
+            "EMAIL",
+            "HAIRTHA KARAM SENA AFFILIATION CERTIFICATE/CARD"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Details Of Applicant And Building Owner",
+          "items": [
+            "APPLICANT PHOTO",
+            "APPLICANT AADHAR CARD",
+            "APPLICANT ADDRESS",
+            "PHONE NO",
+            "MAIL ID",
+            "BUILDING OWNER AADHAR CARD"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/IFTE%20%26%20OS%20LICENSE%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for IFTE & OS LICENSE CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
           "q": "How long does the process take?",
@@ -2943,47 +3292,289 @@
   },
   {
     "id": 56,
-    "name": "Name Change",
-    "title": "Name Change Assistance",
-    "description": "Comprehensive support for legally changing your name, including affidavit preparation and gazette publication.",
+    "name": "LEGAL OPINION CHECKLIST",
+    "title": "LEGAL OPINION CHECKLIST Checklist",
+    "description": "Requirements and checklist for LEGAL OPINION CHECKLIST.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Property Details",
+          "items": [
+            "Sale Deed",
+            "Title Deed",
+            "Previous deeds",
+            "Encumbrance Certificate (EC) (30 years)",
+            "Patta/Khata Certificate and Extract",
+            "Property owner id proofs"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Mutation Document",
+          "items": [
+            "Current year village tax receipt",
+            "Possession and non-attachment",
+            "Thadapper Or ROR",
+            "Location sketch"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Building And Occupancy",
+          "items": [
+            "Building tax receipt",
+            "Building Plan Approval",
+            "Completion Certificate",
+            "Occupancy Certificate"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/LEGAL%20OPINION%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for LEGAL OPINION CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 57,
+    "name": "MARRIAGE REGISTRATION CHECKLIST",
+    "title": "MARRIAGE REGISTRATION CHECKLIST Checklist",
+    "description": "Requirements and checklist for MARRIAGE REGISTRATION CHECKLIST.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Bride Details",
+          "items": [
+            "Bride Name",
+            "Aadhaar Card Copy",
+            "Photo",
+            "Mobile Number",
+            "Email ID",
+            "Profession",
+            "SSLC or 10th Certificate",
+            "Father's Name",
+            "Village",
+            "Sub Registrar office"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Bride Groom Details",
+          "items": [
+            "Groom Name",
+            "Aadhaar Card Copy",
+            "Photo",
+            "Mobile Number",
+            "Email ID",
+            "Profession",
+            "SSLC or 10th Certificate",
+            "Father's Name",
+            "Village",
+            "Sub Registrar Office"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Witness 1",
+          "items": [
+            "Aadhaar Card Copy",
+            "Job/Profession",
+            "Village",
+            "Pin Code",
+            "Mobile Number",
+            "Email ID"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Witness 2",
+          "items": [
+            "Aadhaar Card Copy",
+            "Job/Profession",
+            "Village",
+            "Pin Code",
+            "Mobile Number",
+            "Email ID"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Witness 3",
+          "items": [
+            "Aadhaar Card Copy",
+            "Job/Profession",
+            "Village",
+            "Pin Code",
+            "Mobile Number",
+            "Email ID"
+          ],
+          "icon": "Folder"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/MARRIAGE%20REGISTRATION%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for MARRIAGE REGISTRATION CHECKLIST?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 58,
+    "name": "PAN CARD CHECKLIST PARTNERSHIP FIRM",
+    "title": "PAN CARD CHECKLIST PARTNERSHIP FIRM Checklist",
+    "description": "Requirements and checklist for PAN CARD CHECKLIST PARTNERSHIP FIRM.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Details",
+          "items": [
+            "Please refer to the document."
+          ],
+          "icon": "AlertCircle"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/PAN%20CARD%20CHECKLIST%20-%20PARTNERSHIP%20FIRM.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for PAN CARD CHECKLIST PARTNERSHIP FIRM?",
+          "a": "Please download the PDF to view requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 59,
+    "name": "POKUVARAV CHECKLIST",
+    "title": "pokuvarav checklist Checklist",
+    "description": "Requirements and checklist for pokuvarav checklist.",
+    "image_path": "",
     "details": {
       "cards": [
         {
           "title": "Document Checklist",
           "items": [
-            "Affidavit on Stamp Paper (min value)",
-            "Original Newspaper Advertisements (2 papers)",
-            "Prescribed Performa for Gazette Publication",
-            "Two Passport Size Photographs",
-            "Photo ID Proof (PAN/Aadhaar/Passport)",
-            "Request Letter"
+            "Transfer of Registry (Pokkuvaravu) in Ernakulam",
+            "(A-h-Im-i- hn-Nm-c-W- -t]m¡p-h-c-hv)",
+            "Required documents",
+            "Previous deeds",
+            "Latest land tax receipt",
+            "Encumbrance certificate (30 year)",
+            "List certificate",
+            "O. Muthachan Death certificate , Aadhar card, Taluk, Village",
+            "Rachel Death certificate, Aadhaar card, Taluk, Village",
+            "Original Will , and witness id proofs",
+            "Koshi, John and Thomas Aadhaar and Pancard, Taluk, Village",
+            "Legal heirship certificate/ Relationship certificate",
+            "Required documents in sale deed registration",
+            "Previous deeds",
+            "Latest land tax receipt",
+            "Building tax receipt",
+            "Ownership certificate",
+            "Building age certificate",
+            "Building valuation",
+            "Encumbrance certificate (30 year)",
+            "List certificate",
+            "O. Muthachan Death certificate , Aadhar card",
+            "Rachel Death certificate, Aadhaar card",
+            "Original Will , and witness id proofs",
+            "Koshi, John and Thomas Aadhaar and Pancard",
+            "Legal heirship certificate/ Relationship certificate"
           ],
-          "icon": "FileText"
+          "icon": "List"
         },
         {
-          "title": "Process Steps",
-          "items": [
-            "1. Affidavit Preparation",
-            "2. Newspaper Publication (One English, One Local Language)",
-            "3. Gazette Notification Application",
-            "4. Publication in Official Gazette"
-          ],
-          "icon": "ListOrdered"
-        },
-        {
-          "title": "Process Duration",
-          "content": "Typically takes 2-4 weeks after Gazette application submission.",
-          "icon": "Clock"
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/pokuvarav%20checklist.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
         }
       ],
       "faqs": [
         {
-          "q": "Is the Gazette publication mandatory?",
-          "a": "Yes, for government purposes and passports, Gazette notification is often required."
+          "q": "What is needed for pokuvarav checklist?",
+          "a": "Please refer to the Document Checklist section for a complete list of requirements."
         },
         {
-          "q": "Can I change my name for any reason?",
-          "a": "Generally yes, provided it's not for fraudulent purposes or to hide identity from law enforcement."
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
+        }
+      ]
+    }
+  },
+  {
+    "id": 60,
+    "name": "UDAYAM REGISTRATION CHECKLIST",
+    "title": "UDAYAM REGISTRATION CHECKLIST Checklist",
+    "description": "Requirements and checklist for UDAYAM REGISTRATION CHECKLIST.",
+    "image_path": "",
+    "details": {
+      "cards": [
+        {
+          "title": "Document Requirements",
+          "items": [
+            "UDAYAM REGISTRATION CHECKLIST",
+            " Aadhaar Card:",
+            " PAN Card:",
+            " Business Address Proof:",
+            " Bank Account Details:",
+            " GSTIN (Optional):",
+            " Investment and Turnover Details:",
+            " Business Registration Proof:",
+            " MSME Certificate:"
+          ],
+          "icon": "List"
+        },
+        {
+          "title": "Download",
+          "content": "Download the official document here: <a href=\"/docs/UDAYAM%20REGISTRATION%20CHECKLIST.pdf\" target=\"_blank\" class=\"text-blue-500 underline\">View PDF</a>",
+          "items": [],
+          "icon": "Download"
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What is needed for UDAYAM REGISTRATION CHECKLIST?",
+          "a": "Please download the PDF to view requirements."
+        },
+        {
+          "q": "How long does the process take?",
+          "a": "Timelines vary based on government processing. Please contact us for an estimate."
         }
       ]
     }
