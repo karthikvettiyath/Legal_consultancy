@@ -400,4 +400,91 @@ app.delete("/api/clients/:id", authenticateToken, async (req, res) => {
   }
 });
 
+/* =========================
+   BILLINGS CRUD
+   ========================= */
+
+// Get all billings
+app.get("/api/billings", authenticateToken, async (req, res) => {
+  const { search } = req.query;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    let query = "SELECT * FROM billings";
+    const values = [];
+
+    if (search) {
+      query += " WHERE client_name ILIKE $1 OR invoice_no ILIKE $1";
+      values.push(`%${search}%`);
+    }
+
+    query += " ORDER BY created_at DESC";
+
+    const result = await pool.query(query, values);
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/billings error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Create billing
+app.post("/api/billings", authenticateToken, async (req, res) => {
+  const { invoice_no, client_name, date, amount, type, data, category, authorities } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO billings (invoice_no, client_name, date, amount, type, data, category, authorities) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+      [invoice_no, client_name, date, amount, type, data, category, authorities]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("Error creating billing:", err);
+    res.status(500).json({ error: "Failed to create billing" });
+  }
+});
+
+// Update billing
+app.put("/api/billings/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  const { invoice_no, client_name, date, amount, type, data, category, authorities } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(
+      `UPDATE billings 
+       SET invoice_no = $1, client_name = $2, date = $3, amount = $4, type = $5, data = $6, category = $7, authorities = $8 
+       WHERE id = $9 RETURNING *`,
+      [invoice_no, client_name, date, amount, type, data, category, authorities, id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Billing not found" });
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("Error updating billing:", err);
+    res.status(500).json({ error: "Failed to update billing" });
+  }
+});
+
+// Delete billing
+app.delete("/api/billings/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query("DELETE FROM billings WHERE id = $1 RETURNING id", [id]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Billing not found" });
+    }
+    res.json({ success: true, message: "Billing deleted successfully" });
+  } catch (err) {
+    console.error("❌ DELETE /api/billings/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = app;

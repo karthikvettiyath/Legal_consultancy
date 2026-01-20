@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Printer, Download } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Printer, Download, Save, FolderOpen, LogOut } from 'lucide-react';
 import InvoiceForm from '../components/billing/InvoiceForm';
 import InvoicePreview from '../components/billing/InvoicePreview';
 import { numberToWords } from '../utils/numberToWords';
@@ -8,6 +8,7 @@ import { numberToWords } from '../utils/numberToWords';
 function BillingPage() {
     const [data, setData] = useState({
         category: 'Consultancy', // 'Legal' or 'Consultancy'
+        authorities: 'A', // Default authority
         type: 'INVOICE', // 'INVOICE' or 'QUOTATION'
         clientName: '',
         date: new Date().toLocaleDateString('en-GB'), // DD/MM/YYYY format
@@ -55,12 +56,68 @@ function BillingPage() {
         setData(newData);
     };
 
+    const [currentId, setCurrentId] = useState(null);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    React.useEffect(() => {
+        if (location.state && location.state.billingData) {
+            setData(location.state.billingData);
+            if (location.state.billingId) {
+                setCurrentId(location.state.billingId);
+            }
+        }
+    }, [location.state]);
 
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('adminUser');
         navigate('/', { replace: true });
+    };
+
+    const handleSave = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("You must be logged in to save billings.");
+            return;
+        }
+
+        const payload = {
+            invoice_no: data.invoiceNo,
+            client_name: data.clientName,
+            date: data.date,
+            amount: data.grandTotal || data.totalAmount, // Use grand total if present
+            type: data.type,
+            category: data.category,
+            authorities: data.authorities,
+            data: data
+        };
+
+        try {
+            const url = currentId ? `/api/billings/${currentId}` : '/api/billings';
+            const method = currentId ? 'PUT' : 'POST';
+
+            const response = await fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                const resData = await response.json();
+                if (!currentId) setCurrentId(resData.id);
+                alert(currentId ? "Billing updated successfully!" : "Billing saved successfully!");
+            } else {
+                const err = await response.json();
+                throw new Error(err.error || 'Failed to save');
+            }
+        } catch (error) {
+            console.error("Error saving billing:", error);
+            alert("Failed to save billing. " + error.message);
+        }
     };
 
     const handlePrint = () => {
@@ -71,22 +128,40 @@ function BillingPage() {
         <div className="min-h-screen bg-slate-900 flex flex-col md:flex-row font-sans text-gray-900">
             {/* Sidebar / Editor - Hidden when printing */}
             <div className="w-full md:w-[400px] lg:w-[450px] flex-shrink-0 bg-white shadow-2xl z-20 flex flex-col h-screen print:hidden border-r border-gray-200">
-                <div className="p-6 bg-white border-b border-gray-100 flex justify-between items-center sticky top-0 z-10">
-                    <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-                        <span className="bg-blue-600 text-white p-1 rounded">CUC</span> Billing
-                    </h1>
-                    <div className="flex gap-2">
-                        <button
-                            onClick={handlePrint}
-                            className="flex items-center gap-2 bg-slate-800 text-white px-4 py-2 rounded-lg hover:bg-slate-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 text-sm font-medium"
-                        >
-                            <Printer size={18} /> Print
-                        </button>
+                <div className="bg-white border-b border-gray-100 sticky top-0 z-10 transition-all">
+                    {/* Top Row: Title & Logout */}
+                    <div className="px-6 py-4 flex justify-between items-center">
+                        <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                            <span className="bg-blue-600 text-white p-1 rounded">CUC</span> Billing
+                        </h1>
                         <button
                             onClick={handleLogout}
-                            className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 text-sm font-medium"
+                            className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
+                            title="Logout"
                         >
-                            Logout
+                            <LogOut size={20} />
+                        </button>
+                    </div>
+                    {/* Bottom Row: Actions */}
+                    <div className="px-6 pb-4 grid grid-cols-3 gap-2">
+                        <button
+                            onClick={() => navigate('/saved-billings')}
+                            className="flex items-center justify-center gap-2 bg-blue-50 text-blue-700 px-3 py-2.5 rounded-lg hover:bg-blue-100 transition shadow-sm text-sm font-medium border border-blue-100"
+                            title="View Saved Billings"
+                        >
+                            <FolderOpen size={18} /> <span>Saved</span>
+                        </button>
+                        <button
+                            onClick={handleSave}
+                            className="flex items-center justify-center gap-2 bg-emerald-600 text-white px-3 py-2.5 rounded-lg hover:bg-emerald-700 transition shadow-md hover:shadow-lg active:scale-95 text-sm font-medium"
+                        >
+                            <Save size={18} /> <span>Save</span>
+                        </button>
+                        <button
+                            onClick={handlePrint}
+                            className="flex items-center justify-center gap-2 bg-slate-800 text-white px-3 py-2.5 rounded-lg hover:bg-slate-700 transition shadow-md hover:shadow-lg active:scale-95 text-sm font-medium"
+                        >
+                            <Printer size={18} /> <span>Print</span>
                         </button>
                     </div>
                 </div>

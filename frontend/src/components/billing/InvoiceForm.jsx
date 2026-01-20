@@ -18,7 +18,7 @@ export default function InvoiceForm({ data, onChange }) {
     const addItem = () => {
         onChange({
             ...data,
-            items: [...data.items, { description: '', quantity: '', amount: '' }]
+            items: [...data.items, { slNo: '', description: '', quantity: '', amount: '' }]
         });
     };
 
@@ -158,8 +158,8 @@ export default function InvoiceForm({ data, onChange }) {
                                 Authorities
                             </label>
                             <select
-                                name="authority"
-                                value={data.authority || 'A'}
+                                name="authorities"
+                                value={data.authorities || 'A'}
                                 onChange={handleChange}
                                 className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
                             >
@@ -194,13 +194,22 @@ export default function InvoiceForm({ data, onChange }) {
                                 <div className="flex gap-3 items-start">
                                     <span className="text-xs font-mono text-gray-400 pt-3 w-4 text-center">{index + 1}</span>
                                     <div className="flex-grow space-y-2">
-                                        <input
-                                            type="text"
-                                            placeholder="Description"
-                                            value={item.description}
-                                            onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                                            className="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2"
-                                        />
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Sl. No"
+                                                value={item.slNo || ''}
+                                                onChange={(e) => handleItemChange(index, 'slNo', e.target.value)}
+                                                className="block w-16 text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2"
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Description"
+                                                value={item.description}
+                                                onChange={(e) => handleItemChange(index, 'description', e.target.value)}
+                                                className="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2"
+                                            />
+                                        </div>
                                         <input
                                             type="text"
                                             placeholder="Amount (e.g. 1,200/-)"

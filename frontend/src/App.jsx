@@ -7,6 +7,7 @@ import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import LandingPage from './pages/LandingPage';
 import BillingPage from './pages/BillingPage';
+import SavedBillingsPage from './pages/SavedBillingsPage';
 import ClientManagementPage from './pages/ClientManagementPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
@@ -26,7 +27,7 @@ const LegalLayout = () => {
 
 function App() {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthProvider>
         <Routes>
           {/* Root is now Login Page */}
@@ -37,6 +38,7 @@ function App() {
 
           {/* Billing App - UNPROTECTED as requested */}
           <Route path="/billing" element={<BillingPage />} />
+          <Route path="/saved-billings" element={<SavedBillingsPage />} />
 
           {/* Client Management - Protected */}
           <Route path="/clients" element={
