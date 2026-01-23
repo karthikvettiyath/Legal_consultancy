@@ -69,6 +69,16 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                         {(() => {
                             let lastValidSl = 0;
                             return data.items.map((item, index) => {
+                                if (item.isTitle) {
+                                    return (
+                                        <tr key={index}>
+                                            <td className="border border-gray-400 p-1.5 text-center"></td>
+                                            <td className="border border-gray-400 p-1.5 uppercase font-bold text-center bg-gray-50">{item.description}</td>
+                                            <td className="border border-gray-400 p-1.5 text-center"></td>
+                                        </tr>
+                                    );
+                                }
+
                                 let displaySl;
                                 if (item.slNo) {
                                     displaySl = item.slNo;
@@ -128,27 +138,25 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
         */}
 
             {/* Notes */}
+            {/* Notes */}
             <div className="mb-4 text-[10px] leading-tight font-medium mt-4 text-gray-700">
                 {data.type === 'QUOTATION' ? (
                     <>
                         <p className="font-bold mb-1">NB:</p>
-                        {data.category === 'Digital Marketing' ? (
-                            <ul className="list-disc pl-4 space-y-0.5">
-                                <li>Any increase in platform charges, subscription fees, or additional expenses related to digital tools during the project period must be borne by you.</li>
-                                <li>We are not liable for delays caused by social media platform outages, algorithmic changes, technical glitches, policy updates, or any external factors beyond our control.</li>
-                                <li>If additional resources, materials, or approvals are required for content creation or ad campaigns, your timely cooperation is essential. Any extra costs incurred—including paid assets, ad budgets, or third-party service fees—must be reimbursed by you.</li>
-                                <li>Please provide prompt approvals for content, artwork, ad copies, and share required credentials (logins, OTPs, verification codes) on time to avoid delays.</li>
-                                <li>In case of any misunderstanding, miscommunication, or unethical behavior from our team, please contact our Client Relationship Manager immediately.</li>
-                            </ul>
-                        ) : (
-                            <ul className="list-disc pl-4 space-y-0.5">
-                                <li>Any increase in government fees or additional expenses during the application process must be borne by you.</li>
-                                <li>We are not liable for delays caused by changes in government regulations, system failures, network issues, or unforeseen circumstances beyond our control.</li>
-                                <li>If additional documents or steps are required, your cooperation and support will be necessary, and any extra expenses incurred must be reimbursed by you.</li>
-                                <li>Please regularly follow up on the application process and promptly share any required OTPs.</li>
-                                <li>In case of any unethical practices or misbehavior by our staff, please contact our Client Relationship Manager immediately.</li>
-                            </ul>
-                        )}
+                        <ul className="list-disc pl-4 space-y-0.5">
+                            {(() => {
+                                // Prefer new array format, fallback to legacy text split
+                                const terms = data.quotationTerms && data.quotationTerms.length > 0
+                                    ? data.quotationTerms
+                                    : (data.quotationText ? data.quotationText.split('\n').filter(line => line.trim().length > 0 && line.trim() !== 'NB:') : []);
+
+                                return terms.map((term, i) => {
+                                    // Remove existing bullets if present in string to avoid double bullets
+                                    const cleanTerm = term.replace(/^[•\-\*]\s*/, '');
+                                    return <li key={i}>{cleanTerm}</li>;
+                                });
+                            })()}
+                        </ul>
                     </>
                 ) : (
                     <div className="text-center italic text-gray-600 text-[10px]">
