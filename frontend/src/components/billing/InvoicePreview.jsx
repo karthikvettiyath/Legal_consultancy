@@ -1,10 +1,12 @@
 import React, { forwardRef } from 'react';
 import logo from '../../assets/logo.png';
 import sign from '../../assets/sign.png';
+import consultancyQr from '../../assets/consultancy_qr.jpeg';
+import legalQr from '../../assets/legal_qr.jpeg';
 
 const InvoicePreview = forwardRef(({ data }, ref) => {
     return (
-        <div ref={ref} className="bg-white p-8 max-w-[210mm] mx-auto min-h-[297mm] shadow-lg print:shadow-none print:w-full print:max-w-none print:min-h-0 text-black relative top-0 left-0 overflow-hidden print:text-sm">
+        <div ref={ref} className="bg-white p-8 max-w-[210mm] mx-auto min-h-[297mm] shadow-lg print:shadow-none print:w-full print:max-w-none print:min-h-[297mm] text-black relative top-0 left-0 overflow-hidden print:text-sm print:m-0">
             {/* Header */}
             <div className="flex justify-between items-start mb-6 relative z-10">
                 {/* Logo */}
@@ -30,8 +32,8 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                                 <p>Ernakulam, Kerala 682018</p>
                             </>
                         )}
-                        <p>EMAIL ID: <span className="text-blue-700 underline">cochinunitedconsultancydm@gmail.com</span></p>
-                        <p>MOB NO: +91 7306425389</p>
+                        <p>email id: <span className="text-blue-700 underline">cochinunitedconsultancydm@gmail.com</span></p>
+                        <p>mob no: +91 7306425389</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +49,10 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
             <div className="flex justify-between items-start mb-4 relative z-10">
                 <div className="max-w-[60%]">
                     <p className="font-bold mb-0.5 text-xs text-gray-600">TO</p>
-                    <p className="font-bold text-lg uppercase break-words leading-tight">{data.clientName}</p>
+                    <p className="font-bold text-lg uppercase break-words leading-tight whitespace-pre-wrap">{data.clientName}</p>
+                    {data.clientAddress && (
+                        <p className="text-sm text-gray-800 whitespace-pre-wrap mt-1 leading-tight">{data.clientAddress}</p>
+                    )}
                 </div>
                 <div className="text-right">
                     <p className="font-bold text-sm">DATE: <span className="font-normal">{data.date}</span></p>
@@ -171,12 +176,42 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                     <p className="mb-8 text-xs">To accept this quotation, Please sign here and return: ..................................................................................</p>
                 )}
 
-                <div className="text-center font-bold mb-4 text-sm">
+                <div className="text-center font-bold mb-8 text-sm">
                     We Value Your Relationship With Us!
                 </div>
 
-                <div className="flex justify-end pr-8">
-                    <div className="text-center">
+                <div className="flex justify-between items-end px-4">
+                    <div className="text-xs font-medium text-gray-800 mb-4">
+                        <p className="font-bold mb-1">Bank Details:</p>
+                        <div className="space-y-0.5">
+                            {data.category === 'Legal' ? (
+                                <>
+                                    <div className="flex"><span className="w-24">A/c no</span><span>: 0522202100000749</span></div>
+                                    <div className="flex"><span className="w-24">IFSC Code</span><span>: PUNB0052220</span></div>
+                                    <p>PUNJAB NATIONAL BANK</p>
+                                    <p>Branch- Ernakulam (Market Road)</p>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="flex"><span className="w-24">A/c No</span><span>: 41731333716</span></div>
+                                    <div className="flex"><span className="w-24">IFSC Code</span><span>: SBIN0010564</span></div>
+                                    <p>State Bank of India</p>
+                                    <p>Branch – High court Branch</p>
+                                </>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* QR Code */}
+                    <div className="flex items-center justify-center pb-2 px-4">
+                        <img
+                            src={data.category === 'Legal' ? legalQr : consultancyQr}
+                            alt="QR Code"
+                            className="h-28 object-contain"
+                        />
+                    </div>
+
+                    <div className="text-center pr-8">
                         {/* Signature */}
                         <div className="mb-1 h-32 flex items-end justify-center">
                             <img src={sign} alt="Signature" className="max-h-full max-w-[200px] object-contain" />

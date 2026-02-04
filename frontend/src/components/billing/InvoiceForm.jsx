@@ -153,254 +153,263 @@ export default function InvoiceForm({ data, onChange }) {
 
                 {/* Basic Info */}
                 <div className="space-y-4">
-                    <div>
-                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                            <User size={14} /> Client Name
-                        </label>
-                        <input
-                            type="text"
+                    <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                        <User size={14} /> Client Name & Address
+                    </label>
+                    <div className="space-y-2">
+                        <textarea
                             name="clientName"
                             value={data.clientName}
                             onChange={handleChange}
+                            rows={2}
+                            placeholder="Client Name"
+                            className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white resize-y"
+                        />
+                        <textarea
+                            name="clientAddress"
+                            value={data.clientAddress || ''}
+                            onChange={handleChange}
+                            rows={3}
+                            placeholder="Client Address (Complete recipient address)"
+                            className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white resize-y"
+                        />
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                            <Calendar size={14} /> Date
+                        </label>
+                        <input
+                            type="date"
+                            name="date"
+                            value={(() => {
+                                // Convert DD/MM/YYYY to YYYY-MM-DD for input value
+                                if (!data.date) return '';
+                                const [day, month, year] = data.date.split('/');
+                                return `${year}-${month}-${day}`;
+                            })()}
+                            onChange={(e) => {
+                                // Convert YYYY-MM-DD to DD/MM/YYYY for state
+                                const val = e.target.value;
+                                if (!val) {
+                                    onChange({ ...data, date: '' });
+                                } else {
+                                    const [year, month, day] = val.split('-');
+                                    onChange({ ...data, date: `${day}/${month}/${year}` });
+                                }
+                            }}
                             className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white"
                         />
                     </div>
+                    <div>
+                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                            <Hash size={14} /> {data.type === 'QUOTATION' ? 'Quotation No' : 'Invoice No'}
+                        </label>
+                        <input
+                            type="text"
+                            name="invoiceNo"
+                            value={data.invoiceNo}
+                            onChange={handleChange}
+                            className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                            Authorities
+                        </label>
+                        <select
+                            name="authorities"
+                            value={data.authorities || 'A'}
+                            onChange={handleChange}
+                            className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
+                        >
+                            <option value="A">A - Sarath</option>
+                            <option value="B">B - Jesna</option>
+                            <option value="C">C - Soumya</option>
+                            <option value="D">D - Nithya</option>
+                            <option value="E">E - Irshad</option>
+                            <option value="F">F - Construction & Supervising</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                                <Calendar size={14} /> Date
-                            </label>
-                            <input
-                                type="date"
-                                name="date"
-                                value={(() => {
-                                    // Convert DD/MM/YYYY to YYYY-MM-DD for input value
-                                    if (!data.date) return '';
-                                    const [day, month, year] = data.date.split('/');
-                                    return `${year}-${month}-${day}`;
-                                })()}
-                                onChange={(e) => {
-                                    // Convert YYYY-MM-DD to DD/MM/YYYY for state
-                                    const val = e.target.value;
-                                    if (!val) {
-                                        onChange({ ...data, date: '' });
-                                    } else {
-                                        const [year, month, day] = val.split('-');
-                                        onChange({ ...data, date: `${day}/${month}/${year}` });
-                                    }
-                                }}
-                                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                                <Hash size={14} /> Invoice No
-                            </label>
-                            <input
-                                type="text"
-                                name="invoiceNo"
-                                value={data.invoiceNo}
-                                onChange={handleChange}
-                                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                                Authorities
-                            </label>
-                            <select
-                                name="authorities"
-                                value={data.authorities || 'A'}
-                                onChange={handleChange}
-                                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
-                            >
-                                <option value="A">A - Soumya</option>
-                                <option value="B">B - Jesna</option>
-                                <option value="C">C - Sharath</option>
-                                <option value="D">D - Nithya</option>
-                                <option value="E">E - Irshad</option>
-                                <option value="F">F - Construction & Supervising</option>
-                            </select>
-                        </div>
+            {data.type === 'QUOTATION' && (
+                <div>
+                    <div className="flex justify-between items-center mb-2">
+                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            Quotation Terms
+                        </label>
+                        <button
+                            onClick={addTerm}
+                            className="flex items-center gap-1 text-[10px] font-medium bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200"
+                        >
+                            <Plus size={12} /> Add Point
+                        </button>
+                    </div>
+                    <div className="space-y-2">
+                        {(data.quotationTerms || []).map((term, i) => (
+                            <div key={i} className="flex gap-2 items-start">
+                                <span className="text-gray-400 text-sm mt-2">•</span>
+                                <textarea
+                                    value={term}
+                                    onChange={(e) => handleTermChange(i, e.target.value)}
+                                    rows={2}
+                                    className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2 border bg-white text-sm"
+                                />
+                                <button
+                                    onClick={() => removeTerm(i)}
+                                    className="p-1.5 text-gray-400 hover:text-red-500 mt-1"
+                                    title="Remove term"
+                                >
+                                    <Trash2 size={14} />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            <hr className="border-gray-100" />
+
+            {/* Items */}
+            <div>
+                <div className="flex justify-between items-start mb-4">
+                    <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mt-2">Line Items</label>
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => {
+                                onChange({
+                                    ...data,
+                                    items: [...data.items, { isTitle: true, description: '', slNo: '', amount: '' }]
+                                });
+                            }}
+                            className="flex items-center gap-1.5 text-xs font-medium bg-purple-50 text-purple-600 px-3 py-1.5 rounded-full hover:bg-purple-100 transition-colors"
+                        >
+                            <Type size={14} /> Set Title
+                        </button>
+                        <button
+                            onClick={addItem}
+                            className="flex items-center gap-1.5 text-xs font-medium bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full hover:bg-blue-100 transition-colors"
+                        >
+                            <Plus size={14} /> Add New
+                        </button>
                     </div>
                 </div>
 
-                {data.type === 'QUOTATION' && (
-                    <div>
-                        <div className="flex justify-between items-center mb-2">
-                            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                Quotation Terms
-                            </label>
-                            <button
-                                onClick={addTerm}
-                                className="flex items-center gap-1 text-[10px] font-medium bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200"
-                            >
-                                <Plus size={12} /> Add Point
-                            </button>
-                        </div>
-                        <div className="space-y-2">
-                            {(data.quotationTerms || []).map((term, i) => (
-                                <div key={i} className="flex gap-2 items-start">
-                                    <span className="text-gray-400 text-sm mt-2">•</span>
-                                    <textarea
-                                        value={term}
-                                        onChange={(e) => handleTermChange(i, e.target.value)}
-                                        rows={2}
-                                        className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2 border bg-white text-sm"
-                                    />
-                                    <button
-                                        onClick={() => removeTerm(i)}
-                                        className="p-1.5 text-gray-400 hover:text-red-500 mt-1"
-                                        title="Remove term"
-                                    >
-                                        <Trash2 size={14} />
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                <hr className="border-gray-100" />
-
-                {/* Items */}
-                <div>
-                    <div className="flex justify-between items-start mb-4">
-                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mt-2">Line Items</label>
-                        <div className="flex gap-2">
-                            <button
-                                onClick={() => {
-                                    onChange({
-                                        ...data,
-                                        items: [...data.items, { isTitle: true, description: '', slNo: '', amount: '' }]
-                                    });
-                                }}
-                                className="flex items-center gap-1.5 text-xs font-medium bg-purple-50 text-purple-600 px-3 py-1.5 rounded-full hover:bg-purple-100 transition-colors"
-                            >
-                                <Type size={14} /> Set Title
-                            </button>
-                            <button
-                                onClick={addItem}
-                                className="flex items-center gap-1.5 text-xs font-medium bg-blue-50 text-blue-600 px-3 py-1.5 rounded-full hover:bg-blue-100 transition-colors"
-                            >
-                                <Plus size={14} /> Add New
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="space-y-3">
-                        {data.items.map((item, index) => (
-                            <div key={index} className="group relative bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
-                                <div className="flex gap-3 items-start">
-                                    <span className="text-xs font-mono text-gray-400 pt-3 w-4 text-center">{index + 1}</span>
-                                    <div className="flex-grow space-y-2">
-                                        {item.isTitle ? (
+                <div className="space-y-3">
+                    {data.items.map((item, index) => (
+                        <div key={index} className="group relative bg-gray-50 p-3 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                            <div className="flex gap-3 items-start">
+                                <span className="text-xs font-mono text-gray-400 pt-3 w-4 text-center">{index + 1}</span>
+                                <div className="flex-grow space-y-2">
+                                    {item.isTitle ? (
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Title / Section Header"
+                                                value={item.description}
+                                                onChange={(e) => handleItemChange(index, 'description', e.target.value)}
+                                                className="block w-full text-base font-bold rounded-md border-purple-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 bg-purple-50 border p-2"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <>
                                             <div className="flex gap-2">
                                                 <input
                                                     type="text"
-                                                    placeholder="Title / Section Header"
-                                                    value={item.description}
-                                                    onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                                                    className="block w-full text-base font-bold rounded-md border-purple-300 shadow-sm focus:border-purple-500 focus:ring-purple-500 bg-purple-50 border p-2"
+                                                    placeholder="Sl. No"
+                                                    value={item.slNo || ''}
+                                                    onChange={(e) => handleItemChange(index, 'slNo', e.target.value)}
+                                                    className="block w-16 text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2"
                                                 />
-                                            </div>
-                                        ) : (
-                                            <>
-                                                <div className="flex gap-2">
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Sl. No"
-                                                        value={item.slNo || ''}
-                                                        onChange={(e) => handleItemChange(index, 'slNo', e.target.value)}
-                                                        className="block w-16 text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2"
-                                                    />
-                                                    <input
-                                                        type="text"
-                                                        placeholder="Description"
-                                                        value={item.description}
-                                                        onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                                                        className="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2"
-                                                    />
-                                                </div>
                                                 <input
                                                     type="text"
-                                                    placeholder="Amount (e.g. 1,200/-)"
-                                                    value={item.amount}
-                                                    onChange={(e) => handleItemChange(index, 'amount', e.target.value)}
-                                                    onBlur={() => handleItemBlur(index, 'amount')}
-                                                    className="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2 font-mono"
+                                                    placeholder="Description"
+                                                    value={item.description}
+                                                    onChange={(e) => handleItemChange(index, 'description', e.target.value)}
+                                                    className="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2"
                                                 />
-                                            </>
-                                        )}
-                                    </div>
-                                    <button
-                                        onClick={() => removeItem(index)}
-                                        className="p-2 text-gray-400 hover:text-red-500 transition-colors self-center"
-                                        title="Remove Item"
-                                    >
-                                        <Trash2 size={16} />
-                                    </button>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                placeholder="Amount (e.g. 1,200/-)"
+                                                value={item.amount}
+                                                onChange={(e) => handleItemChange(index, 'amount', e.target.value)}
+                                                onBlur={() => handleItemBlur(index, 'amount')}
+                                                className="block w-full text-sm rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white border p-2 font-mono"
+                                            />
+                                        </>
+                                    )}
                                 </div>
+                                <button
+                                    onClick={() => removeItem(index)}
+                                    className="p-2 text-gray-400 hover:text-red-500 transition-colors self-center"
+                                    title="Remove Item"
+                                >
+                                    <Trash2 size={16} />
+                                </button>
                             </div>
-                        ))}
+                        </div>
+                    ))}
 
-                        {data.items.length === 0 && (
-                            <div className="text-center py-8 text-gray-400 text-sm italic border-2 border-dashed border-gray-200 rounded-lg">
-                                No items added yet. Click "Add New" to start.
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                <hr className="border-gray-100" />
-
-                {/* Totals */}
-                <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 space-y-3">
-                    <div>
-                        <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Total Amount (Auto-calc)</label>
-                        <input
-                            type="text"
-                            name="totalAmount"
-                            value={data.totalAmount}
-                            readOnly
-                            className="block w-full rounded-md border-blue-200 bg-white text-blue-900 font-bold shadow-sm p-2"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Amount in Words (Auto-calc)</label>
-                        <textarea
-                            name="amountInWords"
-                            value={data.amountInWords}
-                            readOnly
-                            rows="2"
-                            className="block w-full rounded-md border-blue-200 bg-white text-blue-800 text-sm shadow-sm p-2 resize-none"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Outstanding Amount</label>
-                        <input
-                            type="text"
-                            name="outstandingAmount"
-                            value={data.outstandingAmount}
-                            onChange={handleChange}
-                            onBlur={handleOutstandingBlur}
-                            placeholder="e.g. 5,000/-"
-                            className="block w-full rounded-md border-blue-200 bg-white text-blue-900 shadow-sm p-2"
-                        />
-                    </div>
-                    {data.grandTotal && (
-                        <div>
-                            <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Grand Total</label>
-                            <input
-                                type="text"
-                                value={data.grandTotal}
-                                readOnly
-                                className="block w-full rounded-md border-blue-200 bg-blue-100 text-blue-900 font-bold shadow-sm p-2"
-                            />
+                    {data.items.length === 0 && (
+                        <div className="text-center py-8 text-gray-400 text-sm italic border-2 border-dashed border-gray-200 rounded-lg">
+                            No items added yet. Click "Add New" to start.
                         </div>
                     )}
                 </div>
+            </div>
+
+            <hr className="border-gray-100" />
+
+            {/* Totals */}
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 space-y-3">
+                <div>
+                    <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Total Amount (Auto-calc)</label>
+                    <input
+                        type="text"
+                        name="totalAmount"
+                        value={data.totalAmount}
+                        readOnly
+                        className="block w-full rounded-md border-blue-200 bg-white text-blue-900 font-bold shadow-sm p-2"
+                    />
+                </div>
+                <div>
+                    <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Amount in Words (Auto-calc)</label>
+                    <textarea
+                        name="amountInWords"
+                        value={data.amountInWords}
+                        readOnly
+                        rows="2"
+                        className="block w-full rounded-md border-blue-200 bg-white text-blue-800 text-sm shadow-sm p-2 resize-none"
+                    />
+                </div>
+                <div>
+                    <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Outstanding Amount</label>
+                    <input
+                        type="text"
+                        name="outstandingAmount"
+                        value={data.outstandingAmount}
+                        onChange={handleChange}
+                        onBlur={handleOutstandingBlur}
+                        placeholder="e.g. 5,000/-"
+                        className="block w-full rounded-md border-blue-200 bg-white text-blue-900 shadow-sm p-2"
+                    />
+                </div>
+                {data.grandTotal && (
+                    <div>
+                        <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Grand Total</label>
+                        <input
+                            type="text"
+                            value={data.grandTotal}
+                            readOnly
+                            className="block w-full rounded-md border-blue-200 bg-blue-100 text-blue-900 font-bold shadow-sm p-2"
+                        />
+                    </div>
+                )}
             </div>
         </div>
     );

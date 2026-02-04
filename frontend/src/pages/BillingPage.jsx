@@ -11,6 +11,7 @@ function BillingPage() {
         authorities: 'A', // Default authority
         type: 'INVOICE', // 'INVOICE' or 'QUOTATION'
         clientName: '',
+        clientAddress: '',
         date: new Date().toLocaleDateString('en-GB'), // DD/MM/YYYY format
         invoiceNo: '4139',
         items: [],
@@ -68,6 +69,28 @@ function BillingPage() {
             }
         }
     }, [location.state]);
+
+    // Fetch next invoice number when authority changes (only for new bills)
+    React.useEffect(() => {
+        if (!currentId && data.authorities) {
+            const token = localStorage.getItem('token');
+            // Even if no token, maybe we allow fetching? The backend endpoint will likely be protected.
+            // But user might not be logged in yet? "The user has 1 active workspaces..."
+            // Assuming token is present if logged in. 
+            if (token) {
+                fetch(`/api/billings/next-invoice-no?series=${data.authorities}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                })
+                    .then(res => res.ok ? res.json() : null)
+                    .then(resData => {
+                        if (resData && resData.nextInvoiceNo) {
+                            setData(prev => ({ ...prev, invoiceNo: resData.nextInvoiceNo }));
+                        }
+                    })
+                    .catch(err => console.error("Error fetching invoice no:", err));
+            }
+        }
+    }, [data.authorities, currentId]);
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -178,7 +201,7 @@ function BillingPage() {
             {/* Preview Area */}
             <div className="flex-grow bg-slate-100 p-8 overflow-y-auto h-screen flex justify-center items-start print:p-0 print:w-full print:h-auto print:overflow-visible print:bg-white relative">
                 <div className="absolute inset-0 pattern-grid-lg text-slate-200/50 pointer-events-none" />
-                <div className="transform scale-[0.8] md:scale-[0.85] lg:scale-100 origin-top transition-transform duration-300">
+                <div className="transform scale-[0.8] md:scale-[0.85] lg:scale-100 origin-top transition-transform duration-300 print:transform-none">
                     <InvoicePreview data={data} />
                 </div>
             </div>

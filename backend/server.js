@@ -144,6 +144,35 @@ app.get("/api/services", async (req, res) => {
 });
 
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+// Configure Multer for PDF Uploads
+// Saving to frontend public/docs for immediate availability in dev/local
+const uploadDir = path.join(__dirname, '../frontend/public/docs');
+// Ensure it exists
+if (!fs.existsSync(uploadDir)) {
+  try {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  } catch (e) {
+    console.warn("Could not create upload dir:", e);
+  }
+}
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    // Sanitize: replace spaces with underscores, remove special chars
+    const name = file.originalname.replace(/\s+/g, '_').replace(/[^\w\.-]/g, '');
+    cb(null, name);
+  }
+});
+
+const upload = multer({ storage: storage });
+
 
 // ... imports ...
 
@@ -316,6 +345,17 @@ app.delete("/api/services/:id", authenticateToken, async (req, res) => {
   }
 });
 
+
+// Upload PDF
+app.post("/api/upload", authenticateToken, upload.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No file uploaded" });
+  }
+  // Return the path relative to frontend public
+  const publicPath = `/docs/${req.file.filename}`;
+  res.json({ success: true, filePath: publicPath });
+});
+
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
@@ -424,6 +464,63 @@ app.get("/api/billings", authenticateToken, async (req, res) => {
     res.json(result.rows);
   } catch (err) {
     console.error("❌ GET /api/billings error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Generate next invoice number logic
+app.get("/api/billings/next-invoice-no", authenticateToken, async (req, res) => {
+  const { series } = req.query;
+  if (!series) return res.status(400).json({ error: "Series is required" });
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    // Find the last invoice for this series (authority)
+    // We look for invoice numbers that START with the series letter
+    // to avoid picking up legacy numbers like "4139" if we want to enforce "A-..."
+    // Or simply take the last one for this authority and decide.
+
+    // Let's assume we want to enforce "Series-" format if possible.
+    const result = await pool.query(
+      "SELECT invoice_no FROM billings WHERE authorities = $1 ORDER BY id DESC LIMIT 1",
+      [series]
+    );
+
+    const lastNo = result.rows[0]?.invoice_no;
+
+    // Default start
+    let nextNo = `${series}-001`;
+
+    if (lastNo) {
+      // Check if it matches pattern "Start with Series"
+      // If it's just a number like "4139", we define policy:
+      // Since User wants "vary according to series", "4139" doesn't vary.
+      // So we ignore "4139" and start "A-001"?
+      // OR we continue "4140"?
+      // Given the requirement "series names ... aligned with ... Sarath - A", 
+      // it implies they want "A-xxxx".
+      // So if last entry is "4139" (legacy), we switch to "A-001".
+      // IF last entry is "A-005", we go to "A-006".
+
+      if (lastNo.startsWith(series)) {
+        const match = lastNo.match(/(\d+)$/);
+        if (match) {
+          const numStr = match[1];
+          const num = parseInt(numStr, 10) + 1;
+          const padding = numStr.length;
+          // Ensure at least 3 digits?
+          const finalPadding = Math.max(padding, 3);
+          nextNo = lastNo.replace(/(\d+)$/, num.toString().padStart(finalPadding, '0'));
+        }
+      }
+    }
+
+    // Final check: ensure this number doesn't exist (unlikely if sequential, but good safety)
+    // Ignoring for now to keep it simple.
+
+    res.json({ nextInvoiceNo: nextNo });
+  } catch (err) {
+    console.error("❌ GET /api/billings/next-invoice-no error:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
