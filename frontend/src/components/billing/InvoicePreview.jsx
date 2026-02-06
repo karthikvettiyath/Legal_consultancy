@@ -6,11 +6,11 @@ import legalQr from '../../assets/legal_qr.jpeg';
 
 const InvoicePreview = forwardRef(({ data }, ref) => {
     return (
-        <div ref={ref} className="bg-white p-8 max-w-[210mm] mx-auto min-h-[297mm] shadow-lg print:shadow-none print:w-full print:max-w-none print:min-h-[297mm] text-black relative top-0 left-0 overflow-hidden print:text-sm print:m-0">
+        <div ref={ref} className="bg-white p-4 max-w-[210mm] mx-auto min-h-[297mm] shadow-lg print:shadow-none print:w-full print:max-w-none print:min-h-[297mm] text-black relative top-0 left-0 overflow-hidden print:text-sm print:m-0">
             {/* Header */}
-            <div className="flex justify-between items-start mb-6 relative z-10">
+            <div className="flex justify-between items-start mb-2 relative z-10">
                 {/* Logo */}
-                <div className="w-28 h-28 flex items-center justify-center p-2">
+                <div className="w-24 h-24 flex items-center justify-center p-2">
                     <img src={logo} alt="CUC Logo" className="w-full h-full object-contain" />
                 </div>
 
@@ -38,7 +38,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                 </div>
             </div>
 
-            <hr className="border-gray-300 mb-4" />
+            <hr className="border-gray-300 mb-2" />
 
             {/* Watermark */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
@@ -46,7 +46,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
             </div>
 
             {/* Client Info */}
-            <div className="flex justify-between items-start mb-4 relative z-10">
+            <div className="flex justify-between items-start mb-2 relative z-10">
                 <div className="max-w-[60%]">
                     <p className="font-bold mb-0.5 text-xs text-gray-600">TO</p>
                     <p className="font-bold text-lg uppercase break-words leading-tight whitespace-pre-wrap">{data.clientName}</p>
@@ -61,7 +61,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
             </div>
 
             {/* Table */}
-            <div className="mb-4">
+            <div className="mb-2">
                 <table className="w-full border-collapse border border-gray-400 text-sm">
                     <thead>
                         <tr className="bg-gray-50">
@@ -144,7 +144,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
 
             {/* Notes */}
             {/* Notes */}
-            <div className="mb-4 text-[10px] leading-tight font-medium mt-4 text-gray-700">
+            <div className="mb-2 text-[10px] leading-tight font-medium mt-2 text-gray-700">
                 {data.type === 'QUOTATION' ? (
                     <>
                         <p className="font-bold mb-1">NB:</p>
@@ -171,17 +171,17 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
             </div>
 
             {/* Footer */}
-            <div className="mt-6 break-inside-avoid">
+            <div className="mt-2 break-inside-avoid">
                 {data.type === 'QUOTATION' && (
-                    <p className="mb-8 text-xs">To accept this quotation, Please sign here and return: ..................................................................................</p>
+                    <p className="mb-4 text-xs">To accept this quotation, Please sign here and return: ..................................................................................</p>
                 )}
 
-                <div className="text-center font-bold mb-8 text-sm">
+                <div className="text-center font-bold mb-2 text-sm">
                     We Value Your Relationship With Us!
                 </div>
 
                 <div className="flex justify-between items-end px-4">
-                    <div className="text-xs font-medium text-gray-800 mb-4">
+                    <div className="text-xs font-medium text-gray-800">
                         <p className="font-bold mb-1">Bank Details:</p>
                         <div className="space-y-0.5">
                             {data.category === 'Legal' ? (
@@ -203,17 +203,17 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                     </div>
 
                     {/* QR Code */}
-                    <div className="flex items-center justify-center pb-2 px-4">
+                    <div className="flex items-center justify-center px-4 translate-y-4">
                         <img
                             src={data.category === 'Legal' ? legalQr : consultancyQr}
                             alt="QR Code"
-                            className="h-28 object-contain"
+                            className="h-52 object-contain"
                         />
                     </div>
 
                     <div className="text-center pr-8">
                         {/* Signature */}
-                        <div className="mb-1 h-32 flex items-end justify-center">
+                        <div className="mb-1 h-24 flex items-end justify-center">
                             <img src={sign} alt="Signature" className="max-h-full max-w-[200px] object-contain" />
                         </div>
                     </div>
