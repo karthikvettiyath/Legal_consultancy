@@ -51,7 +51,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                     <p className="font-bold mb-0.5 text-xs text-gray-600">TO</p>
                     <p className="font-bold text-lg uppercase break-words leading-tight whitespace-pre-wrap">{data.clientName}</p>
                     {data.clientAddress && (
-                        <p className="text-sm text-gray-800 whitespace-pre-wrap mt-1 leading-tight">{data.clientAddress}</p>
+                        <p className="text-sm font-bold text-gray-800 whitespace-pre-wrap mt-1 leading-tight">{data.clientAddress}</p>
                     )}
                 </div>
                 <div className="text-right">

@@ -70,15 +70,12 @@ function BillingPage() {
         }
     }, [location.state]);
 
-    // Fetch next invoice number when authority changes (only for new bills)
+    // Fetch next invoice number when authority or type changes (only for new bills)
     React.useEffect(() => {
         if (!currentId && data.authorities) {
             const token = localStorage.getItem('token');
-            // Even if no token, maybe we allow fetching? The backend endpoint will likely be protected.
-            // But user might not be logged in yet? "The user has 1 active workspaces..."
-            // Assuming token is present if logged in. 
             if (token) {
-                fetch(`/api/billings/next-invoice-no?series=${data.authorities}`, {
+                fetch(`/api/billings/next-invoice-no?series=${data.authorities}&type=${data.type}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 })
                     .then(res => res.ok ? res.json() : null)
@@ -90,7 +87,7 @@ function BillingPage() {
                     .catch(err => console.error("Error fetching invoice no:", err));
             }
         }
-    }, [data.authorities, currentId]);
+    }, [data.authorities, data.type, currentId]);
 
     const handleLogout = () => {
         localStorage.removeItem('token');

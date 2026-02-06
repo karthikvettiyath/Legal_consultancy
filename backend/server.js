@@ -470,21 +470,23 @@ app.get("/api/billings", authenticateToken, async (req, res) => {
 
 // Generate next invoice number logic
 app.get("/api/billings/next-invoice-no", authenticateToken, async (req, res) => {
-  const { series } = req.query;
+  const { series, type } = req.query;
   if (!series) return res.status(400).json({ error: "Series is required" });
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
 
   try {
-    // Find the last invoice for this series (authority)
-    // We look for invoice numbers that START with the series letter
-    // to avoid picking up legacy numbers like "4139" if we want to enforce "A-..."
-    // Or simply take the last one for this authority and decide.
+    // Find the last invoice for this series (authority) and optionally type
+    let query = "SELECT invoice_no FROM billings WHERE authorities = $1";
+    const values = [series];
 
-    // Let's assume we want to enforce "Series-" format if possible.
-    const result = await pool.query(
-      "SELECT invoice_no FROM billings WHERE authorities = $1 ORDER BY id DESC LIMIT 1",
-      [series]
-    );
+    if (type) {
+      query += " AND type = $2";
+      values.push(type);
+    }
+
+    query += " ORDER BY id DESC LIMIT 1";
+
+    const result = await pool.query(query, values);
 
     const lastNo = result.rows[0]?.invoice_no;
 
