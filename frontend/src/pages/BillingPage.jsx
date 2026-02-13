@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Printer, Download, Save, FolderOpen, LogOut } from 'lucide-react';
 import InvoiceForm from '../components/billing/InvoiceForm';
 import InvoicePreview from '../components/billing/InvoicePreview';
+import SaveDialog from '../components/billing/SaveDialog';
 import { numberToWords } from '../utils/numberToWords';
 
 function BillingPage() {
@@ -61,6 +62,7 @@ function BillingPage() {
     };
 
     const [currentId, setCurrentId] = useState(null);
+    const [showSaveDialog, setShowSaveDialog] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -99,6 +101,16 @@ function BillingPage() {
     };
 
     const handleSave = async () => {
+        // If editing an existing billing, show custom dialog
+        if (currentId) {
+            setShowSaveDialog(true);
+        } else {
+            // New billing, save directly
+            await saveBilling(false);
+        }
+    };
+
+    const saveBilling = async (saveAsNew) => {
         const token = localStorage.getItem('token');
         if (!token) {
             alert("You must be logged in to save billings.");
@@ -109,7 +121,7 @@ function BillingPage() {
             invoice_no: data.invoiceNo,
             client_name: data.clientName,
             date: data.date,
-            amount: data.grandTotal || data.totalAmount, // Use grand total if present
+            amount: data.grandTotal || data.totalAmount,
             type: data.type,
             category: data.category,
             authorities: data.authorities,
@@ -117,8 +129,9 @@ function BillingPage() {
         };
 
         try {
-            const url = currentId ? `/api/billings/${currentId}` : '/api/billings';
-            const method = currentId ? 'PUT' : 'POST';
+            // Determine URL and method based on whether we're updating or creating new
+            const url = (currentId && !saveAsNew) ? `/api/billings/${currentId}` : '/api/billings';
+            const method = (currentId && !saveAsNew) ? 'PUT' : 'POST';
 
             const response = await fetch(url, {
                 method: method,
@@ -131,8 +144,17 @@ function BillingPage() {
 
             if (response.ok) {
                 const resData = await response.json();
-                if (!currentId) setCurrentId(resData.id);
-                alert(currentId ? "Billing updated successfully!" : "Billing saved successfully!");
+
+                // Update currentId with the new or existing billing ID
+                if (saveAsNew || !currentId) {
+                    setCurrentId(resData.id);
+                }
+
+                const message = (currentId && !saveAsNew)
+                    ? "Billing updated successfully!"
+                    : "Billing saved as new successfully!";
+                alert(message);
+                setShowSaveDialog(false);
             } else {
                 const err = await response.json();
                 throw new Error(err.error || 'Failed to save');
@@ -205,6 +227,15 @@ function BillingPage() {
                     <InvoicePreview data={data} />
                 </div>
             </div>
+
+            {/* Save Dialog */}
+            {showSaveDialog && (
+                <SaveDialog
+                    onSaveExisting={() => saveBilling(false)}
+                    onSaveNew={() => saveBilling(true)}
+                    onCancel={() => setShowSaveDialog(false)}
+                />
+            )}
         </div>
     );
 }

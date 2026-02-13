@@ -41,8 +41,18 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
             <hr className="border-gray-300 mb-2" />
 
             {/* Watermark */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                <img src={logo} alt="Watermark" className="w-[500px] h-[500px] object-contain opacity-[0.2] grayscale" />
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 print:fixed">
+                <img
+                    src={logo}
+                    alt="Watermark"
+                    className="w-[500px] h-[500px] object-contain opacity-[0.2] grayscale"
+                    style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)'
+                    }}
+                />
             </div>
 
             {/* Client Info */}
