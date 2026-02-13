@@ -69,3 +69,60 @@ section {
 .btn:hover {
   background: #2980b9;
 }
+
+/* Print-specific styles to prevent extra blank pages */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.5cm;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    overflow: visible;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Prevent page breaks */
+  .print\\:page-break-after-avoid {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* Remove min-height constraints that cause blank pages */
+  .print\\:min-h-0 {
+    min-height: 0 !important;
+  }
+
+  /* Ensure content fits on one page */
+  .print\\:h-auto {
+    height: auto !important;
+  }
+
+  .print\\:overflow-visible {
+    overflow: visible !important;
+  }
+
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  .print\\:block {
+    display: block !important;
+  }
+
+  .print\\:scale-100 {
+    transform: scale(1) !important;
+  }
+
+  .print\\:transform-none {
+    transform: none !important;
+  }
+}

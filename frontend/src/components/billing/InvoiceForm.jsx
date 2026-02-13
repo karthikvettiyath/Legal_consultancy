@@ -27,15 +27,16 @@ export default function InvoiceForm({ data, onChange }) {
         onChange({ ...data, items: newItems });
     };
 
-    const handleOutstandingBlur = () => {
-        if (!data.outstandingAmount) return;
-        // Clean non-numeric characters except line decimals (if any, though usually integer)
-        const clean = data.outstandingAmount.toString().replace(/[^\d.]/g, '');
+    const handleOutstandingBlur = (fieldName) => {
+        const value = data[fieldName];
+        if (!value) return;
+        // Clean non-numeric characters except decimals
+        const clean = value.toString().replace(/[^\d.]/g, '');
         if (clean) {
             const val = parseFloat(clean);
             // Format with commas and add /-
             const formatted = val.toLocaleString('en-IN') + '/-';
-            onChange({ ...data, outstandingAmount: formatted });
+            onChange({ ...data, [fieldName]: formatted });
         }
     };
 
@@ -215,24 +216,26 @@ export default function InvoiceForm({ data, onChange }) {
                             className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
                         />
                     </div>
-                    <div>
-                        <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                            Authorities
-                        </label>
-                        <select
-                            name="authorities"
-                            value={data.authorities || 'A'}
-                            onChange={handleChange}
-                            className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
-                        >
-                            <option value="A">A - Sarath</option>
-                            <option value="B">B - Jesna</option>
-                            <option value="C">C - Soumya</option>
-                            <option value="D">D - Nithya</option>
-                            <option value="E">E - Irshad</option>
-                            <option value="F">F - Construction & Supervising</option>
-                        </select>
-                    </div>
+                    {data.category !== 'Digital Marketing' && (
+                        <div>
+                            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                                Authorities
+                            </label>
+                            <select
+                                name="authorities"
+                                value={data.authorities || 'A'}
+                                onChange={handleChange}
+                                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-white"
+                            >
+                                <option value="A">A - Sarath</option>
+                                <option value="B">B - Jesna</option>
+                                <option value="C">C - Soumya</option>
+                                <option value="D">D - Nithya</option>
+                                <option value="E">E - Irshad</option>
+                                <option value="F">F - Construction & Supervising</option>
+                            </select>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -388,13 +391,25 @@ export default function InvoiceForm({ data, onChange }) {
                     />
                 </div>
                 <div>
+                    <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Advance Amount</label>
+                    <input
+                        type="text"
+                        name="advanceAmount"
+                        value={data.advanceAmount || ''}
+                        onChange={handleChange}
+                        onBlur={() => handleOutstandingBlur('advanceAmount')}
+                        placeholder="e.g. 5,000/-"
+                        className="block w-full rounded-md border-blue-200 bg-white text-blue-900 shadow-sm p-2"
+                    />
+                </div>
+                <div>
                     <label className="block text-xs font-semibold text-blue-700 uppercase tracking-wider mb-1">Outstanding Amount</label>
                     <input
                         type="text"
                         name="outstandingAmount"
-                        value={data.outstandingAmount}
+                        value={data.outstandingAmount || ''}
                         onChange={handleChange}
-                        onBlur={handleOutstandingBlur}
+                        onBlur={() => handleOutstandingBlur('outstandingAmount')}
                         placeholder="e.g. 5,000/-"
                         className="block w-full rounded-md border-blue-200 bg-white text-blue-900 shadow-sm p-2"
                     />

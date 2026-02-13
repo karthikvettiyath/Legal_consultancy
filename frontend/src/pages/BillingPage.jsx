@@ -32,27 +32,30 @@ function BillingPage() {
 
     const handleDataChange = (newData) => {
         // Check if items changed to trigger recalculation
-        if (newData.items !== data.items) {
+        if (newData.items !== data.items || newData.advanceAmount !== data.advanceAmount || newData.outstandingAmount !== data.outstandingAmount) {
             const total = calculateTotal(newData.items);
-            // Format to Indian currency style roughly or simple locale
+            // Format to Indian currency style
             newData.totalAmount = total.toLocaleString('en-IN') + '/-';
 
-            // Calculate Grand Total if outstanding exists
-            const outstanding = parseFloat(newData.outstandingAmount.replace(/[^\d.]/g, '') || 0);
-            const grandTotal = total + outstanding;
-            newData.grandTotal = grandTotal > total ? grandTotal.toLocaleString('en-IN') + '/-' : '';
+            // Calculate totals with advance and outstanding
+            const advance = parseFloat(newData.advanceAmount?.replace(/[^\d.]/g, '') || 0);
+            const outstanding = parseFloat(newData.outstandingAmount?.replace(/[^\d.]/g, '') || 0);
 
-            // Convert to words (Using Total Amount usually, but if grand total exists?? 
-            // Usually Invoice amount in words is for the CURRENT invoice. 
-            // Let's stick to current total for words unless asked otherwise.)
-            const words = numberToWords(total).toUpperCase() + " ONLY";
-            newData.amountInWords = words;
-        } else if (newData.outstandingAmount !== data.outstandingAmount) {
-            // Recalculate Grand Total if outstanding changes
-            const total = calculateTotal(newData.items);
-            const outstanding = parseFloat(newData.outstandingAmount.replace(/[^\d.]/g, '') || 0);
-            const grandTotal = total + outstanding;
-            newData.grandTotal = grandTotal > total ? grandTotal.toLocaleString('en-IN') + '/-' : '';
+            // Grand Total = Total - Advance + Outstanding
+            const grandTotal = total - advance + outstanding;
+
+            // Only show grand total if advance or outstanding exists
+            if (advance > 0 || outstanding > 0) {
+                newData.grandTotal = grandTotal.toLocaleString('en-IN') + '/-';
+                // Convert grand total to words
+                const words = numberToWords(grandTotal).toUpperCase() + " ONLY";
+                newData.amountInWords = words;
+            } else {
+                newData.grandTotal = '';
+                // Convert total to words
+                const words = numberToWords(total).toUpperCase() + " ONLY";
+                newData.amountInWords = words;
+            }
         }
         setData(newData);
     };
@@ -196,9 +199,9 @@ function BillingPage() {
             </div>
 
             {/* Preview Area */}
-            <div className="flex-grow bg-slate-100 p-8 overflow-y-auto h-screen flex justify-center items-start print:p-0 print:w-full print:h-auto print:overflow-visible print:bg-white relative">
-                <div className="absolute inset-0 pattern-grid-lg text-slate-200/50 pointer-events-none" />
-                <div className="transform scale-[0.8] md:scale-[0.85] lg:scale-100 origin-top transition-transform duration-300 print:transform-none">
+            <div className="flex-grow bg-slate-100 p-8 overflow-y-auto h-screen flex justify-center items-start print:p-0 print:w-full print:h-auto print:overflow-visible print:bg-white print:block relative">
+                <div className="absolute inset-0 pattern-grid-lg text-slate-200/50 pointer-events-none print:hidden" />
+                <div className="transform scale-[0.8] md:scale-[0.85] lg:scale-100 origin-top transition-transform duration-300 print:scale-100 print:transform-none">
                     <InvoicePreview data={data} />
                 </div>
             </div>

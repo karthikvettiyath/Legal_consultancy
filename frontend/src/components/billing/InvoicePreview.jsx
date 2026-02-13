@@ -6,7 +6,7 @@ import legalQr from '../../assets/legal_qr.jpeg';
 
 const InvoicePreview = forwardRef(({ data }, ref) => {
     return (
-        <div ref={ref} className="bg-white p-4 max-w-[210mm] mx-auto min-h-[297mm] shadow-lg print:shadow-none print:w-full print:max-w-none print:min-h-[297mm] text-black relative top-0 left-0 overflow-hidden print:text-sm print:m-0">
+        <div ref={ref} className="bg-white p-4 max-w-[210mm] mx-auto min-h-0 shadow-lg print:shadow-none print:w-[210mm] print:max-w-[210mm] print:min-h-0 text-black relative top-0 left-0 overflow-hidden print:text-sm print:mx-auto print:my-0 print:p-4 print:page-break-after-avoid">
             {/* Header */}
             <div className="flex justify-between items-start mb-2 relative z-10">
                 {/* Logo */}
@@ -116,6 +116,13 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                             <td className="border border-gray-400 p-1.5 text-right pr-4">TOTAL</td>
                             <td className="border border-gray-400 p-1.5 text-center">{data.totalAmount}</td>
                         </tr>
+                        {data.advanceAmount && (
+                            <tr className="font-bold">
+                                <td className="border border-gray-400 p-1.5"></td>
+                                <td className="border border-gray-400 p-1.5 text-right pr-4">ADVANCE</td>
+                                <td className="border border-gray-400 p-1.5 text-center">-{data.advanceAmount}</td>
+                            </tr>
+                        )}
                         {data.outstandingAmount && (
                             <>
                                 <tr className="font-bold">
@@ -123,12 +130,14 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                                     <td className="border border-gray-400 p-1.5 text-right pr-4">PREVIOUS OUTSTANDING</td>
                                     <td className="border border-gray-400 p-1.5 text-center">{data.outstandingAmount}</td>
                                 </tr>
-                                <tr className="font-bold bg-gray-100">
-                                    <td className="border border-gray-400 p-1.5"></td>
-                                    <td className="border border-gray-400 p-1.5 text-right pr-4">GRAND TOTAL</td>
-                                    <td className="border border-gray-400 p-1.5 text-center">{data.grandTotal}</td>
-                                </tr>
                             </>
+                        )}
+                        {(data.advanceAmount || data.outstandingAmount) && (
+                            <tr className="font-bold bg-gray-100">
+                                <td className="border border-gray-400 p-1.5"></td>
+                                <td className="border border-gray-400 p-1.5 text-right pr-4">GRAND TOTAL</td>
+                                <td className="border border-gray-400 p-1.5 text-center">{data.grandTotal}</td>
+                            </tr>
                         )}
                     </tbody>
                 </table>
@@ -207,7 +216,8 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                         <img
                             src={data.category === 'Legal' ? legalQr : consultancyQr}
                             alt="QR Code"
-                            className="h-52 object-contain"
+                            className="h-52 object-contain mix-blend-darken"
+                            style={{ backgroundColor: 'transparent' }}
                         />
                     </div>
 
