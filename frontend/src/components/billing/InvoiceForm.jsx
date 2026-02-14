@@ -1,7 +1,104 @@
-import React from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Plus, Trash2, FileText, Calendar, Hash, User, RefreshCw, Type } from 'lucide-react';
 
 export default function InvoiceForm({ data, onChange }) {
+    // ── Client Autocomplete State ──
+    const [allClients, setAllClients] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [highlightedIndex, setHighlightedIndex] = useState(-1);
+    const suggestionsRef = useRef(null);
+    const clientNameRef = useRef(null);
+
+    // Fetch clients on mount
+    useEffect(() => {
+        const fetchClients = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if (!token) return;
+                const res = await fetch('/api/clients', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.ok) {
+                    const clients = await res.json();
+                    setAllClients(clients);
+                }
+            } catch (err) {
+                console.error('Failed to fetch clients for autocomplete', err);
+            }
+        };
+        fetchClients();
+    }, []);
+
+    // Filter clients based on typed text
+    const getFilteredClients = useCallback(() => {
+        const query = (data.clientName || '').trim().toLowerCase();
+        if (!query) return [];
+        return allClients.filter(c =>
+            c.name && c.name.toLowerCase().includes(query)
+        ).slice(0, 10); // Limit to 10 suggestions
+    }, [data.clientName, allClients]);
+
+    const filteredClients = getFilteredClients();
+
+    // Handle selecting a client from the dropdown
+    const handleSelectClient = (client) => {
+        onChange({
+            ...data,
+            clientName: client.name,
+            clientAddress: client.address || ''
+        });
+        setShowSuggestions(false);
+        setHighlightedIndex(-1);
+    };
+
+    // Handle keyboard navigation in the dropdown
+    const handleClientNameKeyDown = (e) => {
+        if (!showSuggestions || filteredClients.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setHighlightedIndex(prev =>
+                prev < filteredClients.length - 1 ? prev + 1 : 0
+            );
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setHighlightedIndex(prev =>
+                prev > 0 ? prev - 1 : filteredClients.length - 1
+            );
+        } else if (e.key === 'Enter' && highlightedIndex >= 0) {
+            e.preventDefault();
+            handleSelectClient(filteredClients[highlightedIndex]);
+        } else if (e.key === 'Escape') {
+            setShowSuggestions(false);
+            setHighlightedIndex(-1);
+        }
+    };
+
+    // Scroll highlighted item into view
+    useEffect(() => {
+        if (highlightedIndex >= 0 && suggestionsRef.current) {
+            const items = suggestionsRef.current.querySelectorAll('[data-suggestion]');
+            if (items[highlightedIndex]) {
+                items[highlightedIndex].scrollIntoView({ block: 'nearest' });
+            }
+        }
+    }, [highlightedIndex]);
+
+    // Close suggestions when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (
+                suggestionsRef.current && !suggestionsRef.current.contains(e.target) &&
+                clientNameRef.current && !clientNameRef.current.contains(e.target)
+            ) {
+                setShowSuggestions(false);
+                setHighlightedIndex(-1);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         // Create new object to trigger change detection in parent
@@ -158,14 +255,65 @@ export default function InvoiceForm({ data, onChange }) {
                         <User size={14} /> Client Name & Address
                     </label>
                     <div className="space-y-2">
-                        <textarea
-                            name="clientName"
-                            value={data.clientName}
-                            onChange={handleChange}
-                            rows={2}
-                            placeholder="Client Name"
-                            className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white resize-y"
-                        />
+                        {/* Client Name with Autocomplete */}
+                        <div className="relative">
+                            <textarea
+                                ref={clientNameRef}
+                                name="clientName"
+                                value={data.clientName}
+                                onChange={(e) => {
+                                    handleChange(e);
+                                    setShowSuggestions(true);
+                                    setHighlightedIndex(-1);
+                                }}
+                                onFocus={() => {
+                                    if ((data.clientName || '').trim().length > 0) {
+                                        setShowSuggestions(true);
+                                    }
+                                }}
+                                onKeyDown={handleClientNameKeyDown}
+                                rows={2}
+                                placeholder="Start typing client name..."
+                                className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 transition-colors p-2.5 border bg-gray-50 focus:bg-white resize-y"
+                                autoComplete="off"
+                            />
+                            {/* Suggestions Dropdown */}
+                            {showSuggestions && filteredClients.length > 0 && (
+                                <div
+                                    ref={suggestionsRef}
+                                    className="absolute z-50 left-0 right-0 mt-1 bg-white rounded-lg border border-gray-200 shadow-xl max-h-56 overflow-y-auto"
+                                    style={{ top: '100%' }}
+                                >
+                                    <div className="px-3 py-1.5 bg-gray-50 border-b border-gray-100 sticky top-0">
+                                        <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+                                            {filteredClients.length} matching client{filteredClients.length > 1 ? 's' : ''}
+                                        </span>
+                                    </div>
+                                    {filteredClients.map((client, idx) => (
+                                        <button
+                                            key={client.id || idx}
+                                            data-suggestion
+                                            type="button"
+                                            onClick={() => handleSelectClient(client)}
+                                            className={`w-full text-left px-3 py-2.5 flex items-start gap-2.5 transition-colors border-b border-gray-50 last:border-b-0 ${idx === highlightedIndex
+                                                ? 'bg-blue-50 text-blue-800'
+                                                : 'hover:bg-gray-50 text-gray-700'
+                                                }`}
+                                        >
+                                            <div className="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                <User size={13} className="text-blue-600" />
+                                            </div>
+                                            <div className="min-w-0 flex-1">
+                                                <div className="font-medium text-sm truncate">{client.name}</div>
+                                                {client.address && (
+                                                    <div className="text-xs text-gray-400 truncate mt-0.5">{client.address}</div>
+                                                )}
+                                            </div>
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                         <textarea
                             name="clientAddress"
                             value={data.clientAddress || ''}
