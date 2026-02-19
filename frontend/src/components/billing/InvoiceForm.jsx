@@ -381,6 +381,7 @@ export default function InvoiceForm({ data, onChange }) {
                                 <option value="D">D - Nithya</option>
                                 <option value="E">E - Irshad</option>
                                 <option value="F">F - Construction & Supervising</option>
+                                <option value="VP">VP - Jayan & Midhun</option>                               
                             </select>
                         </div>
                     )}
