@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Shield, AlertTriangle, XCircle, RefreshCw, Clock, FileText, DollarSign, Loader2, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Shield, AlertTriangle, XCircle, RefreshCw, Clock, FileText, DollarSign, Loader2, ChevronRight, Download } from 'lucide-react';
 
 const LicenseDashboardPage = () => {
     const [dashboard, setDashboard] = useState(null);
@@ -39,6 +39,31 @@ const LicenseDashboardPage = () => {
         return 'bg-blue-100 text-blue-700 border-blue-200';
     };
 
+    const handleExportAllExcel = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`/api/client-licenses/download/excel`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `All_Licenses_Export_${new Date().toISOString().split('T')[0]}.xlsx`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } else {
+                alert('Export failed.');
+            }
+        } catch (err) {
+            console.error('Export error:', err);
+        }
+    };
+
     if (isLoading) return (
         <div className="min-h-screen bg-slate-50 flex items-center justify-center">
             <Loader2 className="animate-spin text-indigo-600" size={40} />
@@ -59,6 +84,10 @@ const LicenseDashboardPage = () => {
                     </h1>
                 </div>
                 <div className="flex gap-2">
+                    <button onClick={handleExportAllExcel}
+                        className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition text-sm font-medium shadow">
+                        <Download size={16} /> Export All
+                    </button>
                     <Link to="/licenses" className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition text-sm font-medium shadow">
                         <FileText size={16} /> Manage Licenses
                     </Link>

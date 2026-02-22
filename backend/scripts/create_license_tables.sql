@@ -15,15 +15,16 @@ CREATE TABLE IF NOT EXISTS license_types (
 -- 2. Client License Records
 CREATE TABLE IF NOT EXISTS client_licenses (
     id SERIAL PRIMARY KEY,
-    client_id INTEGER REFERENCES clients(id) ON DELETE CASCADE,
+    client_id INTEGER REFERENCES clients(id) ON DELETE SET NULL,
+    manual_client_name VARCHAR(255),
     license_type_id INTEGER REFERENCES license_types(id) ON DELETE CASCADE,
     file_no VARCHAR(100),
     service_date DATE,
     expiry_date DATE,
-    status VARCHAR(20) DEFAULT 'Active' CHECK (status IN ('Active', 'Expired', 'Renewed')),
+    status VARCHAR(50) DEFAULT 'Active', -- 'Active', 'Expired', 'Renewed'
     notes TEXT,
-    created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW()
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 -- 3. License Services Table

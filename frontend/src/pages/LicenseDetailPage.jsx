@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Plus, Edit, Trash2, Search, Shield, Loader2, Clock, AlertTriangle, DollarSign, Wrench, X } from 'lucide-react';
+import { ArrowLeft, Plus, Edit, Trash2, Search, Shield, Loader2, Clock, AlertTriangle, DollarSign, Wrench, X, Download } from 'lucide-react';
 
 const LicenseDetailPage = () => {
     const { licenseTypeId } = useParams();
@@ -16,7 +16,8 @@ const LicenseDetailPage = () => {
     const [expandedId, setExpandedId] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const [formData, setFormData] = useState({ client_id: '', file_no: '', service_date: '', expiry_date: '', status: 'Active', notes: '' });
+    const [isManualClient, setIsManualClient] = useState(false);
+    const [formData, setFormData] = useState({ client_id: '', manual_client_name: '', file_no: '', service_date: '', expiry_date: '', status: 'Active', notes: '' });
     const [serviceData, setServiceData] = useState({ service_description: '', service_cost: '', service_date: '' });
     const [billingData, setBillingData] = useState({ amount: '', payment_status: 'Pending', invoice_no: '', payment_date: '' });
     const navigate = useNavigate();
@@ -66,12 +67,53 @@ const LicenseDetailPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const payload = { ...formData, license_type_id: licenseTypeId };
+
+        // Clean payload based on manual toggle
+        if (isManualClient) {
+            payload.client_id = null;
+        } else {
+            payload.manual_client_name = null;
+        }
+
         const url = editingId ? `/api/client-licenses/${editingId}` : '/api/client-licenses';
         try {
             const res = await fetch(url, { method: editingId ? 'PUT' : 'POST', headers: headers(), body: JSON.stringify(payload) });
             if (res.ok) { fetchAll(); setShowForm(false); resetForm(); }
-            else alert('Failed to save.');
+            else {
+                const err = await res.json();
+                alert(err.error || 'Failed to save.');
+            }
         } catch (e) { console.error(e); }
+    };
+
+    const handleExportExcel = async () => {
+        try {
+            const token = getToken();
+            const query = new URLSearchParams({
+                license_type_id: licenseTypeId,
+                search: searchTerm
+            }).toString();
+
+            const response = await fetch(`/api/client-licenses/download/excel?${query}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+
+            if (response.ok) {
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${licenseType?.name || 'Licenses'}_Export_${new Date().toISOString().split('T')[0]}.xlsx`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } else {
+                alert('Export failed.');
+            }
+        } catch (err) {
+            console.error('Export error:', err);
+        }
     };
 
     const handleDelete = async (id) => {
@@ -108,7 +150,11 @@ const LicenseDetailPage = () => {
         try { await fetch(`/api/license-billing/${bId}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${getToken()}` } }); fetchBilling(clId); } catch (e) { console.error(e); }
     };
 
-    const resetForm = () => { setFormData({ client_id: '', file_no: '', service_date: '', expiry_date: '', status: 'Active', notes: '' }); setEditingId(null); };
+    const resetForm = () => {
+        setFormData({ client_id: '', manual_client_name: '', file_no: '', service_date: '', expiry_date: '', status: 'Active', notes: '' });
+        setEditingId(null);
+        setIsManualClient(false);
+    };
     const formatDate = (d) => { if (!d) return '-'; const s = String(d).split('T')[0]; const p = s.split('-'); return p.length === 3 && p[0].length === 4 ? `${p[2]}-${p[1]}-${p[0]}` : s; };
 
     const getStatusBadge = (status, days) => {
@@ -137,9 +183,13 @@ const LicenseDetailPage = () => {
                 <div className="flex gap-2 items-center">
                     <div className="relative hidden md:block">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                        <input type="text" placeholder="Search..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 w-56"
+                        <input type="text" placeholder="Search..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 w-56 shadow-sm"
                             value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
                     </div>
+                    <button onClick={handleExportExcel}
+                        className="flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition shadow text-sm font-medium">
+                        <Download size={18} /> Export Excel
+                    </button>
                     <button onClick={() => { resetForm(); setShowForm(true); }}
                         className="flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition shadow text-sm font-medium">
                         <Plus size={18} /> Add Client License
@@ -180,7 +230,20 @@ const LicenseDetailPage = () => {
                                                 </td>
                                                 <td className="px-4 py-3 text-right" onClick={e => e.stopPropagation()}>
                                                     <div className="flex justify-end gap-1">
-                                                        <button onClick={() => { setFormData({ client_id: l.client_id, file_no: l.file_no || '', service_date: l.service_date?.split('T')[0] || '', expiry_date: l.expiry_date?.split('T')[0] || '', status: l.status, notes: l.notes || '' }); setEditingId(l.id); setShowForm(true); }}
+                                                        <button onClick={() => {
+                                                            setFormData({
+                                                                client_id: l.client_id || '',
+                                                                manual_client_name: l.manual_client_name || '',
+                                                                file_no: l.file_no || '',
+                                                                service_date: l.service_date?.split('T')[0] || '',
+                                                                expiry_date: l.expiry_date?.split('T')[0] || '',
+                                                                status: l.status,
+                                                                notes: l.notes || ''
+                                                            });
+                                                            setEditingId(l.id);
+                                                            setIsManualClient(!!l.manual_client_name);
+                                                            setShowForm(true);
+                                                        }}
                                                             className="p-1.5 hover:bg-indigo-50 text-indigo-600 rounded-lg transition"><Edit size={15} /></button>
                                                         <button onClick={() => handleDelete(l.id)}
                                                             className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition"><Trash2 size={15} /></button>
@@ -253,13 +316,31 @@ const LicenseDetailPage = () => {
                             <button onClick={() => { setShowForm(false); resetForm(); }} className="text-white/80 hover:text-white text-2xl">&times;</button>
                         </div>
                         <form onSubmit={handleSubmit} className="p-6 space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Client *</label>
-                                <select required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-                                    value={formData.client_id} onChange={e => setFormData({ ...formData, client_id: e.target.value })}>
-                                    <option value="">Select Client</option>
-                                    {clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-                                </select>
+                            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 mb-4">
+                                <div className="flex items-center justify-between mb-2">
+                                    <label className="text-sm font-bold text-slate-700">Client Source</label>
+                                    <div className="flex gap-4">
+                                        <label className="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" checked={!isManualClient} onChange={() => setIsManualClient(false)} className="accent-indigo-600" />
+                                            <span className="text-xs font-semibold text-slate-600">Existing</span>
+                                        </label>
+                                        <label className="flex items-center gap-2 cursor-pointer">
+                                            <input type="radio" checked={isManualClient} onChange={() => setIsManualClient(true)} className="accent-indigo-600" />
+                                            <span className="text-xs font-semibold text-slate-600">Manual Entry</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                {!isManualClient ? (
+                                    <select required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none bg-white font-medium text-sm"
+                                        value={formData.client_id} onChange={e => setFormData({ ...formData, client_id: e.target.value })}>
+                                        <option value="">Select Existing Client</option>
+                                        {clients.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+                                    </select>
+                                ) : (
+                                    <input type="text" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none bg-white font-medium text-sm"
+                                        value={formData.manual_client_name} onChange={e => setFormData({ ...formData, manual_client_name: e.target.value })}
+                                        placeholder="Enter client name manually..." />
+                                )}
                             </div>
                             <div><label className="block text-sm font-medium text-slate-700 mb-1">File No</label>
                                 <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"

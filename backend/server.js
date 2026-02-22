@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const { Pool } = require("pg");
 const dns = require("dns");
+const XLSX = require("xlsx");
 
 /* =========================
    FORCE IPV4 ONLY (RENDER FIX)
@@ -684,7 +685,8 @@ app.get("/api/client-licenses", authenticateToken, async (req, res) => {
   try {
     let query = `
       SELECT cl.*, 
-        c.name as client_name, c.email as client_email, c.phone as client_phone,
+        COALESCE(c.name, cl.manual_client_name) as client_name, 
+        c.email as client_email, c.phone as client_phone,
         lt.name as license_type_name,
         CASE 
           WHEN cl.expiry_date < CURRENT_DATE AND cl.status != 'Expired' THEN 'Expired'
@@ -692,7 +694,7 @@ app.get("/api/client-licenses", authenticateToken, async (req, res) => {
         END as computed_status,
         (cl.expiry_date - CURRENT_DATE) as remaining_days
       FROM client_licenses cl
-      JOIN clients c ON cl.client_id = c.id
+      LEFT JOIN clients c ON cl.client_id = c.id
       JOIN license_types lt ON cl.license_type_id = lt.id
       WHERE 1=1
     `;
@@ -710,7 +712,7 @@ app.get("/api/client-licenses", authenticateToken, async (req, res) => {
       paramIndex++;
     }
     if (search) {
-      query += ` AND (c.name ILIKE $${paramIndex} OR cl.file_no ILIKE $${paramIndex})`;
+      query += ` AND (c.name ILIKE $${paramIndex} OR cl.manual_client_name ILIKE $${paramIndex} OR cl.file_no ILIKE $${paramIndex})`;
       values.push(`%${search}%`);
       paramIndex++;
     }
@@ -725,17 +727,82 @@ app.get("/api/client-licenses", authenticateToken, async (req, res) => {
   }
 });
 
+// Export client licenses to Excel
+app.get("/api/client-licenses/download/excel", authenticateToken, async (req, res) => {
+  const { license_type_id, status, search } = req.query;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    let query = `
+      SELECT 
+        COALESCE(c.name, cl.manual_client_name) as "Client Name",
+        lt.name as "License Type",
+        cl.file_no as "File Number",
+        cl.service_date as "Service Date",
+        cl.expiry_date as "Expiry Date",
+        CASE 
+          WHEN cl.expiry_date < CURRENT_DATE AND cl.status != 'Expired' THEN 'Expired'
+          ELSE cl.status 
+        END as "Status",
+        (cl.expiry_date - CURRENT_DATE) as "Days Remaining",
+        cl.notes as "Notes"
+      FROM client_licenses cl
+      LEFT JOIN clients c ON cl.client_id = c.id
+      JOIN license_types lt ON cl.license_type_id = lt.id
+      WHERE 1=1
+    `;
+    const values = [];
+    let paramIndex = 1;
+
+    if (license_type_id) {
+      query += ` AND cl.license_type_id = $${paramIndex}`;
+      values.push(license_type_id);
+      paramIndex++;
+    }
+    if (status) {
+      query += ` AND cl.status = $${paramIndex}`;
+      values.push(status);
+      paramIndex++;
+    }
+    if (search) {
+      query += ` AND (c.name ILIKE $${paramIndex} OR cl.manual_client_name ILIKE $${paramIndex} OR cl.file_no ILIKE $${paramIndex})`;
+      values.push(`%${search}%`);
+      paramIndex++;
+    }
+
+    query += " ORDER BY cl.expiry_date ASC";
+
+    const result = await pool.query(query, values);
+
+    // Create Excel sheet
+    const ws = XLSX.utils.json_to_sheet(result.rows);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Licenses");
+
+    // Buffer
+    const buf = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+
+    res.setHeader('Content-Disposition', 'attachment; filename="licenses_export.xlsx"');
+    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    res.send(buf);
+  } catch (err) {
+    console.error("❌ GET /api/client-licenses/excel error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 // Get single client license
 app.get("/api/client-licenses/:id", authenticateToken, async (req, res) => {
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
   try {
     const result = await pool.query(`
       SELECT cl.*, 
-        c.name as client_name, c.email as client_email, c.phone as client_phone,
+        COALESCE(c.name, cl.manual_client_name) as client_name, 
+        c.email as client_email, c.phone as client_phone,
         lt.name as license_type_name,
         (cl.expiry_date - CURRENT_DATE) as remaining_days
       FROM client_licenses cl
-      JOIN clients c ON cl.client_id = c.id
+      LEFT JOIN clients c ON cl.client_id = c.id
       JOIN license_types lt ON cl.license_type_id = lt.id
       WHERE cl.id = $1
     `, [req.params.id]);
@@ -749,15 +816,17 @@ app.get("/api/client-licenses/:id", authenticateToken, async (req, res) => {
 
 // Create client license
 app.post("/api/client-licenses", authenticateToken, async (req, res) => {
-  const { client_id, license_type_id, file_no, service_date, expiry_date, status, notes } = req.body;
+  const { client_id, manual_client_name, license_type_id, file_no, service_date, expiry_date, status, notes } = req.body;
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
-  if (!client_id || !license_type_id) return res.status(400).json({ error: "Client and License Type are required" });
+  if ((!client_id && !manual_client_name) || !license_type_id) {
+    return res.status(400).json({ error: "Client (or Manual Name) and License Type are required" });
+  }
 
   try {
     const result = await pool.query(
-      `INSERT INTO client_licenses (client_id, license_type_id, file_no, service_date, expiry_date, status, notes) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
-      [client_id, license_type_id, file_no, service_date || null, expiry_date || null, status || 'Active', notes || null]
+      `INSERT INTO client_licenses (client_id, manual_client_name, license_type_id, file_no, service_date, expiry_date, status, notes) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+      [client_id || null, manual_client_name || null, license_type_id, file_no, service_date || null, expiry_date || null, status || 'Active', notes || null]
     );
     res.status(201).json(result.rows[0]);
   } catch (err) {
@@ -769,16 +838,16 @@ app.post("/api/client-licenses", authenticateToken, async (req, res) => {
 // Update client license
 app.put("/api/client-licenses/:id", authenticateToken, async (req, res) => {
   const { id } = req.params;
-  const { client_id, license_type_id, file_no, service_date, expiry_date, status, notes } = req.body;
+  const { client_id, manual_client_name, license_type_id, file_no, service_date, expiry_date, status, notes } = req.body;
   if (!pool) return res.status(503).json({ error: "Database unavailable" });
 
   try {
     const result = await pool.query(
       `UPDATE client_licenses 
-       SET client_id = $1, license_type_id = $2, file_no = $3, service_date = $4, 
-           expiry_date = $5, status = $6, notes = $7, updated_at = NOW() 
-       WHERE id = $8 RETURNING *`,
-      [client_id, license_type_id, file_no, service_date, expiry_date, status, notes, id]
+       SET client_id = $1, manual_client_name = $2, license_type_id = $3, file_no = $4, 
+           service_date = $5, expiry_date = $6, status = $7, notes = $8, updated_at = NOW() 
+       WHERE id = $9 RETURNING *`,
+      [client_id || null, manual_client_name || null, license_type_id, file_no, service_date, expiry_date, status, notes, id]
     );
     if (result.rows.length === 0) return res.status(404).json({ error: "Client license not found" });
     res.json(result.rows[0]);
