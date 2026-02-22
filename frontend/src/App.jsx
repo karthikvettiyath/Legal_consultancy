@@ -9,6 +9,9 @@ import LandingPage from './pages/LandingPage';
 import BillingPage from './pages/BillingPage';
 import SavedBillingsPage from './pages/SavedBillingsPage';
 import ClientManagementPage from './pages/ClientManagementPage';
+import LicenseDashboardPage from './pages/LicenseDashboardPage';
+import LicenseTypesPage from './pages/LicenseTypesPage';
+import LicenseDetailPage from './pages/LicenseDetailPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 
@@ -44,6 +47,23 @@ function App() {
           <Route path="/clients" element={
             <ProtectedRoute>
               <ClientManagementPage />
+            </ProtectedRoute>
+          } />
+
+          {/* License & Agreement Management - Protected */}
+          <Route path="/license-dashboard" element={
+            <ProtectedRoute>
+              <LicenseDashboardPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/licenses" element={
+            <ProtectedRoute>
+              <LicenseTypesPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/licenses/:licenseTypeId" element={
+            <ProtectedRoute>
+              <LicenseDetailPage />
             </ProtectedRoute>
           } />
 

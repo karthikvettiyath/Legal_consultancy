@@ -586,4 +586,455 @@ app.delete("/api/billings/:id", authenticateToken, async (req, res) => {
   }
 });
 
+/* =========================
+   LICENSE & AGREEMENT MANAGEMENT
+   ========================= */
+
+// ---- License Types CRUD ----
+
+// Get all license types
+app.get("/api/license-types", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(`
+      SELECT lt.*, 
+        (SELECT COUNT(*) FROM client_licenses cl WHERE cl.license_type_id = lt.id) as client_count
+      FROM license_types lt 
+      ORDER BY lt.name ASC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/license-types error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Get single license type
+app.get("/api/license-types/:id", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query("SELECT * FROM license_types WHERE id = $1", [req.params.id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: "License type not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ GET /api/license-types/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Create license type
+app.post("/api/license-types", authenticateToken, async (req, res) => {
+  const { name, description } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  if (!name) return res.status(400).json({ error: "Name is required" });
+
+  try {
+    const result = await pool.query(
+      "INSERT INTO license_types (name, description) VALUES ($1, $2) RETURNING *",
+      [name, description || null]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ POST /api/license-types error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Update license type
+app.put("/api/license-types/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  const { name, description } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(
+      "UPDATE license_types SET name = $1, description = $2, updated_at = NOW() WHERE id = $3 RETURNING *",
+      [name, description, id]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: "License type not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ PUT /api/license-types/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Delete license type
+app.delete("/api/license-types/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query("DELETE FROM license_types WHERE id = $1 RETURNING id", [id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: "License type not found" });
+    res.json({ success: true, message: "License type deleted successfully" });
+  } catch (err) {
+    console.error("❌ DELETE /api/license-types/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// ---- Client Licenses CRUD ----
+
+// Get all client licenses (optionally filtered by license_type_id)
+app.get("/api/client-licenses", authenticateToken, async (req, res) => {
+  const { license_type_id, status, search } = req.query;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    let query = `
+      SELECT cl.*, 
+        c.name as client_name, c.email as client_email, c.phone as client_phone,
+        lt.name as license_type_name,
+        CASE 
+          WHEN cl.expiry_date < CURRENT_DATE AND cl.status != 'Expired' THEN 'Expired'
+          ELSE cl.status 
+        END as computed_status,
+        (cl.expiry_date - CURRENT_DATE) as remaining_days
+      FROM client_licenses cl
+      JOIN clients c ON cl.client_id = c.id
+      JOIN license_types lt ON cl.license_type_id = lt.id
+      WHERE 1=1
+    `;
+    const values = [];
+    let paramIndex = 1;
+
+    if (license_type_id) {
+      query += ` AND cl.license_type_id = $${paramIndex}`;
+      values.push(license_type_id);
+      paramIndex++;
+    }
+    if (status) {
+      query += ` AND cl.status = $${paramIndex}`;
+      values.push(status);
+      paramIndex++;
+    }
+    if (search) {
+      query += ` AND (c.name ILIKE $${paramIndex} OR cl.file_no ILIKE $${paramIndex})`;
+      values.push(`%${search}%`);
+      paramIndex++;
+    }
+
+    query += " ORDER BY cl.expiry_date ASC";
+
+    const result = await pool.query(query, values);
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/client-licenses error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Get single client license
+app.get("/api/client-licenses/:id", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(`
+      SELECT cl.*, 
+        c.name as client_name, c.email as client_email, c.phone as client_phone,
+        lt.name as license_type_name,
+        (cl.expiry_date - CURRENT_DATE) as remaining_days
+      FROM client_licenses cl
+      JOIN clients c ON cl.client_id = c.id
+      JOIN license_types lt ON cl.license_type_id = lt.id
+      WHERE cl.id = $1
+    `, [req.params.id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: "Client license not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ GET /api/client-licenses/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Create client license
+app.post("/api/client-licenses", authenticateToken, async (req, res) => {
+  const { client_id, license_type_id, file_no, service_date, expiry_date, status, notes } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  if (!client_id || !license_type_id) return res.status(400).json({ error: "Client and License Type are required" });
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO client_licenses (client_id, license_type_id, file_no, service_date, expiry_date, status, notes) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      [client_id, license_type_id, file_no, service_date || null, expiry_date || null, status || 'Active', notes || null]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ POST /api/client-licenses error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Update client license
+app.put("/api/client-licenses/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  const { client_id, license_type_id, file_no, service_date, expiry_date, status, notes } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(
+      `UPDATE client_licenses 
+       SET client_id = $1, license_type_id = $2, file_no = $3, service_date = $4, 
+           expiry_date = $5, status = $6, notes = $7, updated_at = NOW() 
+       WHERE id = $8 RETURNING *`,
+      [client_id, license_type_id, file_no, service_date, expiry_date, status, notes, id]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: "Client license not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ PUT /api/client-licenses/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Delete client license
+app.delete("/api/client-licenses/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query("DELETE FROM client_licenses WHERE id = $1 RETURNING id", [id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: "Client license not found" });
+    res.json({ success: true, message: "Client license deleted successfully" });
+  } catch (err) {
+    console.error("❌ DELETE /api/client-licenses/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// ---- License Services ----
+
+// Get services for a client license
+app.get("/api/license-services/:clientLicenseId", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(
+      "SELECT * FROM license_services WHERE client_license_id = $1 ORDER BY service_date DESC",
+      [req.params.clientLicenseId]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/license-services error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Add service to a client license
+app.post("/api/license-services", authenticateToken, async (req, res) => {
+  const { client_license_id, service_description, service_cost, service_date } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO license_services (client_license_id, service_description, service_cost, service_date) 
+       VALUES ($1, $2, $3, $4) RETURNING *`,
+      [client_license_id, service_description, service_cost || 0, service_date || null]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ POST /api/license-services error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Delete service
+app.delete("/api/license-services/:id", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query("DELETE FROM license_services WHERE id = $1 RETURNING id", [req.params.id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: "Service not found" });
+    res.json({ success: true });
+  } catch (err) {
+    console.error("❌ DELETE /api/license-services/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// ---- License Billing ----
+
+// Get billing for a client license
+app.get("/api/license-billing/:clientLicenseId", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(
+      "SELECT * FROM license_billing WHERE client_license_id = $1 ORDER BY created_at DESC",
+      [req.params.clientLicenseId]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/license-billing error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Add billing record
+app.post("/api/license-billing", authenticateToken, async (req, res) => {
+  const { client_license_id, amount, payment_status, invoice_no, payment_date } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(
+      `INSERT INTO license_billing (client_license_id, amount, payment_status, invoice_no, payment_date) 
+       VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+      [client_license_id, amount, payment_status || 'Pending', invoice_no, payment_date || null]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ POST /api/license-billing error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Update billing payment status
+app.put("/api/license-billing/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  const { amount, payment_status, invoice_no, payment_date } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(
+      `UPDATE license_billing SET amount = $1, payment_status = $2, invoice_no = $3, payment_date = $4 
+       WHERE id = $5 RETURNING *`,
+      [amount, payment_status, invoice_no, payment_date, id]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: "Billing record not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ PUT /api/license-billing/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Delete billing record
+app.delete("/api/license-billing/:id", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query("DELETE FROM license_billing WHERE id = $1 RETURNING id", [req.params.id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: "Billing record not found" });
+    res.json({ success: true });
+  } catch (err) {
+    console.error("❌ DELETE /api/license-billing/:id error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// ---- License Notifications ----
+
+// Get all notifications
+app.get("/api/license-notifications", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(`
+      SELECT ln.*, cl.file_no, c.name as client_name, lt.name as license_type_name, cl.expiry_date
+      FROM license_notifications ln
+      JOIN client_licenses cl ON ln.client_license_id = cl.id
+      JOIN clients c ON cl.client_id = c.id
+      JOIN license_types lt ON cl.license_type_id = lt.id
+      ORDER BY ln.scheduled_date ASC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/license-notifications error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// ---- Dashboard Summary ----
+
+app.get("/api/license-dashboard", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    // Overall stats
+    const totalLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses");
+    const activeLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses WHERE status = 'Active' AND expiry_date >= CURRENT_DATE");
+    const expiredLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses WHERE expiry_date < CURRENT_DATE OR status = 'Expired'");
+
+    // Expiring in 30 days
+    const expiringSoon = await pool.query(`
+      SELECT cl.*, c.name as client_name, lt.name as license_type_name,
+        (cl.expiry_date - CURRENT_DATE) as remaining_days
+      FROM client_licenses cl
+      JOIN clients c ON cl.client_id = c.id
+      JOIN license_types lt ON cl.license_type_id = lt.id
+      WHERE cl.expiry_date BETWEEN CURRENT_DATE AND (CURRENT_DATE + INTERVAL '30 days')
+        AND cl.status = 'Active'
+      ORDER BY cl.expiry_date ASC
+    `);
+
+    // Recently expired
+    const recentlyExpired = await pool.query(`
+      SELECT cl.*, c.name as client_name, lt.name as license_type_name,
+        (CURRENT_DATE - cl.expiry_date) as days_expired
+      FROM client_licenses cl
+      JOIN clients c ON cl.client_id = c.id
+      JOIN license_types lt ON cl.license_type_id = lt.id
+      WHERE cl.expiry_date < CURRENT_DATE
+      ORDER BY cl.expiry_date DESC
+      LIMIT 20
+    `);
+
+    // Recently renewed
+    const recentlyRenewed = await pool.query(`
+      SELECT cl.*, c.name as client_name, lt.name as license_type_name
+      FROM client_licenses cl
+      JOIN clients c ON cl.client_id = c.id
+      JOIN license_types lt ON cl.license_type_id = lt.id
+      WHERE cl.status = 'Renewed'
+      ORDER BY cl.updated_at DESC
+      LIMIT 10
+    `);
+
+    // License type breakdown
+    const typeBreakdown = await pool.query(`
+      SELECT lt.name, COUNT(cl.id) as count
+      FROM license_types lt
+      LEFT JOIN client_licenses cl ON cl.license_type_id = lt.id
+      GROUP BY lt.id, lt.name
+      ORDER BY count DESC
+    `);
+
+    // Pending billing
+    const pendingBilling = await pool.query(`
+      SELECT SUM(amount) as total FROM license_billing WHERE payment_status = 'Pending'
+    `);
+
+    res.json({
+      stats: {
+        total: parseInt(totalLicenses.rows[0].count),
+        active: parseInt(activeLicenses.rows[0].count),
+        expired: parseInt(expiredLicenses.rows[0].count),
+        expiring_soon: expiringSoon.rows.length,
+        pending_billing: parseFloat(pendingBilling.rows[0].total || 0)
+      },
+      expiring_soon: expiringSoon.rows,
+      recently_expired: recentlyExpired.rows,
+      recently_renewed: recentlyRenewed.rows,
+      type_breakdown: typeBreakdown.rows
+    });
+  } catch (err) {
+    console.error("❌ GET /api/license-dashboard error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// ---- Auto-update expired licenses (called on dashboard load) ----
+app.post("/api/license-auto-update", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+
+  try {
+    const result = await pool.query(`
+      UPDATE client_licenses 
+      SET status = 'Expired', updated_at = NOW()
+      WHERE expiry_date < CURRENT_DATE AND status = 'Active'
+      RETURNING id
+    `);
+    res.json({ updated: result.rows.length });
+  } catch (err) {
+    console.error("❌ POST /api/license-auto-update error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = app;

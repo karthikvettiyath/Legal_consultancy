@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import logo from '../../assets/logo.png';
 import sign from '../../assets/sign.png';
+import legalSign from '../../assets/legal_sign.png';
 import consultancyQr from '../../assets/consultancy_qr.jpeg';
 import legalQr from '../../assets/legal_qr.jpeg';
 
@@ -234,7 +235,7 @@ const InvoicePreview = forwardRef(({ data }, ref) => {
                     <div className="text-center pr-8">
                         {/* Signature */}
                         <div className="mb-1 h-24 flex items-end justify-center">
-                            <img src={sign} alt="Signature" className="max-h-full max-w-[200px] object-contain" />
+                            <img src={data.category === 'Legal' ? legalSign : sign} alt="Signature" className="max-h-full max-w-[200px] object-contain" />
                         </div>
                     </div>
                 </div>
