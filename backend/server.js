@@ -78,6 +78,23 @@ if (!DATABASE_URL) {
   try {
     const client = await pool.connect();
     await client.query("SELECT 1");
+
+    // Auto-create dsc_records table
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS dsc_records (
+        id SERIAL PRIMARY KEY,
+        username VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        client_name VARCHAR(255) NOT NULL,
+        email_id VARCHAR(255),
+        phone_no VARCHAR(50),
+        dsc_taken_date DATE,
+        dsc_expiry_date DATE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
     client.release();
     dbHealthy = true;
     console.log("✅ Connected to Supabase Database (IPv4)");
@@ -872,6 +889,46 @@ app.delete("/api/client-licenses/:id", authenticateToken, async (req, res) => {
   }
 });
 
+// Renew client license
+app.post("/api/client-licenses/:id/renew", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  const { service_date, expiry_date, notes } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  if (!service_date || !expiry_date) return res.status(400).json({ error: "New dates are required" });
+
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+
+    // 1. Get current record info
+    const currentRes = await client.query("SELECT * FROM client_licenses WHERE id = $1", [id]);
+    if (currentRes.rows.length === 0) {
+      await client.query("ROLLBACK");
+      return res.status(404).json({ error: "License not found" });
+    }
+    const old = currentRes.rows[0];
+
+    // 2. Mark old as Renewed
+    await client.query("UPDATE client_licenses SET status = 'Renewed', updated_at = NOW() WHERE id = $1", [id]);
+
+    // 3. Insert new Active record
+    const newRes = await client.query(
+      `INSERT INTO client_licenses (client_id, manual_client_name, license_type_id, file_no, service_date, expiry_date, status, notes) 
+       VALUES ($1, $2, $3, $4, $5, $6, 'Active', $7) RETURNING *`,
+      [old.client_id, old.manual_client_name, old.license_type_id, old.file_no, service_date, expiry_date, notes || old.notes]
+    );
+
+    await client.query("COMMIT");
+    res.json(newRes.rows[0]);
+  } catch (err) {
+    await client.query("ROLLBACK");
+    console.error("❌ POST /api/client-licenses/:id/renew error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  } finally {
+    client.release();
+  }
+});
+
 // ---- License Services ----
 
 // Get services for a client license
@@ -1102,6 +1159,104 @@ app.post("/api/license-auto-update", authenticateToken, async (req, res) => {
     res.json({ updated: result.rows.length });
   } catch (err) {
     console.error("❌ POST /api/license-auto-update error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+/* =========================
+   DSC MANAGEMENT
+   ========================= */
+
+// Get all DSC records
+app.get("/api/dsc", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const { search } = req.query;
+    let query = `
+      SELECT *, 
+             (dsc_expiry_date - dsc_taken_date) as total_duration_days,
+             (dsc_expiry_date - CURRENT_DATE) as remaining_days 
+      FROM dsc_records`;
+    const values = [];
+    if (search) {
+      query += " WHERE client_name ILIKE $1 OR username ILIKE $1";
+      values.push(`%${search}%`);
+    }
+    query += " ORDER BY dsc_expiry_date ASC";
+    const result = await pool.query(query, values);
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/dsc error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Create DSC record
+app.post("/api/dsc", authenticateToken, async (req, res) => {
+  const { username, password, client_name, email_id, phone_no, dsc_taken_date, dsc_expiry_date } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(
+      `INSERT INTO dsc_records (username, password, client_name, email_id, phone_no, dsc_taken_date, dsc_expiry_date) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      [username, password, client_name, email_id, phone_no, dsc_taken_date, dsc_expiry_date]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ POST /api/dsc error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Update DSC record
+app.put("/api/dsc/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  const { username, password, client_name, email_id, phone_no, dsc_taken_date, dsc_expiry_date } = req.body;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(
+      `UPDATE dsc_records 
+       SET username = $1, password = $2, client_name = $3, email_id = $4, phone_no = $5, dsc_taken_date = $6, dsc_expiry_date = $7, updated_at = NOW()
+       WHERE id = $8 RETURNING *`,
+      [username, password, client_name, email_id, phone_no, dsc_taken_date, dsc_expiry_date, id]
+    );
+    if (result.rows.length === 0) return res.status(404).json({ error: "DSC record not found" });
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ PUT /api/dsc error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Delete DSC record
+app.delete("/api/dsc/:id", authenticateToken, async (req, res) => {
+  const { id } = req.params;
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query("DELETE FROM dsc_records WHERE id = $1 RETURNING id", [id]);
+    if (result.rows.length === 0) return res.status(404).json({ error: "DSC record not found" });
+    res.json({ success: true, message: "DSC record deleted successfully" });
+  } catch (err) {
+    console.error("❌ DELETE /api/dsc error:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Get DSC warnings (expiry <= 30 days)
+app.get("/api/dsc/warnings", authenticateToken, async (req, res) => {
+  if (!pool) return res.status(503).json({ error: "Database unavailable" });
+  try {
+    const result = await pool.query(`
+      SELECT *, 
+             (dsc_expiry_date - dsc_taken_date) as total_duration_days,
+             (dsc_expiry_date - CURRENT_DATE) as remaining_days
+      FROM dsc_records
+      WHERE (dsc_expiry_date - CURRENT_DATE) <= 30
+      ORDER BY dsc_expiry_date ASC
+    `);
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ GET /api/dsc/warnings error:", err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Scale, FileText, Users, Shield } from 'lucide-react';
+import { Scale, FileText, Users, Shield, Key } from 'lucide-react';
 
 const LandingPage = () => {
     return (
@@ -29,7 +29,7 @@ const LandingPage = () => {
                     Your Comprehensive Solution for Legal Expertise and Financial Management
                 </p>
 
-                <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
                     {/* Legal Card */}
                     <Link to="/legal" className="group">
                         <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20 h-full flex flex-col items-center">
@@ -78,6 +78,18 @@ const LandingPage = () => {
                             <h2 className="text-2xl font-bold text-white mb-3">Licenses</h2>
                             <p className="text-slate-400 text-center text-sm">
                                 Track licenses, agreements, expiry dates, and renewals.
+                            </p>
+                        </div>
+                    </Link>
+                    {/* DSC Card */}
+                    <Link to="/dsc" className="group">
+                        <div className="bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 h-full flex flex-col items-center">
+                            <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg group-hover:shadow-orange-500/50 transition-all duration-500">
+                                <Key className="text-white w-8 h-8" />
+                            </div>
+                            <h2 className="text-2xl font-bold text-white mb-3 text-center">DSC Management</h2>
+                            <p className="text-slate-400 text-center text-sm">
+                                Manage DSC information, renewals, and expiration warnings.
                             </p>
                         </div>
                     </Link>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Plus, Edit, Trash2, Search, Shield, Loader2, Clock, AlertTriangle, DollarSign, Wrench, X, Download } from 'lucide-react';
+import { ArrowLeft, Plus, Edit, Trash2, Search, Shield, Loader2, Clock, AlertTriangle, DollarSign, Wrench, X, Download, RefreshCcw } from 'lucide-react';
 
 const LicenseDetailPage = () => {
     const { licenseTypeId } = useParams();
@@ -9,15 +9,18 @@ const LicenseDetailPage = () => {
     const [clients, setClients] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [showForm, setShowForm] = useState(false);
+    const [showRenewModal, setShowRenewModal] = useState(false);
     const [showServiceForm, setShowServiceForm] = useState(null);
     const [showBillingForm, setShowBillingForm] = useState(null);
     const [services, setServices] = useState({});
     const [billing, setBilling] = useState({});
     const [expandedId, setExpandedId] = useState(null);
     const [editingId, setEditingId] = useState(null);
+    const [renewId, setRenewId] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [isManualClient, setIsManualClient] = useState(false);
     const [formData, setFormData] = useState({ client_id: '', manual_client_name: '', file_no: '', service_date: '', expiry_date: '', status: 'Active', notes: '' });
+    const [renewData, setRenewData] = useState({ service_date: '', expiry_date: '', notes: '' });
     const [serviceData, setServiceData] = useState({ service_description: '', service_cost: '', service_date: '' });
     const [billingData, setBillingData] = useState({ amount: '', payment_status: 'Pending', invoice_no: '', payment_date: '' });
     const navigate = useNavigate();
@@ -114,6 +117,26 @@ const LicenseDetailPage = () => {
         } catch (err) {
             console.error('Export error:', err);
         }
+    };
+
+    const handleRenewSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await fetch(`/api/client-licenses/${renewId}/renew`, {
+                method: 'POST',
+                headers: headers(),
+                body: JSON.stringify(renewData)
+            });
+            if (res.ok) {
+                fetchAll();
+                setShowRenewModal(false);
+                setRenewData({ service_date: '', expiry_date: '', notes: '' });
+                setRenewId(null);
+            } else {
+                const err = await res.json();
+                alert(err.error || 'Failed to renew.');
+            }
+        } catch (e) { console.error(e); }
     };
 
     const handleDelete = async (id) => {
@@ -244,9 +267,19 @@ const LicenseDetailPage = () => {
                                                             setIsManualClient(!!l.manual_client_name);
                                                             setShowForm(true);
                                                         }}
-                                                            className="p-1.5 hover:bg-indigo-50 text-indigo-600 rounded-lg transition"><Edit size={15} /></button>
+                                                            className="p-1.5 hover:bg-indigo-50 text-indigo-600 rounded-lg transition" title="Edit"><Edit size={15} /></button>
+                                                        <button onClick={() => {
+                                                            setRenewId(l.id);
+                                                            setRenewData({
+                                                                service_date: new Date().toISOString().split('T')[0],
+                                                                expiry_date: '',
+                                                                notes: `Renewal of ${l.file_no || 'license'}`
+                                                            });
+                                                            setShowRenewModal(true);
+                                                        }}
+                                                            className="p-1.5 hover:bg-emerald-50 text-emerald-600 rounded-lg transition" title="Renew License"><RefreshCcw size={15} /></button>
                                                         <button onClick={() => handleDelete(l.id)}
-                                                            className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition"><Trash2 size={15} /></button>
+                                                            className="p-1.5 hover:bg-red-50 text-red-500 rounded-lg transition" title="Delete"><Trash2 size={15} /></button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -364,6 +397,46 @@ const LicenseDetailPage = () => {
                             <div className="flex justify-end gap-3 pt-2">
                                 <button type="button" onClick={() => { setShowForm(false); resetForm(); }} className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition">Cancel</button>
                                 <button type="submit" className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 shadow transition font-medium">{editingId ? 'Update' : 'Create'}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Renew License Modal */}
+            {showRenewModal && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+                        <div className="bg-emerald-600 px-6 py-4 flex justify-between items-center">
+                            <h2 className="text-white text-lg font-bold">Renew License</h2>
+                            <button onClick={() => setShowRenewModal(false)} className="text-white/80 hover:text-white text-2xl">&times;</button>
+                        </div>
+                        <form onSubmit={handleRenewSubmit} className="p-6 space-y-4">
+                            <div className="bg-emerald-50 p-3 rounded-lg border border-emerald-100 mb-2">
+                                <p className="text-sm text-emerald-800">
+                                    Renewing this license will mark the current record as <strong>Renewed</strong> and create a new <strong>Active</strong> record.
+                                </p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">New Service Date *</label>
+                                    <input type="date" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+                                        value={renewData.service_date} onChange={e => setRenewData({ ...renewData, service_date: e.target.value })} />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 mb-1">New Expiry Date *</label>
+                                    <input type="date" required className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+                                        value={renewData.expiry_date} onChange={e => setRenewData({ ...renewData, expiry_date: e.target.value })} />
+                                </div>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Notes</label>
+                                <textarea className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none" rows="3"
+                                    value={renewData.notes} onChange={e => setRenewData({ ...renewData, notes: e.target.value })} placeholder="Renewal notes..." />
+                            </div>
+                            <div className="flex justify-end gap-3 pt-2">
+                                <button type="button" onClick={() => setShowRenewModal(false)} className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition">Cancel</button>
+                                <button type="submit" className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 shadow transition font-medium">Renew Now</button>
                             </div>
                         </form>
                     </div>

@@ -12,6 +12,7 @@ import ClientManagementPage from './pages/ClientManagementPage';
 import LicenseDashboardPage from './pages/LicenseDashboardPage';
 import LicenseTypesPage from './pages/LicenseTypesPage';
 import LicenseDetailPage from './pages/LicenseDetailPage';
+import DscManagementPage from './pages/DscManagementPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 
@@ -47,6 +48,13 @@ function App() {
           <Route path="/clients" element={
             <ProtectedRoute>
               <ClientManagementPage />
+            </ProtectedRoute>
+          } />
+
+          {/* DSC Management - Protected */}
+          <Route path="/dsc" element={
+            <ProtectedRoute>
+              <DscManagementPage />
             </ProtectedRoute>
           } />
 

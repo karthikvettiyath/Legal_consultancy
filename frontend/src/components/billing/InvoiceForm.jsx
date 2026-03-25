@@ -381,11 +381,13 @@ export default function InvoiceForm({ data, onChange }) {
                                 <option value="D">D - Nithya</option>
                                 <option value="E">E - Irshad</option>
                                 <option value="F">F - Construction & Supervising</option>
-                                <option value="G">G - Aswini</option>                 
+                                <option value="G">G - Aswini</option>   
+                                <option value="H">J - Jitha</option>  
+                                <option value="I">I - Darshana</option>                                            
                                 <option value="VP">VP - Jayan & Midhun</option>                               
                             </select>
-                        </div>
-                    )}
+                        </div> 
+                    )} 
                 </div>
             </div>
 
