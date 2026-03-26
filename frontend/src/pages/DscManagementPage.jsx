@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Trash2, Edit, Search, User, ArrowLeft, Loader2, AlertTriangle, Key } from 'lucide-react';
+import { Plus, Trash2, Edit, Search, User, ArrowLeft, Loader2, AlertTriangle, Key, Bell, X } from 'lucide-react';
 
 const DscManagementPage = () => {
     const [records, setRecords] = useState([]);
@@ -18,6 +18,7 @@ const DscManagementPage = () => {
     });
     const [editingId, setEditingId] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [showNotifications, setShowNotifications] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -150,6 +151,22 @@ const DscManagementPage = () => {
                     </h1>
                 </div>
                 <div className="flex gap-2">
+                    {/* Notifications Bell */}
+                    <div className="relative mr-2">
+                        <button
+                            onClick={() => setShowNotifications(!showNotifications)}
+                            className={`p-2 rounded-lg transition relative ${warnings.length > 0 ? 'bg-red-50 text-red-600 hover:bg-red-100' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                            title="DSC Warnings"
+                        >
+                            <Bell size={20} />
+                            {warnings.length > 0 && (
+                                <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full border-2 border-white shadow-sm animate-bounce">
+                                    {warnings.length}
+                                </span>
+                            )}
+                        </button>
+                    </div>
+
                     <div className="relative hidden md:block">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" size={18} />
                         <input
@@ -185,27 +202,24 @@ const DscManagementPage = () => {
 
             <div className="p-6 max-w-7xl mx-auto space-y-6">
                 
-                {/* Warnings Section */}
+                {/* Summary Section (Brief) */}
                 {warnings.length > 0 && (
-                    <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-sm">
-                        <div className="flex items-center gap-2 text-red-700 font-bold mb-2">
-                            <AlertTriangle size={20} />
-                            <h2>DSC Expiry Warnings (30 Days or Expired)</h2>
+                    <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl flex items-center justify-between shadow-sm">
+                        <div className="flex items-center gap-3">
+                            <div className="bg-amber-100 p-2 rounded-lg text-amber-600">
+                                <AlertTriangle size={20} />
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold text-amber-800">DSC Expiry Attention Required</p>
+                                <p className="text-xs text-amber-600">You have {warnings.length} client(s) with DSC expiring within 30 days.</p>
+                            </div>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {warnings.map(w => (
-                                <div key={w.id} className="bg-white p-3 rounded shadow-sm border border-red-100 flex flex-col justify-between">
-                                    <div>
-                                        <p className="font-semibold text-slate-800">{w.client_name}</p>
-                                        <p className="text-sm text-slate-600">Username: {w.username}</p>
-                                        <p className="text-sm text-slate-600">Expiry: {formatDate(w.dsc_expiry_date)}</p>
-                                    </div>
-                                    <div className="mt-2 text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded inline-block w-max">
-                                        {w.remaining_days < 0 ? `Expired ${Math.abs(w.remaining_days)} days ago` : `Expires in ${w.remaining_days} days`}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                        <button 
+                            onClick={() => setShowNotifications(true)}
+                            className="text-xs font-bold text-amber-700 bg-amber-200/50 px-3 py-1.5 rounded-lg hover:bg-amber-200 transition"
+                        >
+                            View All Messages
+                        </button>
                     </div>
                 )}
 
@@ -343,6 +357,66 @@ const DscManagementPage = () => {
                         </form>
                     </div>
                 </div>
+            )}
+
+            {/* Notifications Drawer */}
+            {showNotifications && (
+                <>
+                    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60]" onClick={() => setShowNotifications(false)}></div>
+                    <div className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[70] flex flex-col transform transition-transform duration-300">
+                        <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-slate-50">
+                            <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                <Bell className="text-orange-500" size={20} /> DSC Notifications
+                            </h2>
+                            <button onClick={() => setShowNotifications(false)} className="p-2 hover:bg-white rounded-full transition text-slate-400">
+                                <X size={24} />
+                            </button>
+                        </div>
+                        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                            {warnings.length === 0 ? (
+                                <div className="h-full flex flex-col items-center justify-center text-slate-400 space-y-2">
+                                    <Bell size={48} className="opacity-20" />
+                                    <p>No active warnings</p>
+                                </div>
+                            ) : (
+                                warnings.map(w => (
+                                    <div key={w.id} className={`p-4 rounded-2xl border-l-4 shadow-sm ${w.remaining_days < 0 ? 'bg-red-50 border-red-500' : 'bg-orange-50 border-orange-500'}`}>
+                                        <div className="flex justify-between items-start mb-2">
+                                            <h3 className="font-bold text-slate-800">{w.client_name}</h3>
+                                            <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${w.remaining_days < 0 ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'}`}>
+                                                {w.remaining_days < 0 ? 'Expired' : 'Expiring Soon'}
+                                            </span>
+                                        </div>
+                                        <div className="space-y-1 text-sm text-slate-600">
+                                            <p><span className="font-medium text-slate-500">Username:</span> {w.username}</p>
+                                            <p><span className="font-medium text-slate-500">Expiry Date:</span> {formatDate(w.dsc_expiry_date)}</p>
+                                            <p><span className="font-medium text-slate-500">Valid period:</span> {w.total_duration_days} days</p>
+                                        </div>
+                                        <div className="mt-3 flex items-center gap-2">
+                                            <div className={`text-xs font-bold px-3 py-1 rounded-lg ${w.remaining_days < 0 ? 'bg-red-200 text-red-800' : 'bg-orange-200 text-orange-800'}`}>
+                                                {w.remaining_days < 0 ? `${Math.abs(w.remaining_days)} days overdue` : `${w.remaining_days} days remaining`}
+                                            </div>
+                                            <button 
+                                                onClick={() => {
+                                                    setSearchTerm(w.client_name);
+                                                    setShowNotifications(false);
+                                                }}
+                                                className="text-xs font-medium text-slate-500 hover:text-orange-600 underline underline-offset-2 ml-auto"
+                                            >
+                                                Locate Record
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                        <div className="p-4 bg-slate-50 border-t border-gray-100">
+                            <button onClick={() => setShowNotifications(false)} className="w-full py-3 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-700 transition">
+                                Close Panel
+                            </button>
+                        </div>
+                    </div>
+                </>
             )}
         </div>
     );

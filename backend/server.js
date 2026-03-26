@@ -755,8 +755,8 @@ app.get("/api/client-licenses/download/excel", authenticateToken, async (req, re
         COALESCE(c.name, cl.manual_client_name) as "Client Name",
         lt.name as "License Type",
         cl.file_no as "File Number",
-        cl.service_date as "Service Date",
-        cl.expiry_date as "Expiry Date",
+        TO_CHAR(cl.service_date, 'DD-MM-YYYY') as "Service Date",
+        TO_CHAR(cl.expiry_date, 'DD-MM-YYYY') as "Expiry Date",
         CASE 
           WHEN cl.expiry_date < CURRENT_DATE AND cl.status != 'Expired' THEN 'Expired'
           ELSE cl.status 
@@ -898,28 +898,21 @@ app.post("/api/client-licenses/:id/renew", authenticateToken, async (req, res) =
 
   const client = await pool.connect();
   try {
-    await client.query("BEGIN");
+    // Update existing record
+    const result = await client.query(
+      `UPDATE client_licenses 
+       SET service_date = $1, expiry_date = $2, notes = $3, status = 'Renewed', updated_at = NOW() 
+       WHERE id = $4 RETURNING *`,
+      [service_date, expiry_date, notes || null, id]
+    );
 
-    // 1. Get current record info
-    const currentRes = await client.query("SELECT * FROM client_licenses WHERE id = $1", [id]);
-    if (currentRes.rows.length === 0) {
+    if (result.rows.length === 0) {
       await client.query("ROLLBACK");
       return res.status(404).json({ error: "License not found" });
     }
-    const old = currentRes.rows[0];
-
-    // 2. Mark old as Renewed
-    await client.query("UPDATE client_licenses SET status = 'Renewed', updated_at = NOW() WHERE id = $1", [id]);
-
-    // 3. Insert new Active record
-    const newRes = await client.query(
-      `INSERT INTO client_licenses (client_id, manual_client_name, license_type_id, file_no, service_date, expiry_date, status, notes) 
-       VALUES ($1, $2, $3, $4, $5, $6, 'Active', $7) RETURNING *`,
-      [old.client_id, old.manual_client_name, old.license_type_id, old.file_no, service_date, expiry_date, notes || old.notes]
-    );
 
     await client.query("COMMIT");
-    res.json(newRes.rows[0]);
+    res.json(result.rows[0]);
   } catch (err) {
     await client.query("ROLLBACK");
     console.error("❌ POST /api/client-licenses/:id/renew error:", err);
@@ -1074,38 +1067,38 @@ app.get("/api/license-dashboard", authenticateToken, async (req, res) => {
   try {
     // Overall stats
     const totalLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses");
-    const activeLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses WHERE status = 'Active' AND expiry_date >= CURRENT_DATE");
-    const expiredLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses WHERE expiry_date < CURRENT_DATE OR status = 'Expired'");
+    const activeLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses WHERE status IN ('Active', 'Renewed') AND expiry_date >= CURRENT_DATE");
+    const expiredLicenses = await pool.query("SELECT COUNT(*) as count FROM client_licenses WHERE (expiry_date < CURRENT_DATE OR status = 'Expired') AND status != 'Renewed'");
 
     // Expiring in 30 days
     const expiringSoon = await pool.query(`
-      SELECT cl.*, c.name as client_name, lt.name as license_type_name,
+      SELECT cl.*, COALESCE(c.name, cl.manual_client_name) as client_name, lt.name as license_type_name,
         (cl.expiry_date - CURRENT_DATE) as remaining_days
       FROM client_licenses cl
-      JOIN clients c ON cl.client_id = c.id
+      LEFT JOIN clients c ON cl.client_id = c.id
       JOIN license_types lt ON cl.license_type_id = lt.id
       WHERE cl.expiry_date BETWEEN CURRENT_DATE AND (CURRENT_DATE + INTERVAL '30 days')
-        AND cl.status = 'Active'
+        AND cl.status IN ('Active', 'Renewed')
       ORDER BY cl.expiry_date ASC
     `);
 
     // Recently expired
     const recentlyExpired = await pool.query(`
-      SELECT cl.*, c.name as client_name, lt.name as license_type_name,
+      SELECT cl.*, COALESCE(c.name, cl.manual_client_name) as client_name, lt.name as license_type_name,
         (CURRENT_DATE - cl.expiry_date) as days_expired
       FROM client_licenses cl
-      JOIN clients c ON cl.client_id = c.id
+      LEFT JOIN clients c ON cl.client_id = c.id
       JOIN license_types lt ON cl.license_type_id = lt.id
-      WHERE cl.expiry_date < CURRENT_DATE
+      WHERE cl.expiry_date < CURRENT_DATE AND status != 'Renewed'
       ORDER BY cl.expiry_date DESC
       LIMIT 20
     `);
 
     // Recently renewed
     const recentlyRenewed = await pool.query(`
-      SELECT cl.*, c.name as client_name, lt.name as license_type_name
+      SELECT cl.*, COALESCE(c.name, cl.manual_client_name) as client_name, lt.name as license_type_name
       FROM client_licenses cl
-      JOIN clients c ON cl.client_id = c.id
+      LEFT JOIN clients c ON cl.client_id = c.id
       JOIN license_types lt ON cl.license_type_id = lt.id
       WHERE cl.status = 'Renewed'
       ORDER BY cl.updated_at DESC
