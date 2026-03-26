@@ -801,7 +801,7 @@ app.get("/api/client-licenses/download/excel", authenticateToken, async (req, re
 
     res.setHeader('Content-Disposition', 'attachment; filename="licenses_export.xlsx"');
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    res.send(buf);
+    return res.end(buf);
   } catch (err) {
     console.error("❌ GET /api/client-licenses/excel error:", err);
     res.status(500).json({ error: "Internal Server Error" });
